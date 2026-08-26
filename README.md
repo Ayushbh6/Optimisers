@@ -57,9 +57,9 @@ This repository is organized following clean Python and Data Science / Operation
 The dataset represents an **anonymized mid-market specialty retail chain** specializing in footwear and youth apparel (similar to *Clarks*, *Skechers*, or *DSW*):
 * **Store Network:** 40 physical brick-and-mortar storefronts (`STR-1006` to `STR-1369`).
 * **Catalog:** 2,326 SKUs from 30 manufacturing suppliers (`Vendor 0010` to `Vendor 0262`).
-* **Core Revenue Drivers:** **Scholar Footwear** ($70.0\%$ of revenue), **Femme Footwear** ($25.9\%$), and **Junior Apparel** ($4.1\%$).
-* **Commercial Baseline:** $\$10.48\text{M}$ annual revenue, $44.21\%$ gross margin, with **$\$2.40\text{M}$ in average standing inventory capital** (134.9 Days Sales of Inventory).
-* **Target Inefficiencies:** High capital lockup in slow-moving stock, deep margin collapse on late clearance markdowns ($-78.6\%$ margin), and a $3.5\times$ performance spread between stores.
+* **Core Revenue Drivers:** **Scholar Footwear** (70.0% of revenue), **Femme Footwear** (25.9%), and **Junior Apparel** (4.1%).
+* **Commercial Baseline:** $10.48M annual revenue, 44.21% gross margin, with **$2.40M in average standing inventory capital** (134.9 Days Sales of Inventory).
+* **Target Inefficiencies:** High capital lockup in slow-moving stock, deep margin collapse on late clearance markdowns (-78.6% margin), and a 3.5x performance spread between stores.
 
 *For full details on product lines, margins, and operational context, see [`docs/BUSINESS_CONTEXT.md`](docs/BUSINESS_CONTEXT.md).*
 
@@ -74,14 +74,14 @@ Before any modeling began, a rigorous audit was conducted across the two source 
 | **Row Count** | 125,751 rows | 284,755 rows |
 | **Dataset Grain** | Daily transaction slice per `(SKU, Store, Date, Sales Type, Return)` | SCD Type 2 state validity interval `[Start Date, End Date]` |
 | **Primary Key** | `(Product No, Store, Transaction Date, Sales Type, Is Return)` (100% unique) | `(Product No, Store, Start Date)` (100% unique) |
-| **Entity Overlap** | **2,326 SKUs**, **40 Stores**, **30 Suppliers** ($100.00\%$ 1:1 match) | **2,326 SKUs**, **40 Stores**, **30 Suppliers** ($100.00\%$ 1:1 match) |
-| **Hierarchy Match** | 100% exact match across Division $\rightarrow$ Category $\rightarrow$ Subcategory $\rightarrow$ Segment | 100% exact match across Division $\rightarrow$ Category $\rightarrow$ Subcategory $\rightarrow$ Segment |
+| **Entity Overlap** | **2,326 SKUs**, **40 Stores**, **30 Suppliers** (100.00% 1:1 match) | **2,326 SKUs**, **40 Stores**, **30 Suppliers** (100.00% 1:1 match) |
+| **Hierarchy Match** | 100% exact match across Division → Category → Subcategory → Segment | 100% exact match across Division → Category → Subcategory → Segment |
 
 ### Key Business & Financial Baseline Findings
-- **Enterprise Financials:** $\$10.48\text{M}$ total sales revenue | $\$5.85\text{M}$ COGS | $\$4.63\text{M}$ gross margin ($44.21\%$).
-- **Working Capital Tied Up:** Average standing inventory cost of **$\$2,404,541.94$** ($134.9$ Days Sales of Inventory / $2.71\times$ turnover).
-- **Demand Intermittency:** **$98.54\%$ of active SKU $\times$ Store series exhibit intermittent demand** ($99.588\%$ matrix sparsity).
-- **Markdown Margin Collapse:** Full Price yields $+48.28\%$ margin; Promo yields $+26.69\%$; Markdown Tier 2 turns negative at $-12.96\%$; Clearance drops to $-78.59\%$ ($-\$23.7\text{K}$ liquidation losses).
+- **Enterprise Financials:** $10.48M total sales revenue | $5.85M COGS | $4.63M gross margin (44.21%).
+- **Working Capital Tied Up:** Average standing inventory cost of **$2,404,541.94** (134.9 Days Sales of Inventory / 2.71x turnover).
+- **Demand Intermittency:** **98.54% of active SKU × Store series exhibit intermittent demand** (99.588% matrix sparsity).
+- **Markdown Margin Collapse:** Full Price yields +48.28% margin; Promo yields +26.69%; Markdown Tier 2 turns negative at -12.96%; Clearance drops to -78.59% (-$23.7K liquidation losses).
 
 *For the full 12-section technical audit, see [`audit/DATASET_AUDIT.md`](audit/DATASET_AUDIT.md).*
 
@@ -119,7 +119,7 @@ The platform is designed as a unified retail decision-support engine containing 
                              QUANTIFIED € IMPACT
 ```
 
-1. **Smart Inventory Policy Optimizer $(s, S)$:**  
+1. **Smart Inventory Policy Optimizer (s, S):**  
    Calculates safety stocks and dynamic reorder points to reduce standing inventory capital while preserving target service levels (e.g. 95%).
 2. **Store Allocation Optimizer:**  
    Solves a constrained integer program (Knapsack / MILP) allocating incoming batches across 40 stores based on sales velocity and margin.

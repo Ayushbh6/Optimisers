@@ -69,17 +69,17 @@ The stockroom ledger tracking physical on-hand inventory levels and stock valuat
 This business is profitable, but suffers from two classic retail supply-chain inefficiencies:
 
 1. **Slow-Moving Inventory & Trapped Working Capital:**
-   * On any given day, **$\$2.4\text{ Million}$ of cash is locked up as inventory** on store shelves.
-   * It takes an average of **135 days** to turn inventory over ($2.71\times$ per year).
+   * On any given day, **$2.4 Million of cash is locked up as inventory** on store shelves.
+   * It takes an average of **135 days** to turn inventory over (2.71x per year).
    * Certain slow-moving items sit in stockrooms for over **200 days** before selling a single pair.
 
 2. **Severe Margin Collapse on Late Markdowns:**
    * When items fail to sell at full price, the company waits too long and is forced into deep markdowns.
    * In Markdown Tier 2 and Clearance, the company loses money on every item sold (selling at **$11.61** what cost **$20.74** to procure).
-   * Over the 11-month period, liquidation markdowns destroyed over **$\$23,700$** in net profit.
+   * Over the 11-month period, liquidation markdowns destroyed over **$23,700** in net profit.
 
 3. **Uneven Multi-Store Allocation:**
-   * Sales velocity varies widely across the 40 stores (the top store generates **$3.5\times$ more revenue** than the lowest store).
+   * Sales velocity varies widely across the 40 stores (the top store generates **3.5x more revenue** than the lowest store).
    * Without intelligent allocation, fast-selling stores experience stockouts while slow-selling stores hold idle safety stock.
 
 ---

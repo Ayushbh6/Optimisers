@@ -1,0 +1,18 @@
+{
+  "financials": {
+    "total_sales_amount": 10482110.25,
+    "total_cogs": 5847751.0999,
+    "total_gross_margin": 4634359.1501,
+    "margin_pct": 44.21208172371589,
+    "avg_inv_cost": 2404541.937727273,
+    "annualized_cogs": 6507405.949583841,
+    "inventory_turnover": 2.706297547770997,
+    "days_sales_inventory": 134.8706095900752
+  },
+  "demand_classification": {
+    "Intermittent": 49504,
+    "Smooth": 498,
+    "Lumpy": 213,
+    "Erratic": 22
+  }
+}

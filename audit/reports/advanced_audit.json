@@ -1,0 +1,61 @@
+{
+  "store_count": 40,
+  "top_store": "STR-1006",
+  "bottom_store": "STR-1344",
+  "div_summary": {
+    "total_revenue": {
+      "Femme Footwear": 2712206.85,
+      "Junior Apparel": 431713.95,
+      "Scholar Footwear": 7338189.45
+    },
+    "total_units": {
+      "Femme Footwear": 25876.0,
+      "Junior Apparel": 18348.0,
+      "Scholar Footwear": 72771.0
+    },
+    "total_cogs": {
+      "Femme Footwear": 1638864.8899,
+      "Junior Apparel": 254583.15,
+      "Scholar Footwear": 3954303.06
+    },
+    "active_products": {
+      "Femme Footwear": 714,
+      "Junior Apparel": 731,
+      "Scholar Footwear": 881
+    },
+    "gross_margin": {
+      "Femme Footwear": 1073341.9601,
+      "Junior Apparel": 177130.80000000002,
+      "Scholar Footwear": 3383886.39
+    },
+    "margin_pct": {
+      "Femme Footwear": 39.57448747318074,
+      "Junior Apparel": 41.02966790857697,
+      "Scholar Footwear": 46.11336914993384
+    },
+    "rev_share_pct": {
+      "Femme Footwear": 25.87462624713378,
+      "Junior Apparel": 4.118578603960018,
+      "Scholar Footwear": 70.0067951489062
+    }
+  },
+  "missing_vars": {
+    "Supplier Lead Times": "ABSENT (No order-to-delivery timestamps, no PO records)",
+    "Purchase Orders (PO)": "ABSENT (No PO numbers, order dates, or ordered quantities)",
+    "Minimum Order Quantities (MOQ)": "ABSENT (Cannot be observed directly; inferred small batched increments mean MOQ is either 1 or unconstrained at store level)",
+    "Supplier Capacity / Bottlenecks": "ABSENT",
+    "Warehouse / Shelf Storage Capacity": "ABSENT (Store physical cubic/sqft capacity unknown)",
+    "Holding Cost Rate (% / $ / unit / year)": "ABSENT (Requires standard WACC + storage assumption, e.g., 20-25% per annum)",
+    "Ordering / Fixed Setup Cost per PO": "ABSENT (Requires standard simulation assumption, e.g. $50-$100/order)",
+    "Stockout Penalty / Lost Sales Penalty": "ABSENT (Can only be estimated via unconstrained demand modeling or margin loss)",
+    "Inter-store Transfer Costs": "ABSENT (Distance matrix, freight rates, or handling costs missing)",
+    "Product Expiry / Shelf Life": "ABSENT (Not perishable; fashion/apparel lifecycle aging instead)",
+    "Target Service Levels (SLAs)": "ABSENT (Business policy parameter)"
+  },
+  "leakage_points": [
+    "1. SCD Type 2 End Date Lookahead Leakage: The `End Date` in the inventory table is determined retrospectively when the next state transition happens. Conditioning on `End Date` during demand forecasting or backtesting leaks future transaction/replenishment timing!",
+    "2. Zero-inventory truncation vs Uncensored Demand: Sales only reflect observed demand when stock > 0. Using raw historical sales without adjusting for stockout periods underestimates true unconstrained demand (censored demand bias).",
+    "3. Future Price & Markdown Leakage: Using lifecycle markdown flags (e.g. Clearance) before the clearance event actually occurred leaks product obsolescence state.",
+    "4. Inferred Replenishment Timing: Replenishments are inferred from positive inventory jumps. If an automated policy uses the exact historical arrival date without lead-time stochasticity, it overestimates supply reliability."
+  ]
+}

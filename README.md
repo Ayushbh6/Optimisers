@@ -35,6 +35,7 @@ This repository is organized following clean Python and Data Science / Operation
 │       └── demand_financial_summary.json # High-level financial KPIs & demand classifications
 │
 ├── docs/                          # System Architecture & Product Specifications
+│   ├── BUSINESS_CONTEXT.md        # Plain-English company background, business model & retail domain
 │   └── PLATFORM_SPECIFICATION.md  # Platform vision, module specifications & 3-phase roadmap
 │
 ├── data/                          # Datasets (Tracked locally / Git LFS)
@@ -48,6 +49,19 @@ This repository is organized following clean Python and Data Science / Operation
     ├── optimization/              # Stochastic (s, S) replenishment & MILP multi-store allocation
     └── simulation/                # Walk-forward backtester and counterfactual business simulator
 ```
+
+---
+
+## 🏬 The Business & Retail Domain
+
+The dataset represents an **anonymized mid-market specialty retail chain** specializing in footwear and youth apparel (similar to *Clarks*, *Skechers*, or *DSW*):
+* **Store Network:** 40 physical brick-and-mortar storefronts (`STR-1006` to `STR-1369`).
+* **Catalog:** 2,326 SKUs from 30 manufacturing suppliers (`Vendor 0010` to `Vendor 0262`).
+* **Core Revenue Drivers:** **Scholar Footwear** ($70.0\%$ of revenue), **Femme Footwear** ($25.9\%$), and **Junior Apparel** ($4.1\%$).
+* **Commercial Baseline:** $\$10.48\text{M}$ annual revenue, $44.21\%$ gross margin, with **$\$2.40\text{M}$ in average standing inventory capital** (134.9 Days Sales of Inventory).
+* **Target Inefficiencies:** High capital lockup in slow-moving stock, deep margin collapse on late clearance markdowns ($-78.6\%$ margin), and a $3.5\times$ performance spread between stores.
+
+*For full details on product lines, margins, and operational context, see [`docs/BUSINESS_CONTEXT.md`](docs/BUSINESS_CONTEXT.md).*
 
 ---
 

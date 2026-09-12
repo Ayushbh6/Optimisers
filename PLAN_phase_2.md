@@ -1,6 +1,8 @@
 # Phase 2 — Choose the right optimisation before building further
 
-> Updated 12 September 2026. Part 1 is signed off and the dataset source is confirmed. The bounded feasibility check has not yet run. Full implementation waits for its conclusion and the user's decision.
+> **Locked 12 September 2026.** Part 1 is signed off and the dataset source is confirmed. The bounded feasibility check has not yet run. Full implementation waits for its conclusion and the user's decision.
+
+This is the execution contract for the feasibility pass. During execution, checklist status, evidence links and results may be added. Changing the scope, screening thresholds or run limits requires an explicit user decision recorded in this file.
 
 ## 1. Goal
 
@@ -34,7 +36,7 @@ The public record does not name or independently verify the retailer. Public wor
 
 - Work directly, without subagents or handovers.
 - Reuse the lean accepted evidence and Phase 2 inputs in `artifacts/part1-final/`, including its existing 27 sensitivity results. Do not repeat Part 1 or its full sweep.
-- Complete one evidence review, rank at most four optimisation opportunities and run one small experiment round on the strongest opportunity. Use a proposed maximum of 90 minutes for the feasibility pass, including research and computation. This limits effort; it does not guarantee that missing evidence can be resolved.
+- Complete one evidence review, rank at most four optimisation opportunities and run one small experiment round on the strongest opportunity. The feasibility pass has a maximum of 90 minutes, including research and computation. This limits effort; it does not guarantee that missing evidence can be resolved.
 - Before computation, record the exact candidates, subset, dates and run count. Time a small representative case and estimate remaining work. Reduce scope or report unresolved questions if the work exceeds the limit.
 - Test at most three simple approaches for the selected opportunity, followed by at most two assumption checks on the most promising approach. No broad parameter search, repeated tuning until something wins, or new seasonal model.
 - Stop experiments early if a missing fact already blocks the selected claim. Computation cannot recover missing historical orders or other absent operational records.
@@ -67,7 +69,7 @@ Rank the available problems by how directly the recorded fields can test the res
 | Slow-stock and markdown prioritisation | Stock status, selling prices, sales types and inventory history | Candidate identification is possible. Causal claims that a markdown increased sales are not supported by one observed history. |
 | Actual retailer total-cost savings | Purchase orders, receipts, real delays, transfers, missed demand and operating costs | Not supported by this dataset alone. Use another dataset or obtain those records. |
 
-- [ ] Score each candidate on data support, customer value, strength of evaluation and missing assumptions. Select one primary use for this dataset before experiments.
+- [ ] Score each candidate from 0 to 2 on data support, customer value, strength of evaluation and dependence on missing assumptions: 0 means unsupported, 1 means partly supported and 2 means directly supported. A candidate cannot win if data support or evaluation strength is 0. Break ties in this order: stronger data support, stronger evaluation, fewer assumptions, then greater customer value. Select one primary use before experiments.
 - [ ] State what is directly measured, what is a simulation and what requires another dataset.
 - [ ] Draft the exact conditional website sentence for the selected demo before choosing a favourable result. Do not invent a percentage or imply that the result exists.
 - [ ] Include the Mendeley attribution and DOI in the eventual case study.
@@ -97,13 +99,15 @@ Run this only if Checks A–C leave a useful claim worth pursuing.
 First complete the opportunity ranking. If store stocking and replenishment wins, inspect the saved ledger and sensitivity results and explain what drives excess stock: inherited inventory, forecast levels, stock buffers, minimum orders, stocking eligibility or their interaction. If another opportunity ranks first, define an equally bounded experiment whose outcome is observable in this dataset. Distinguish measured causes from hypotheses.
 
 - [ ] Freeze an affordable representative subset using historical information and declared data-quality rules. Cover different stores and sales rates; disclose limitations. Keep forecast pooling free of future purchase information.
-- [ ] Before new results, record numerical screening requirements for recorded-purchase coverage, worthwhile inventory reduction and adequate comparison coverage. These are business decision criteria, not correctness-test assertions. Do not weaken them after poor results.
+- [ ] Use these locked replenishment screens if replenishment wins the ranking. The broad dataset claim must cover all 40 stores, all three divisions, at least 80% of eligible recorded-purchase units and at least 80% of eligible pair-days with both comparable reference stock and a usable common cost. All percentages must use one fixed comparison scope. A **same recorded purchases** statement requires 100% observed-purchase coverage and at least 10% less average inventory value. A qualified trade-off result requires at least 99% coverage and at least 10% less average inventory value, but must state the exact coverage and cannot say “same sales.” If the data-quality scope misses the broad-claim requirement, report only the exact narrower scope or reject the website claim. These are business screening rules, not correctness-test assertions or claims about the retailer's required service level, and cannot be weakened after seeing results.
 - [ ] Test at most three simple alternatives for the selected opportunity. For replenishment, options include historical-average forecasts, last-completed-week forecasts or a simpler stock target. Specify each rule once and reuse shared causal contracts.
 - [ ] For replenishment, compare alternatives with both the current policy and recorded reference on identical scope and dates. For another opportunity, predeclare the appropriate simple baseline. Beating our poor policy alone does not demonstrate improvement over the retailer.
 - [ ] Preserve the causal information boundary appropriate to the selected experiment. For replay, fulfilled purchases and the shop's own availability feed future decisions; retain whole-unit stock, dated costs, exact delays, pending orders and stock conservation.
 - [ ] Report all measures needed to understand the trade-off. For replenishment this includes coverage, unfulfilled units, average inventory value, ending stock, outstanding orders, assumed holding costs and simulated ordering costs, with the first 15 days separated. Keep historical total-cost savings unavailable where historical orders are unknown.
 - [ ] Run at most two predeclared assumption checks on the most promising alternative. If the result reverses, report its dependence instead of searching for friendlier settings.
 - [ ] Save all attempted settings and results, including failures. Reproduce the selected small result once if it is used to justify proceeding.
+
+The experiment cap is six executions: up to three alternatives, up to two assumption checks on the strongest alternative, and one exact repeat of a result used to justify proceeding. Reading the retained current-policy and reference results does not count as a new execution.
 
 The existing June–April data have already informed development. An earlier/later split can limit additional tuning, but cannot turn inspected data into an untouched final test. These experiments establish feasibility only. Stronger validation needs new data or a genuinely independent evaluation.
 

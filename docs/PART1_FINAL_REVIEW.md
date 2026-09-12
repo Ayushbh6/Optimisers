@@ -62,7 +62,7 @@ The independent audit recalculated the main ledger movements and valuation from 
 
 On the matched known-reference/cost scope, average simulated capital is EUR 4,486,594 versus EUR 2,502,047 reference. The current rule therefore does not demonstrate lower capital while preserving recorded purchases. These are partial matched-scope figures, not full-chain totals.
 
-The independent audit summary is `artifacts/part1-final/verification/part1-signoff-audit.json`; its verifier is `artifacts/part1-final/verification/verify_part1_signoff.py`. The run itself contains `acceptance_checks.json`, `run_manifest.json` and `part1_report.md`, plus the detailed Parquet evidence. No legacy artifact was read by the build.
+The independent audit summary is `artifacts/part1-final/verification/part1-signoff-audit.json`; its verifier is `artifacts/part1-final/verification/verify_part1_signoff.py`. The retained set contains `acceptance_checks.json`, `run_manifest.json`, `part1_report.md` and the stock, demand, replay and summary evidence needed for Phase 2. No legacy artifact was read by the build.
 
 The accepted entry points are the shared raw-to-report command and its stage wrappers. Older historical engine/baseline helpers remain outside that execution path. All numerical results above replace the older worker-run figures.
 
@@ -74,4 +74,4 @@ Part 2 still requires better policies, realistic missed-demand trials, resolved 
 
 ## Output consolidation
 
-The final run now lives in `artifacts/part1-final/` inside the repository. All 14 output hashes were verified again during relocation. The independent repeat and earlier temporary builds were deleted; the small verification records and original manifest remain under `verification/`. Historical paths within those evidence files describe the original execution locations.
+The lean accepted evidence now lives in `artifacts/part1-final/` inside the repository. All 14 original output hashes were verified again during relocation. The independent repeat and earlier temporary builds were deleted. After sign-off, `forecast.parquet`, `policy.parquet` and `forecast_benchmark_detail.parquet` were pruned because they are reproducible and are not needed for the bounded Phase 2 work. Their hashes remain in the manifests, and `cleanup_record.json` records their removal. Historical paths within the verification files describe the original execution locations.

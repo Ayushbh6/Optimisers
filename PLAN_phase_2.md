@@ -33,7 +33,7 @@ The public record does not name or independently verify the retailer. Public wor
 ## 3. Boundaries and effort limit
 
 - Work directly, without subagents or handovers.
-- Reuse `artifacts/part1-final/`, including its existing 27 sensitivity results. Do not repeat Part 1 or its full sweep.
+- Reuse the lean accepted evidence and Phase 2 inputs in `artifacts/part1-final/`, including its existing 27 sensitivity results. Do not repeat Part 1 or its full sweep.
 - Complete one evidence review, rank at most four optimisation opportunities and run one small experiment round on the strongest opportunity. Use a proposed maximum of 90 minutes for the feasibility pass, including research and computation. This limits effort; it does not guarantee that missing evidence can be resolved.
 - Before computation, record the exact candidates, subset, dates and run count. Time a small representative case and estimate remaining work. Reduce scope or report unresolved questions if the work exceeds the limit.
 - Test at most three simple approaches for the selected opportunity, followed by at most two assumption checks on the most promising approach. No broad parameter search, repeated tuning until something wins, or new seasonal model.

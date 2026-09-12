@@ -68,11 +68,11 @@ Croston also performs worse than the last-completed-week baseline on the observe
 
 ## Run records and repeat command
 
-- Retained full run, including all sensitivity settings: `artifacts/part1-final/`.
+- Retained lean accepted evidence and Phase 2 inputs, including all sensitivity settings: `artifacts/part1-final/`.
 - Final audits and test evidence: `artifacts/part1-final/verification/`.
 - Cleanup inventory: `artifacts/part1-final/cleanup_record.json`.
 
-The accepted run is now stored inside this repository. Its 14 artifact hashes were checked before and after the move. Superseded temporary runs and the independent repeat were deleted after verification; their final audit evidence is retained. The working manifest points to the new location, and its original copy is preserved with the audit records. Future run outputs should stay inside this repository and superseded outputs should be removed after verification.
+The accepted run is now stored inside this repository. Its 14 artifact hashes were checked before and after the move. Superseded temporary runs and the independent repeat were deleted after verification; their final audit evidence is retained. After sign-off, three large reproducible detail tables were also removed because the bounded Phase 2 work does not need them: `forecast.parquet`, `policy.parquet` and `forecast_benchmark_detail.parquet`. Their verified hashes remain in the manifests. Future run outputs should stay inside this repository and superseded outputs should be removed after verification.
 
 The source and command below recreate the results into a fresh repository-local output directory:
 
@@ -80,7 +80,7 @@ The source and command below recreate the results into a fresh repository-local 
 python -m src.build_part1 --output-dir artifacts/part1-next --sensitivity
 ```
 
-The run contains `run_manifest.json`, `acceptance_checks.json`, the daily stock/demand data, forecast benchmarks, decision traces, replay ledger, matched comparisons, pending orders, exclusions, breakdowns and `sensitivity.parquet`.
+The lean retained set contains `run_manifest.json`, `acceptance_checks.json`, daily stock and demand data, the replay ledger, compact forecast benchmarks, matched comparisons, pending orders, exclusions, breakdowns and `sensitivity.parquet`.
 
 ## Direction for Part 2
 

@@ -33,7 +33,7 @@ class SimulationConfig:
     default_reorder_cost_line: float = 2.0
     default_min_order_qty: int = 5
     default_stocking_demand_threshold: float = 0.004
-    baseline_replenishment_orders: int = 13038  # Verified store delivery receipts in raw ledger
+    baseline_replenishment_orders: None = None  # Historical purchase-order records are unavailable
 
     # Sensitivity grid specifications (3 x 3 x 3 = 27 runs)
     lead_time_grid: Tuple[int, ...] = (5, 10, 15)

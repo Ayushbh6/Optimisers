@@ -1,98 +1,89 @@
-# CURRENT_STATUS.md — Where the Project Stands
+# Current status
 
-> **Last updated:** 2026-09-09
-> **Purpose:** One honest, plain-language record of everything built so far, what it proves, and what's next. Read this before touching any code.
+> Final Part 1 sign-off: 11 September 2026.
 
----
+**Part 1 is complete under the agreed recorded-purchase replay assumptions.** The final review repaired the remaining integration gaps, verified the saved records independently, and checked all 27 full-data sensitivity settings. This replaces the earlier partial main-run acceptance.
 
-## 1. What we set out to build
+The result is a measuring system we can inspect and reproduce. It is not yet evidence that our policy saves the retailer money.
 
-A tool that turns messy retail data (sales + inventory) into a defensible answer to *"how much stock should this store hold, and when should it reorder"* — proven by replaying the business's own history and showing the € impact.
+## Verified evidence
 
-The product is a **decision + a receipt**:
+- **54 tests pass**, including future-data changes, feedback isolation, later starting-stock anchors, model calculations, daily shares, dated costs, order timing, matched accounting and raw-fixture rebuilds.
+- A clean build reconstructed **14,635,042 stock rows** and the same number of demand rows from the raw files.
+- All **125,751 source transaction rows** reconcile: **124,542 purchased units − 7,547 returned units = 116,995 net units**.
+- The replay contains **6,151,308 rows**. Independently recalculating stock movements found **zero stock-balance errors**. Arrivals match orders placed the configured number of calendar days earlier.
+- The ending-stock breakdown equals the pair-level ledger: **283,392 units**. Another **2,565 ordered units** remain outstanding, with exact due dates retained.
+- **All 27 full-data sensitivity settings completed** with independent shop learning after initial training. Their reference holding costs use the same rate and scope as their simulated side. The default setting reproduces the main run.
+- A separate raw-to-report rebuild produced **byte-identical copies of all 11 numerical Parquet outputs** common to the two runs. Input, artifact and implementation hashes were independently checked.
+- The frozen archive has no tracked changes. `docs/REPO_RULES.md` matches its pre-review hash.
 
-> "We replayed your last 11 months through our rules, and you'd hold ~X% less cash in inventory while selling at the same rate."
+The completed checklist is in [the live Phase 1 plan](docs/plan_phase_1.md); detailed review evidence is in [the final review](docs/PART1_FINAL_REVIEW.md).
 
-*(The "X%" is aspirational — the real number comes out of the work.)*
+## Completion against the original plan
 
----
-
-## 2. What we built (Phase 1 — the Engine)
-
-A complete, working, tested Python pipeline, built end-to-end across the **entire** dataset (2,326 products × 40 stores = 60,968 product-store pairs, 328 days).
-
-### The 5 machines
-
-| # | Module | What it does | Output |
-|---|---|---|---|
-| 1 | `src/data/` | Turns messy date-window inventory records into a clean daily "units on shelf" table | `daily_onhand.parquet` |
-| 2 | `src/demand/` | Estimates hidden demand on days the shelf was empty (lost sales) | `demand.parquet` |
-| 3 | `src/forecast/` | Forecasts future demand at category level, splits down to products (Croston/TSB) | `forecast.parquet` |
-| 4 | `src/policy/` | Turns forecasts into reorder rules (reorder point `s`, order-up-to `S`) | `policy.parquet` |
-| 5 | `src/simulation/` | Replays 11 months with our rules vs actual history, scores the € difference | `simulation_report.md` |
-
-**Tests:** 33/33 passing. Anti-leakage (no peeking at the future) enforced and verified.
-
----
-
-## 3. What we learned (the honest result)
-
-The engine is correct and trustworthy. But it told us something uncomfortable and **true**:
-
-> The naive reorder rule (always stock, chase 95% service, MOQ=5) is **worse** than what this business already does.
-
-| Metric | Observed business | Our naive rule |
+| Requirement | Status | What establishes completion |
 |---|---|---|
-| Average inventory | €2.45M | **€4.97M** (+103%) |
-| Unit fill rate | 93.6% | **83.9%** (−9.7 pts) |
-| Net cost (holding + ordering) | €1.09M | **€1.38M** (+€284K) |
+| A1 — Shared run contract | Verified | Shared dates and assumptions, fresh output directories, schema v2, exact input/source hashes, pinned dependencies, stage dependencies, thin stage wrappers and reproducible numerical outputs. Changed inputs or implementation invalidate a running build. |
+| A2 — Facts and stock movement | Verified | Separate purchases/returns, strict quantity and flag validation, preserved raw accounting values, all ledger pairs, purchases before stock anchors, and dated pair-local cost/price/metadata handling. |
+| A3 — Causal stock | Verified | Closing snapshots anchor stock once; interval endings affect only the historical reference. Shortfalls and adjustments remain visible. Future mutation tests protect earlier estimates. |
+| A4 — Estimated demand | Verified | One shared learner uses prior-day rates, seven-day donor exposure and explicit fallback/cutoff records. Unknown, depleted and discrepant days do not dilute available-day rates. Estimated exposure is recorded separately. |
+| A5 — Forecasts and evaluation | Verified | Daily shares and dated product facts; complete Monday–Sunday model weeks; daily, weekly and four-week units; hand-checked Croston/TSB behaviour; separate observed/estimated target errors and equal-scope baselines. Uncertainty remains explicitly approximate. |
+| B1 — Shop learning boundary | Verified | The shop receives fulfilled purchases and shelf evidence, never unfulfilled purchase targets. Its own demand estimates feed its next forecast. Changing hidden targets cannot change the forecast when observable history stays the same. |
+| B2 — Physical replay | Verified | Whole-unit movements, later anchors activated the next day, external day-end returns, exact delays, MOQ, no stock disposal when targets fall, and outstanding orders retained. |
+| B3 — Existing policy | Verified | Existing settings retained; orders fill the gap to the order-up-to target. Missing costs block orders. Every eligible pair-day has an explanation, including unavailable forecasts/costs and no-order decisions. |
+| B4 — Fair comparisons | Verified | Identical dated costs and matched pair-days on both sides; corrected store-day batching and ending-stock totals; first 15 days and remainder separated; all 27 full-data settings verified. Historical order cost and total savings remain unavailable. |
 
-**Why:** the median stocked SKU sells ~2.7 units/year, but our rule tells it to hold 6 units ≈ 2 years of cover. A fixed 95%-service rule with normal-distribution safety stock is the *wrong tool* for extremely intermittent demand.
+## What the corrected result says
 
-**What this means:** the pipeline (measuring machine) works perfectly. The *optimizer* (the smart rules in machine 4) is still the beginner version. We have not yet done the actual optimization.
+The evaluation is **16 January–24 April 2026**, after initial learning from **1 June 2025–15 January 2026**. These are development evaluation dates, not a previously untouched holdout.
 
----
+| Main-run measure | Verified result |
+|---|---:|
+| Eligible recorded purchases | 33,434 units |
+| Fulfilled purchases | 32,492 units |
+| Unfulfilled purchases | 942 units |
+| Observed-purchase coverage | **97.18%** |
+| Earlier purchases excluded before usable stock anchors | 378 units |
+| Ending simulated stock | 283,392 units |
+| Outstanding orders | 2,565 units |
+| Simulated ordering cost for the 99-day period | €227,932 |
+| Store-day batch component | €151,050: 3,021 batches at €50 |
+| Order-line component | €76,882: 38,441 lines at €2 |
 
-## 4. The 5 verified facts that matter for next steps
+The historical reference has 100% recorded-purchase coverage by construction. This is not a true customer fill rate. Because simulated coverage is below 100%, this result cannot be described as “the same sales”.
 
-1. **Pipeline correctness is proven** — baseline reproduction matches the audit within **1.81%**.
-2. **Demand uplift is sane now** — 12.23% (was 101% before the censoring fix).
-3. **Service level is measured honestly** — one metric on both sides.
-4. **The rule currently "enforces" 95% service, it doesn't "optimize"** — it spends whatever it takes.
-5. **The levers to fix this are known** — they're the subject of `PLAN_phase_2.md`.
+On the **same matched quantity/cost scope**, average stock value is **€2.50 million for the reference** and **€4.49 million for the simulation**. Holding costs for the actual 99-day period are approximately **€135,727** and **€243,382**, respectively. These are **partial matched-scope values, not full-chain capital**: 2,849,918 of 5,890,360 eligible pair-days have both reference quantities and usable common costs.
 
----
+Croston also performs worse than the last-completed-week baseline on the observed-purchase evaluation. No favourable forecast or business result was required by the tests.
 
-## 5. What's next (Phase 2 — the actual optimization)
+**There is no savings claim.** Historical ordering costs remain unknown, so total-cost savings cannot be calculated. The current policy holds more stock on the matched scope and misses some recorded purchases.
 
-Replace the beginner rules with real cost-minimising policies. Three workstreams, in `PLAN_phase_2.md`:
+## Assumptions that remain important
 
-1. **Seasonality-aware unconstrained demand** — stop imputing a flat average; respect winter-boots-in-summer type patterns.
-2. **Candidate policy loop** — run multiple candidate reorder rules through the simulator and pick the best by honest, unbiased evaluation.
-3. **Math-backed optimization** — newsvendor critical ratio, base-stock policy, negative-binomial safety stock (the correct math for intermittent demand).
+- Historical closing snapshots and forward stock flow are imperfect evidence of shelf availability. Of 9,355,275 assessed historical donor days, **9,131,846 (97.6%)** use forward-estimated stock. Estimated demand is not verified missed-customer demand.
+- Starting historical open orders are unknown and therefore assumed empty. The first 15 replay days are reported separately on the same comparison dates.
+- Historical returns enter at day-end as an assumed external stock stream. They are not linked to simulated purchases.
+- Lead times, MOQ, stocking threshold, holding rates and order charges are assumptions. Missing historical order records prevent a total-cost comparison.
+- The uncertainty bounds are a normal approximation, with an explicit independent-day scaling assumption. Measured coverage is not a calibrated 95% promise.
 
-The goal of Phase 2: produce a **positive, defensible** "X% less capital" number — the thing we can actually show on the website.
+## Run records and repeat command
 
----
+- Retained full run, including all sensitivity settings: `artifacts/part1-final/`.
+- Final audits and test evidence: `artifacts/part1-final/verification/`.
+- Cleanup inventory: `artifacts/part1-final/cleanup_record.json`.
 
-## 6. File map (where everything lives)
+The accepted run is now stored inside this repository. Its 14 artifact hashes were checked before and after the move. Superseded temporary runs and the independent repeat were deleted after verification; their final audit evidence is retained. The working manifest points to the new location, and its original copy is preserved with the audit records. Future run outputs should stay inside this repository and superseded outputs should be removed after verification.
 
+The source and command below recreate the results into a fresh repository-local output directory:
+
+```text
+python -m src.build_part1 --output-dir artifacts/part1-next --sensitivity
 ```
-PLAN.md                  → Phase 1 plan (engine) — COMPLETE, now historical
-PLAN_phase_2.md          → Phase 2 plan (optimization) — THE ACTIVE PLAN
-CURRENT_STATUS.md        → this file
-docs/OPTIMISER_LOGIC.md  → plain-language "why" notes
-docs/archive/plan_phase_1.md → archived copy of the Phase 1 plan
-src/                     → the engine (data, demand, forecast, policy, simulation)
-tests/                   → 33 passing tests
-artifacts/               → intermediate + final outputs
-audit/                   → the original data due-diligence work
-```
 
----
+The run contains `run_manifest.json`, `acceptance_checks.json`, the daily stock/demand data, forecast benchmarks, decision traces, replay ledger, matched comparisons, pending orders, exclusions, breakdowns and `sensitivity.parquet`.
 
-## 7. Bottom line (for us, not for clients)
+## Direction for Part 2
 
-We built the measurement machine. It's correct, honest, and tested. It proved our starting rules are too crude to beat a real business — which is the normal, boring, correct starting point of every optimization project.
+The dataset source is confirmed as Jimmy Smith's *Retail Transactions and Stocks Data*, Mendeley Data version 1, DOI `10.17632/27x8mjm8k4.1`, published under CC BY 4.0. Its published description and defining counts match the local sample. Public attribution must describe it as a published/anonymised retail-business dataset, not a named client engagement.
 
-**The remaining work is the optimization itself** — turning machine 4 from "enforce 95% service" into "minimise total cost." That's `PLAN_phase_2.md`, and it's where the positive number comes from.
+Part 2 now begins with the bounded feasibility check in [PLAN_phase_2.md](PLAN_phase_2.md). It has not run. The first task is to rank the optimisation problems this dataset can honestly support—store stocking/replenishment, forecast selection, cross-store allocation, and slow-stock/markdown prioritisation—then test only the strongest opportunity. This dataset does not need to prove every future website claim; another verified dataset may support a different demo. Full implementation waits for that decision.

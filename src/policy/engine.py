@@ -67,10 +67,15 @@ def compute_policy_vectors(
     sigma_L = (std_arr / np.sqrt(7.0)) * np.sqrt(L)
     raw_safety_stock = np.maximum(z * sigma_L, 0.5)
 
-    unit_cost = np.maximum(unit_costs, 1.0)
+    # A valid dated cost is any positive finite value.  Older code replaced
+    # cheap items with EUR1, which changed the policy for real low-cost items.
+    # Callers that have no usable cost must mark the policy unavailable; this
+    # shared calculation therefore preserves the supplied value exactly.
+    unit_cost = np.asarray(unit_costs, dtype=float)
     holding_per_unit = r * unit_cost
     annual_demand = mu_arr * 365.0
-    eoq = np.ceil(np.sqrt((2.0 * annual_demand * k_line) / holding_per_unit))
+    with np.errstate(divide="ignore", invalid="ignore"):
+        eoq = np.ceil(np.sqrt((2.0 * annual_demand * k_line) / holding_per_unit))
     order_qty = np.maximum(eoq, moq)
 
     is_stocked = (mu_arr >= stocking_threshold)
@@ -120,15 +125,29 @@ def compute_inventory_policy(
     """
     logger.info("Computing (s, S) inventory policy for %d pairs...", len(forecast_df))
 
-    # 1. Extract unit costs (take latest observed unit cost per pair)
-    costs = (
-        onhand_df[["Product No", "Store", "unit_cost"]]
-        .drop_duplicates(subset=["Product No", "Store"])
-        .copy()
-    )
+    # 1. Extract the latest cost that is actually present for each pair.  The
+    # input is expected to be ordered by date when a date column is supplied.
+    cost_columns = ["Product No", "Store", "unit_cost"]
+    if "date" in onhand_df.columns:
+        costs = (
+            onhand_df[cost_columns + ["date"]].copy()
+            .assign(date=lambda frame: pd.to_datetime(frame["date"]))
+            .sort_values("date")
+            .dropna(subset=["unit_cost"])
+            .drop_duplicates(["Product No", "Store"], keep="last")
+            .drop(columns="date")
+        )
+    else:
+        costs = (
+            onhand_df[cost_columns]
+            .dropna(subset=["unit_cost"])
+            .drop_duplicates(["Product No", "Store"], keep="last")
+            .copy()
+        )
 
-    merged = forecast_df.merge(costs, on=["Product No", "Store"], how="left")
-    merged["unit_cost"] = merged["unit_cost"].fillna(25.0).astype("float64")
+    merged = forecast_df.merge(costs, on=["Product No", "Store"], how="left", validate="one_to_one")
+    merged["unit_cost"] = merged["unit_cost"].astype("float64")
+    usable_cost = np.isfinite(merged["unit_cost"].to_numpy(float)) & (merged["unit_cost"].to_numpy(float) > 0)
 
     # 2. Extract operational parameters
     L = float(config.supplier_lead_time_days)
@@ -145,7 +164,9 @@ def compute_inventory_policy(
     vectors = compute_policy_vectors(
         mu_arr=daily_demand,
         std_arr=weekly_std,
-        unit_costs=unit_cost_arr,
+        # Keep vector dimensions valid while unavailable rows are masked
+        # below.  No fabricated cost is ever emitted or used in a decision.
+        unit_costs=np.where(usable_cost, unit_cost_arr, 1.0),
         lead_time_days=L,
         target_service_level=sl,
         holding_cost_rate=r,
@@ -158,6 +179,10 @@ def compute_inventory_policy(
     order_qty_q = vectors["order_qty_q"]
     order_up_to_S = vectors["order_up_to_S"]
     target_stock = vectors["target_stock"]
+    for values in (safety_stock, reorder_point_s, order_qty_q, order_up_to_S, target_stock):
+        values[~usable_cost] = np.nan
+    is_stocked = vectors["is_stocked"].copy()
+    is_stocked[~usable_cost] = False
 
     # 7. Construct output DataFrame with explicit parameters recorded
     result = pd.DataFrame(
@@ -176,6 +201,9 @@ def compute_inventory_policy(
             "annual_holding_rate": config.annual_holding_cost_rate,
             "reorder_cost": config.reorder_cost_fixed,
             "min_order_qty": config.min_order_quantity,
+            "is_stocked": is_stocked,
+            "policy_status": np.where(usable_cost, "available", "unavailable_missing_cost"),
+            "cost_assumption": np.where(usable_cost, "latest valid pair cost", "unavailable"),
         }
     )
 

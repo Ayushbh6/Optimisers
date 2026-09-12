@@ -42,3 +42,6 @@ Thumbs.db
 # Project specific caches
 .pytest_cache/
 design-references/
+
+# Retained local pipeline evidence (large generated outputs)
+/artifacts/part1-final/

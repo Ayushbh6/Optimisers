@@ -1,126 +1,80 @@
-"""Test suite for Phase 1: Daily On-Hand Stock Reconstruction.
+"""Synthetic checks for raw sales and causal stock reconstruction."""
 
-Verifies all requirements and invariants mandated by PLAN.md:
-- test_phase1_coverage: no internal gaps across active spans.
-- test_phase1_no_overlap: strictly zero duplicate daily records.
-- test_phase1_entity_counts: matches raw enterprise catalog (2,326 products, 40 stores).
-- test_phase1_nonneg: qty_onhand >= 0 everywhere.
-- test_phase1_sales_reconciliation: >= 90% net sales volume matches inventory step-down.
-"""
-
-from pathlib import Path
-import numpy as np
 import pandas as pd
+
+from src.data.config import DataConfig
 import pytest
 
-from src.data.config import DEFAULT_CONFIG
-from src.data.loader import load_inventory_data, load_sales_data
-from src.data.reconstruction import expand_inventory_intervals
-from src.data.validator import (
-    validate_coverage,
-    validate_entity_counts,
-    validate_no_overlap,
-    validate_non_negative,
-    validate_sales_reconciliation,
-)
+from src.data.loader import aggregate_daily_sales
+from src.data.reconstruction import reconstruct_daily_onhand
 
 
-@pytest.fixture(scope="module")
-def artifact_df():
-    """Load the generated daily_onhand.parquet artifact."""
-    artifact_path = DEFAULT_CONFIG.daily_onhand_parquet_path
-    assert artifact_path.exists(), f"Artifact not found at {artifact_path}. Run build_daily_onhand first."
-    return pd.read_parquet(artifact_path)
+def _inventory(rows):
+    base = {"Stock Unit Cost Price": 10.0, "Stock Unit Selling Price": 20.0, "Stock Status": "Full Price"}
+    result = pd.DataFrame([{**base, **row} for row in rows])
+    result["Start Date"] = pd.to_datetime(result["Start Date"])
+    result["End Date_parsed"] = pd.to_datetime(result["End Date"])
+    return result
 
 
-@pytest.fixture(scope="module")
-def raw_sales_df():
-    """Load the raw sales transactions."""
-    return load_sales_data(DEFAULT_CONFIG)
+def _config():
+    return DataConfig(observation_start_date="2025-06-01", observation_end_date="2025-06-05")
 
 
-@pytest.fixture(scope="module")
-def raw_inv_df():
-    """Load the raw inventory ledger."""
-    return load_inventory_data(DEFAULT_CONFIG)
+def test_sales_keep_gross_purchases_and_returns_separate():
+    sales = pd.DataFrame({"Product No": ["p", "p"], "Store": ["s", "s"], "date": ["2025-06-01", "2025-06-01"], "Qty Sold": [3, -1], "Is Return": [0, 1]})
+    row = aggregate_daily_sales(sales).iloc[0]
+    assert row.gross_qty_sold == 3 and row.returned_qty == 1 and row.net_qty_sold == 2
 
 
-def test_phase1_coverage(artifact_df):
-    """Test that every (Product No, Store) pair has a daily series with no internal gaps across its active span."""
-    passed, msg, metrics = validate_coverage(artifact_df)
-    assert passed, msg
-    assert metrics["internal_gaps_count"] == 0
-    assert metrics["total_pairs"] == 60968
+def test_snapshot_is_closing_stock_and_returns_are_day_end():
+    inventory = _inventory([{"Product No": "p", "Store": "s", "Start Date": "2025-06-01", "End Date": "2025-06-05", "Qty on hand": 1}])
+    sales = pd.DataFrame({"Product No": ["p", "p"], "Store": ["s", "s"], "date": ["2025-06-02", "2025-06-02"], "Qty Sold": [2, -1], "Is Return": [0, 1]})
+    result = reconstruct_daily_onhand(inventory, sales, _config())[0]
+    day = result[result["date"] == pd.Timestamp("2025-06-02")].iloc[0]
+    assert day.qty_onhand == 1 and day.unexplained_shortfall == 1
+    assert day.gross_qty_sold == 2 and day.returned_qty == 1
 
 
-def test_phase1_no_overlap(artifact_df):
-    """Test that for no (Product No, Store, date) is there more than one qty_onhand value."""
-    passed, msg, duplicate_count = validate_no_overlap(artifact_df)
-    assert passed, msg
-    assert duplicate_count == 0
+def test_snapshot_reconciliation_uses_day_end_return_timing():
+    inventory = _inventory([
+        {"Product No": "p", "Store": "s", "Start Date": "2025-06-01", "End Date": "2025-06-01", "Qty on hand": 1},
+        {"Product No": "p", "Store": "s", "Start Date": "2025-06-02", "End Date": "2025-06-05", "Qty on hand": 1},
+    ])
+    sales = pd.DataFrame({"Product No": ["p", "p"], "Store": ["s", "s"], "date": ["2025-06-02", "2025-06-02"], "Qty Sold": [2, -1], "Is Return": [0, 1]})
+    result = reconstruct_daily_onhand(inventory, sales, _config())[0]
+    row = result[result["date"] == pd.Timestamp("2025-06-02")].iloc[0]
+    assert row.qty_onhand == 1
+    assert row.reconciliation_adjustment == 0
 
 
-def test_phase1_entity_counts(artifact_df, raw_inv_df):
-    """Test that distinct products = 2,326 and stores = 40 (cross-checked against raw)."""
-    raw_products = raw_inv_df["Product No"].nunique()
-    raw_stores = raw_inv_df["Store"].nunique()
-
-    assert raw_products == 2326, f"Expected 2326 raw products, got {raw_products}"
-    assert raw_stores == 40, f"Expected 40 raw stores, got {raw_stores}"
-
-    passed, msg, counts = validate_entity_counts(
-        artifact_df,
-        expected_products=raw_products,
-        expected_stores=raw_stores,
-    )
-    assert passed, msg
-    assert counts["distinct_products"] == 2326
-    assert counts["distinct_stores"] == 40
+def test_negative_raw_stock_is_preserved_but_physical_stock_is_floored():
+    inventory = _inventory([{"Product No": "p", "Store": "s", "Start Date": "2025-06-01", "End Date": "2025-06-05", "Qty on hand": -2}])
+    result, stats = reconstruct_daily_onhand(inventory, pd.DataFrame(columns=["Product No", "Store", "date", "Qty Sold"]), _config())
+    assert (result.qty_onhand == 0).all() and result.iloc[0].raw_qty_onhand == -2
+    assert stats["raw_negative_records"] == 1
 
 
-def test_phase1_nonneg(artifact_df):
-    """Test that final qty_onhand >= 0 everywhere (negatives resolved per documented policy)."""
-    passed, msg, negative_count = validate_non_negative(artifact_df)
-    assert passed, msg
-    assert negative_count == 0
-    assert (artifact_df["qty_onhand"] < 0).sum() == 0
+def test_future_interval_end_does_not_change_earlier_causal_rows():
+    first = _inventory([{"Product No": "p", "Store": "s", "Start Date": "2025-06-01", "End Date": "2025-06-03", "Qty on hand": 4}])
+    later = first.copy()
+    # Mutate the parsed value actually used by retrospective expansion.  A
+    # test that changes only the display string would miss the old leak.
+    later["End Date_parsed"] = pd.Timestamp("2025-06-05")
+    sales = pd.DataFrame({"Product No": ["p"], "Store": ["s"], "date": ["2025-06-02"], "Qty Sold": [1]})
+    a = reconstruct_daily_onhand(first, sales, _config())[0]
+    b = reconstruct_daily_onhand(later, sales, _config())[0]
+    cols = ["date", "qty_onhand", "source", "unexplained_shortfall"]
+    pd.testing.assert_frame_equal(a[cols].reset_index(drop=True), b[cols].reset_index(drop=True))
 
 
-def test_phase1_sales_reconciliation(artifact_df, raw_sales_df):
-    """Test that >= 90% of net sales volume can be matched to a same-day inventory step-down (within tolerance)."""
-    passed, msg, metrics = validate_sales_reconciliation(
-        artifact_df,
-        raw_sales_df,
-        threshold_rate=0.90,
-        tolerance_days=1,
-    )
-    assert passed, msg
-    assert metrics["effective_rate"] >= 0.90, f"Effective reconciliation rate {metrics['effective_rate']:.4f} < 0.90"
+def test_quantity_and_return_flag_mismatch_is_rejected():
+    bad = pd.DataFrame({"Product No": ["p"], "Store": ["s"], "date": ["2025-06-01"], "Qty Sold": [-3], "Is Return": [0]})
+    with pytest.raises(ValueError, match="mismatch"):
+        aggregate_daily_sales(bad)
 
 
-def test_phase1_synthetic_expansion_edge_cases():
-    """Unit test interval expansion with synthetic edge cases: negatives, overlaps, and sentinel dates."""
-    synthetic_inv = pd.DataFrame(
-        {
-            "Product No": ["TEST_SKU", "TEST_SKU", "TEST_SKU_2"],
-            "Store": ["STR_1", "STR_1", "STR_1"],
-            "Start Date": pd.to_datetime(["2025-06-01", "2025-06-05", "2025-06-01"]),
-            "End Date_parsed": pd.to_datetime(["2025-06-05", "2025-06-08", "2025-06-03"]),
-            "Qty on hand": [-2, 5, 0],
-            "Stock Unit Cost Price": [10.0, 10.0, 15.0],
-            "Stock Unit Selling Price": [20.0, 20.0, 30.0],
-            "Stock Status": ["Full Price", "Full Price", "Full Price"],
-        }
-    )
-
-    expanded, stats = expand_inventory_intervals(synthetic_inv)
-
-    # 1. Check negative flooring
-    assert stats["raw_negative_records_floored"] == 1
-    assert (expanded["qty_onhand"] < 0).sum() == 0
-    assert expanded[expanded["date"] == "2025-06-01"]["qty_onhand"].iloc[0] == 0.0
-
-    # 2. Check overlap conflict resolution on 2025-06-05: later Start Date (2025-06-05 with Qty=5) must win
-    overlap_row = expanded[(expanded["Product No"] == "TEST_SKU") & (expanded["date"] == "2025-06-05")]
-    assert len(overlap_row) == 1
-    assert overlap_row["qty_onhand"].iloc[0] == 5.0
+def test_invalid_quantity_is_rejected_instead_of_becoming_zero():
+    bad = pd.DataFrame({"Product No": ["p"], "Store": ["s"], "date": ["2025-06-01"], "Qty Sold": ["not-a-number"]})
+    with pytest.raises(ValueError, match="invalid Qty Sold"):
+        aggregate_daily_sales(bad)

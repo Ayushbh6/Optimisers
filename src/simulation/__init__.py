@@ -17,6 +17,18 @@ from src.simulation.validator import (
     validate_ordering_cost_netting,
     validate_unified_service_level,
 )
+from src.simulation.replay import (
+    DailyReplayInput,
+    ForecastContext,
+    ForecastSnapshot,
+    InitialPairState,
+    ObservableHistory,
+    PolicyContext,
+    ReplayCostAssumptions,
+    ReplayMetrics,
+    ReplayResult,
+    run_causal_replay,
+)
 
 __all__ = [
     "SimulationConfig",
@@ -34,4 +46,14 @@ __all__ = [
     "validate_service_level_guard",
     "validate_ordering_cost_netting",
     "validate_unified_service_level",
+    "DailyReplayInput",
+    "ForecastContext",
+    "ForecastSnapshot",
+    "InitialPairState",
+    "ObservableHistory",
+    "PolicyContext",
+    "ReplayCostAssumptions",
+    "ReplayMetrics",
+    "ReplayResult",
+    "run_causal_replay",
 ]

@@ -33,8 +33,9 @@ def prepare_weekly_demand_series(
     if not pd.api.types.is_datetime64_any_dtype(df["date"]):
         df["date"] = pd.to_datetime(df["date"])
 
-    # Align to Monday of the week
-    df["week"] = df["date"].dt.to_period("W-MON").dt.start_time
+    # Monday--Sunday weeks.  ``W-MON`` represents Tuesday--Monday, which made
+    # the old weekly units disagree with the documentation.
+    df["week"] = df["date"] - pd.to_timedelta(df["date"].dt.weekday, unit="D")
 
     # Merge hierarchy
     df = df.merge(

@@ -34,11 +34,12 @@ def croston_forecast(
     if len(nonzero_indices) == 0:
         return 0.0, 0.0
 
-    # Initialize at first positive demand
+    # The first non-zero value starts the size estimate.  The first observed
+    # interval is not a completed waiting time, so it must not be used as one.
     first_idx = nonzero_indices[0]
     z = float(series[first_idx])
-    p = float(first_idx + 1)
-    q = 1.0
+    p = 1.0
+    periods_since_demand = 0
 
     fitted = np.zeros(n, dtype=np.float64)
 
@@ -49,12 +50,15 @@ def croston_forecast(
 
         fitted[t] = z / p if p > 0 else z
 
-        if series[t] > 0 and t > first_idx:
+        if t == first_idx:
+            continue
+        if series[t] > 0:
+            completed_interval = periods_since_demand + 1
             z = alpha * series[t] + (1.0 - alpha) * z
-            p = alpha * q + (1.0 - alpha) * p
-            q = 1.0
+            p = alpha * completed_interval + (1.0 - alpha) * p
+            periods_since_demand = 0
         else:
-            q += 1.0
+            periods_since_demand += 1
 
     expected_rate = max(0.0, float(z / p)) if p > 0 else 0.0
     residuals = series[first_idx:] - fitted[first_idx:]
@@ -93,7 +97,9 @@ def tsb_forecast(
 
     first_idx = nonzero_indices[0]
     z = float(series[first_idx])
-    p = float(len(nonzero_indices) / n)
+    # Start at the observed demand probability, not a value informed by a
+    # later test period.  The update below then learns one period at a time.
+    p = 1.0 if first_idx == 0 else 0.0
 
     fitted = np.zeros(n, dtype=np.float64)
 
@@ -134,7 +140,7 @@ def fit_predict_demand(
     else:
         expected_rate, std_err = tsb_forecast(series, alpha=alpha, beta=beta)
 
-    # 95% normal prediction interval bounds
+    # This is a normal-approximation diagnostic, not a calibrated promise.
     lower_95 = max(0.0, expected_rate - 1.96 * std_err)
     upper_95 = max(expected_rate, expected_rate + 1.96 * std_err)
 

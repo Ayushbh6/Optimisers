@@ -47,6 +47,9 @@ class PolicyConfig:
         "annual_holding_rate",
         "reorder_cost",
         "min_order_qty",
+        "is_stocked",
+        "policy_status",
+        "cost_assumption",
     )
 
 

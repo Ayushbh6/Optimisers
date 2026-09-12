@@ -1,343 +1,82 @@
-# Optimiser Logic — Plain-Language Notes
+# Optimiser logic
 
-> Status: Working notes. Written to be understood without math jargon.
-> Purpose: Track the whole flow and the shared understanding of the optimiser, in simple language.
-> This is the "what are we actually doing and why" document. The technical details live elsewhere.
+> Plain-language working notes. Current status: Part 1 final review passed, including all 27 full-data settings. Part 2 has not started.
 
----
+We are building a decision system for a 40-store retailer. It should turn messy sales and stock exports into a traceable answer to two questions: how much stock should a store hold, and when should it reorder?
 
-## 1. What we have
+The useful product is a decision with a receipt. The receipt shows which records were used, what was estimated, what the rule decided, what happened in a day-by-day replay, and which financial figures are unavailable. It is not a promise of a saving before the evidence exists.
 
-**Two files of raw data.**
+## The five steps
 
-### File A — The Sales Log (125,751 rows)
-Every time something got sold in a store, there's a line.
-
-Each line = one product, in one store, on one day, at one price type.
-
-"Price type" means:
-- Full price
-- Promo
-- Markdown (3 levels, down to Clearance)
-
-Also has returns (~6% of rows = customers bringing stuff back).
-
-### File B — The Inventory Log (284,755 rows)
-This is NOT "here's how much we had every day."
-
-It's "here's a stretch of days where the shelf count stayed the same, from date X to date Y."
-
-When the count changes (someone buys, or a shipment arrives), a new stretch begins.
-
-So the full history of "how many units did store 1044 have of product 12345" is a list of these date-window records.
-
-### The business in one sentence
-A 40-store shoe + kids-clothes chain. 2,326 products. 11 months of data. ~$10.5M revenue.
-Profitable (44% margin), but sitting on ~$2.4M of stock that takes ~135 days to sell through.
-When things don't sell, they eventually get liquidated at a big loss.
-
----
-
-## 2. What a real solution in 2026 produces
-
-Not a "prediction." A **decision + a receipt.**
-
-A real modern inventory system answers three questions:
-
-1. **How much should I hold?**
-   → "For product X in store Y, keep about 11 units. Reorder when you hit 4."
-
-2. **Where should I send the stock?**
-   → "We have 100 units. Don't split evenly — store A gets 12, store Z gets 0."
-
-3. **When should I cut the price?**
-   → "This item's been sitting 90 days. Cut 30% now, before you're forced to clear it at −79%."
-
-And the part that actually convinces a business person (the "receipt"):
-
-> "We replayed your own last 11 months through our rules, and you would have held ~18% less cash in inventory while selling at the same rate."
-
-That last sentence is the sales pitch. The models are just how you *get* that sentence honestly.
-
-### What "18% less" means (precisely)
-If the company had followed our reorder rules last year instead of whatever they actually did,
-they would have held ~18% less cash tied up in inventory — while still selling the same amount.
-
-"Less cash in reserve" = fewer units on shelves = less working capital frozen.
-
-Why "while selling at the same rate" matters: it's the difference between
-- cutting stock smartly (hold less of the slow stuff, keep enough of the fast stuff), vs
-- just starving the shelves (which kills sales).
-
-The claim only has value if sales don't drop.
-
-> Honest note: the "18%" number is currently an *example* from the docs, not real yet.
-> The whole job is to make a number like this true and defensible through simulation.
-
----
-
-## 3. What the scary words actually mean
-
-| Jargon | What it really means |
-|---|---|
-| Intermittent demand | Most products barely sell. The typical product-store combo sells ~3 times in 11 months. Most days are "sold 0." |
-| Croston / TSB | Old-school methods for rare sales: separately guess *how often* it sells and *how many* when it does. |
-| LightGBM + Tweedie loss | Modern ML to guess future sales, tuned for data that's mostly zeros. Optional, not where we start. |
-| Censored demand / lost sales | If the shelf was empty for 2 weeks, we don't know how many would have bought. We only see "0 sold," which under-counts true demand. |
-| Walk-forward simulation / backtest | Replay the calendar day by day, only using info known *on that day*, and see how our rules would have performed. Like a trading backtest, but for shelves. |
-| Lookahead bias / leakage | Accidentally letting the model "cheat" by peeking at the future. Must be avoided. |
-| Safety stock | Extra buffer so a small demand surprise doesn't empty the shelf. |
-| (s, S) policy | A simple rule: "when stock drops to `s`, order up to `S`." That's it. |
-| Knapsack / MILP | "We have a limited pile of units and 40 stores that want different amounts — find the split that earns the most." |
-| Hierarchical pooling | A single product-store has almost no data, so let it borrow signal from its whole category across all stores. This is the actual trick that makes this work. |
-| ADI | Average number of days between sales. ~97 days = "sells about once a quarter." |
-
----
-
-## 4. Where the "$2.4M / 135 days" number came from
-
-Not calculated by hand — it's printed in the docs and the audit.
-
-- **Average standing stock = $2,404,541.94 (~$2.4M).**
-  = every day, sum up "how much did all the stock on shelves cost," then average across the year.
-- **135 days to sell through = Days Sales of Inventory.**
-
-```
-$2.4M sitting in stock  ÷  ~$6.5M stock cost per year  →  ~0.37 years  →  ~135 days
+```text
+raw records
+  -> separate purchases, returns and stock evidence
+  -> estimate demand using information available on each day
+  -> forecast rare sales
+  -> calculate a reorder recommendation
+  -> replay recorded purchases and report the result
 ```
 
-So "sitting on $2.4M that takes 135 days to turn over"
-= the company's cash is trapped in shelves for ~4.5 months before it comes back as sales.
+The current Part 1 runner is:
 
----
-
-## 5. Our constraints (the honest limits)
-
-1. **We can't forecast from almost no data.**
-   A product that sold 3 times has no "pattern" to learn. Individual predictions are nearly useless — we must lean on category/group patterns. This is the #1 technical reality.
-
-2. **The inventory data needs reconstruction.**
-   We have date-window records, not daily counts. ~26% of sales don't line up with any inventory record.
-   Turning this into a clean "how many units were on the shelf each day" table is real work — and where projects like this quietly die. Do it first.
-
-3. **We can't see true demand during stockouts.**
-   We have to estimate it. That estimate can make our backtest flatter itself if we're not careful.
-
-4. **One year = no real seasonality.**
-   We see one Christmas, one back-to-school. Can't claim a pattern from one data point.
-
-5. **Some numbers are pure guesses.**
-   Lead times, holding cost %, reorder cost — not in the data. We assume them, so we make them adjustable and clearly labelled.
-
----
-
-## 6. The flow (5 steps)
-
-```
-START
-  │
-  ▼
-Step 1: Rebuild "daily stock per product per store"
-        (a clean table we can trust)
-  │
-  ▼
-Step 2: Estimate "true demand" (fill the stockout gaps honestly)
-  │
-  ▼
-Step 3: Forecast at the CATEGORY level, then split down to product
-        (because individual products have too little data)
-  │
-  ▼
-Step 4: Simple reorder rule: "when stock hits X, order up to Y"
-  │
-  ▼
-Step 5: Replay last 11 months with our rules
-        → "you'd have held €Z less cash, same sales"
-  │
-  ▼
-SHOW THAT NUMBER
+```text
+python -m src.build_part1 --output-dir PATH
 ```
 
-### The 5 steps in plain questions
+It writes fresh outputs and a manifest with input hashes, settings, code revision and dependency versions. It does not read old files from `artifacts/`.
 
-| Step | Plain question | What it produces |
-|---|---|---|
-| 1. Rebuild | How many units were actually on the shelf each day? | A clean daily count per product. |
-| 2. True demand | When the shelf was empty, how many sales did we miss? | A corrected "demand" number, not just "0". |
-| 3. Forecast | How many will they want next month? | A number, forecast at category level, split down. |
-| 4. Reorder rule | When do we restock, and how much? | "When stock hits 4, order up to 11." |
-| 5. Replay & prove | If we'd used this rule last year, what happens? | "We'd have held €Z less cash, same sales." |
+## What the data means
 
-Everything else (markdown, allocation) plugs in *after* step 3, using the same demand numbers.
+The sales file records purchases and returns. Gross purchases measure the customer purchase stream. Returns are kept separate and are added back to physical stock at day end. A return must never lower the purchase demand used for forecasting.
 
----
+The inventory file records date intervals and quantities. The causal stock estimate starts from a snapshot when one is available, then moves forward through purchases and day-end returns. A later snapshot can explain an adjustment at its own date, but cannot rewrite an earlier estimate. Unknown stock stays unknown. Negative raw quantities remain visible while the physical estimate is floored at zero.
 
-## 7. Step 1 details — where does the daily count come from?
+The expanded interval view is a historical reference for accounting. It is not a forecast input because its ending date may only be known later.
 
-**Mainly File B. But File A is the "truth-checker" that fixes B's gaps.**
+## Demand and forecasting
 
-- **B (inventory log)** gives the raw shelf counts over date windows. Primary source — it literally says "this store had 5 units from June 1 to June 12."
-- **A (sales log)** tells us *why* the count changed, and lets us **fill the holes** in B.
+Most product-store pairs sell rarely, so a single pair has little evidence. Croston and TSB are simple methods that learn how often a rare sale happens and its typical size. We pool products within a subcategory and store, then split the group estimate using observed shares.
 
-Remember: ~26% of sales don't match any inventory window → B has gaps.
-Those gaps are exactly where we use A to infer "there must have been stock here, because someone bought it."
+An empty shelf can hide purchases. We therefore produce an **estimated demand** value using prior in-stock rates and record the availability assessment, fallback and information cutoff. This is an estimate, not verified true customer demand. The replay does not treat estimated missed customers as observed purchases.
 
-```
-B gives the skeleton (known counts over windows)
-   +
-A gives the heartbeat (when sales/replenishments happened)
-   =
-a clean, gap-free daily count table
-```
+Model fits use completed Monday-to-Sunday weeks only, excluding incomplete leading and trailing weeks for each product-store pair. Product shares update daily using all history through that day, including the current incomplete week. Category facts are dated and pair-local. Each snapshot records the history cutoff, forecast start, method, units and the fact that its uncertainty bounds are an approximation. A forecast does not need to beat a benchmark for the pipeline to be correct; its inputs and dates must be traceable.
 
-Think of B as the frame of the house, A as the plumbing that tells you what flowed through on days the frame has holes.
+## Reorder and replay
 
----
+The current policy keeps the agreed starting settings: ten-day lead time, 95% nominal service target, 20% annual holding rate, minimum order quantity five and the existing stocking threshold. A missing pair cost makes the recommendation unavailable; the code does not invent a substitute cost.
 
-## 8. Forecasting: category first, then split down
+The replay runs each day in this order:
 
-**Important correction to hold in mind:**
-- 2,326 = actual unique products (SKUs).
-- We forecast at the **category** level (a category sells enough times to have a real pattern).
-- Then split the category's forecast **down to individual products** (using each product's historical share of category sales).
-
-```
-CATEGORY total demand  (enough data → reliable forecast)
-        │
-        ▼
-split down to each PRODUCT (by its past share)
+```text
+opening stock
+  -> scheduled arrivals
+  -> recorded purchases fulfilled from available stock
+  -> day-end returns
+  -> closing stock
+  -> next forecast and reorder decision
 ```
 
-"Do one slice first" = pick **one category**, run the entire 5 steps for it, get one believable number.
-Then widen to more categories.
+When the stock position reaches the reorder point, an order fills the gap to the existing order-up-to target, subject to the minimum quantity. Excess stock is never deleted when a target falls. Orders are whole units and remain outstanding after the replay ends, with exact due dates retained. After initial historical learning, the same demand estimator learns from the simulated shop’s own fulfilled purchases and shelf availability. A day that empties the shelf is excluded from available-day training even if returns replenish stock at closing. The forecaster sees only fulfilled purchases and stock availability from the simulated shop. It cannot see unfulfilled targets or later retailer sales.
 
-No contradiction: the "slice" is a category, and forecasting already lives at the category level.
+## What can be reported
 
----
+The main service measure is observed-purchase coverage: fulfilled recorded purchases divided by recorded purchases. The historical reference is 100% by construction for its recorded target; that does not measure the retailer’s true customer fill rate.
 
-## 9. Is this a SaaS, or bespoke per client?
+Both sides are valued on identical pair-days using the same dated cost. Unknown reference stock or missing costs exclude that pair-day from both capital figures. First 15 days and the remainder are shown separately. All 27 sensitivity settings receive independent copies of initial learning and use their own holding rate on both sides. Reports show coverage, unfulfilled units, stock held, orders, reference stock coverage and cost coverage on matched scopes. Simulated ordering cost is shown separately as an assumption. Historical ordering cost and total-cost savings are unavailable until defensible historical purchase-order records exist.
 
-**Not a SaaS. It's a consulting/studio play.**
+## Direction for Part 2
 
-**Reusable (the ~30%):**
-- Overall architecture (data → forecast → optimize → simulate → show money).
-- The mathematical methods (intermittent forecasting, walk-forward simulation, allocation).
-- The thinking and the playbook.
+The dataset decides which problem we can honestly optimise. We should not force one dataset to demonstrate replenishment, allocation, forecasting and markdowns when it lacks the evidence for some of them.
 
-**Changes per client (the ~70%):**
-- Their data looks different (columns, inventory format, hierarchy, industry).
-- Their constraints differ (lead times, order minimums, shelf life, supplier rules).
-- Their business rules differ (markdowns? returns? multiple warehouses?).
-
-**So what are we actually selling?**
-Not "a product that works on anyone's data."
-
-We're selling:
-
-> "We take a company's messy operational data and build them a decision system. Here's a worked example of how we think, on real data, with the result we produced."
-
-The website's Project 01 is the **proof of capability** — a demonstration that we can do this hard thing.
-Actual client work = get their data, remap the pipeline, rebuild the forecast to their specifics, hand them *their* number.
-
-The optimizer is the flagship proof of skill, not a product we license.
-It proves "we can turn messy data into money-decisions" — which is the service we actually sell.
-
----
-
-## 10. What form does this take? (Separation of concerns)
-
-There are **three different "things"** that must stay separate:
-
-```
-(1) THE ENGINE          →  the Python pipeline (data → forecast → optimize → simulate)
-(2) THE DEMO            →  a nice interactive frontend running the engine on THIS dataset
-(3) A CLIENT SYSTEM     →  bespoke, built per client on THEIR data
+```text
+available records
+  -> decisions those records can test
+  -> strongest useful optimisation
+  -> honest result and clearly limited claim
 ```
 
-- **(1) is what we actually build.** It's code. Python. Modular, reusable.
-- **(2) is how we *show* (1) to the world.** A clean web app, but running on our fixed, real dataset — not on uploaded files.
-- **(3) is what we sell.** It never runs on our website. It's built fresh for each paying client.
+For this dataset, Phase 2 first ranks store stocking/replenishment, forecast selection, cross-store reallocation and slow-stock/markdown prioritisation. It then tests only the strongest opportunity in a bounded feasibility pass. Another properly sourced dataset may support a different website demo. The result here may be positive, neutral or negative; the point is true optimisation of the problem the data can actually measure.
 
-### So is it a SaaS or "just scripts"?
+## Verified Part 1 result
 
-**Neither extreme. It's (1) + (2).**
-
-- **Not a SaaS** — no user accounts, no billing, no database of client data, no "upload your CSV" portal.
-  That would pretend we have a universal product → fake maturity (which the website spec warns against).
-- **Not just a pile of scripts** — a `print()` dump does not build credibility with a business owner.
-
-**The right answer: a polished, interactive demo dashboard that runs our engine on this one dataset.**
-
-### Why the demo needs a frontend
-
-Think about who sees this: a business owner, ops manager, or CFO.
-
-They don't want:
-```
->>> print(results)
-InventoryValue: 184000.0
-```
-
-They want:
-> "Store STR-1044, product 'Court Casuals.' Here's your last 6 months. Here's what our rules recommend.
-> Slide this 'service level' knob to 98% and watch the capital needed change. Here's the € impact."
-
-A frontend doesn't make the math better — it makes the result **believable and legible**.
-That's the whole game for credibility. The engine earns trust; the frontend *communicates* it.
-
-### Why NOT an "upload your documents" portal
-
-An upload portal says: "This is a general tool that works on anyone's data."
-
-But it doesn't — every client's data is different (columns, inventory format, constraints).
-
-If we built an upload portal, two bad things happen:
-1. Someone uploads data, it breaks or gives garbage → we look incompetent.
-2. We've promised universality we can't deliver → undercuts honest positioning.
-
-Real client work is *bespoke*: we take their data, remap the pipeline, adapt constraints, hand them *their* system.
-That happens in private, not through a website.
-
-The website demo is a **worked example on our data**, not a self-serve tool.
-
-### How this maps to what we build
-
-```
-                    ENGINE (Python, we build first)
-                          │
-                          ▼
-              DEMO FRONTEND (we build second)
-        runs the engine on THIS dataset only
-        with interactive knobs (lead time, holding %, service level)
-                          │
-                          ▼
-              THE WEBSITE embeds/links this demo
-              as "Project 01" — proof of capability
-```
-
-**The order matters:** build the engine first, get one honest number, *then* wrap it in a frontend.
-The frontend is just a display layer for the engine's output. No point skinning an engine that doesn't exist yet.
-
-### Tech stack (honest & simple)
-
-- **Engine:** Python (pandas / numpy / scipy, + a forecasting lib later).
-- **Demo frontend:** a single-page app that calls the engine's output.
-  No heavy backend or database needed — dataset is fixed, results pre-computed or computed on-demand.
-- **No:** user auth, billing, multi-tenancy, client databases.
-
-### The "one size fits all" reconciliation, in one line
-
-> **The demo is not the product. The demo proves we can do the thing. The product is the bespoke system we build for each paying client — and that's where the ~70% custom work lives.**
-
-The reusable ~30% (architecture, methods, playbook) travels from client to client.
-The demo is just its most presentable proof.
-
----
-
-## 11. Key principles to remember
-
-1. **The model is the engine, not the product.** The product is the decision + the receipt (the € impact).
-2. **Trust > cleverness.** When a client asks "why 8 units?", we need an answer we can say out loud, not "the model said so." → start simple.
-3. **Be honest about assumptions.** Lead time, holding cost, service level are guesses → make them adjustable, labelled, and show the result is stable across them.
-4. **One believable number on one slice > a half-built pipeline on everything.**
-5. **Never let the model cheat (no peeking at the future).** The whole credibility rests on this.
+The final review is recorded in [PART1_FINAL_REVIEW.md](PART1_FINAL_REVIEW.md). The current rule fulfils about 97.18% of eligible recorded purchases and holds more valued stock than the reference on the same measured scope. That is an honest negative result for the current rule. The repaired measurement pipeline is ready for Part 2; the website savings statement is not supported.

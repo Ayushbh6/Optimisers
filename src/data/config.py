@@ -58,10 +58,14 @@ class DataConfig:
         "Store",
         "date",
         "qty_onhand",
+        "raw_qty_onhand",
         "unit_cost",
         "unit_selling_price",
         "stock_status",
         "source",
+        "stock_known",
+        "reconciliation_adjustment",
+        "unexplained_shortfall",
     )
 
 

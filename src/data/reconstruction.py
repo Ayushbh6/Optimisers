@@ -1,260 +1,201 @@
-"""Daily on-hand stock reconstruction engine for enterprise retail inventory.
+"""Causal daily stock reconstruction with a separate historical reference view."""
 
-Transforms SCD Type 2 inventory validity intervals into contiguous, gap-free daily snapshots
-per (Product No, Store), resolves interval conflicts, and reconciles unobserved gaps with
-the cash register sales ledger.
-"""
+from __future__ import annotations
 
-import logging
 from typing import Any, Dict, Tuple
 import numpy as np
 import pandas as pd
 
-from src.data.config import DEFAULT_CONFIG, DataConfig
+from src.data.config import DataConfig, DEFAULT_CONFIG
 from src.data.loader import aggregate_daily_sales
 
-logger = logging.getLogger(__name__)
 
+def expand_inventory_intervals(inv_df: pd.DataFrame) -> Tuple[pd.DataFrame, Dict[str, Any]]:
+    """Expand retrospective intervals for accounting only.
 
-def expand_inventory_intervals(
-    inv_df: pd.DataFrame,
-) -> Tuple[pd.DataFrame, Dict[str, Any]]:
-    """Vectorized expansion of SCD Type 2 intervals into daily records.
-
-    Applies the non-negative flooring policy for negative raw on-hand values
-    and resolves any interval overlaps by preferring the later Start Date.
-
-    Args:
-        inv_df: Raw inventory ledger with parsed Start Date and End Date_parsed.
-
-    Returns:
-        Tuple containing:
-            - pd.DataFrame: Daily expanded records with source='observed'.
-            - Dict[str, Any]: Audit statistics of the expansion process.
+    Downstream forecasting and policy code must use the causal fields emitted by
+    :func:`reconstruct_daily_onhand`, never this retrospective view.
     """
-    logger.info("Expanding %d SCD Type 2 inventory intervals to daily records...", len(inv_df))
-
-    # Audit raw negative inventory records before flooring
-    raw_negatives_mask = inv_df["Qty on hand"] < 0
-    raw_negatives_count = int(raw_negatives_mask.sum())
-    min_raw_qty = float(inv_df["Qty on hand"].min())
-
-    # Calculate duration of each interval in calendar days (inclusive of both endpoints)
     durations = (inv_df["End Date_parsed"] - inv_df["Start Date"]).dt.days + 1
     if (durations < 1).any():
-        invalid = (durations < 1).sum()
-        raise ValueError(f"Found {invalid} intervals with duration < 1 day.")
-
-    days_array = durations.to_numpy()
-    total_expanded_rows = int(days_array.sum())
-
-    # Fast vectorized repetition across interval durations
-    rep_idx = np.repeat(np.arange(len(inv_df)), days_array)
-    interval_starts = np.zeros(len(days_array), dtype=np.int64)
-    interval_starts[1:] = np.cumsum(days_array[:-1])
-    day_offsets = np.arange(total_expanded_rows) - np.repeat(interval_starts, days_array)
-
-    expanded_dates = inv_df["Start Date"].to_numpy()[rep_idx] + day_offsets.astype("timedelta64[D]")
-
-    # Floored non-negative on-hand array
-    floored_qty = np.maximum(0.0, inv_df["Qty on hand"].to_numpy()[rep_idx]).astype(np.float64)
-
-    expanded = pd.DataFrame(
-        {
-            "Product No": inv_df["Product No"].to_numpy()[rep_idx],
-            "Store": inv_df["Store"].to_numpy()[rep_idx],
-            "date": expanded_dates,
-            "qty_onhand": floored_qty,
-            "unit_cost": inv_df["Stock Unit Cost Price"].to_numpy()[rep_idx].astype(np.float64),
-            "unit_selling_price": inv_df["Stock Unit Selling Price"].to_numpy()[rep_idx].astype(np.float64),
-            "stock_status": inv_df["Stock Status"].to_numpy()[rep_idx],
-            "start_date_ref": inv_df["Start Date"].to_numpy()[rep_idx],
-            "source": "observed",
-        }
-    )
-
-    # Resolve overlaps/conflicts defensively: if multiple intervals cover the same date,
-    # keep the one with the later Start Date and log conflict occurrences.
-    duplicate_mask = expanded.duplicated(subset=["Product No", "Store", "date"], keep=False)
-    conflicts_count = int(duplicate_mask.sum())
-    if conflicts_count > 0:
-        logger.warning(
-            "Found %d overlapping daily records across intervals. Resolving by later Start Date...",
-            conflicts_count,
-        )
-        expanded = (
-            expanded.sort_values(["Product No", "Store", "date", "start_date_ref"])
-            .drop_duplicates(subset=["Product No", "Store", "date"], keep="last")
-            .reset_index(drop=True)
-        )
-    else:
-        logger.info("Verified: 0 interval overlaps in observed inventory records.")
-
-    expanded.drop(columns=["start_date_ref"], inplace=True)
-
-    stats = {
+        raise ValueError("Inventory has an interval ending before it starts")
+    counts = durations.to_numpy(dtype=int)
+    source_rows = np.repeat(np.arange(len(inv_df)), counts)
+    offsets = np.arange(counts.sum()) - np.repeat(np.r_[0, np.cumsum(counts)[:-1]], counts)
+    raw_qty = inv_df["Qty on hand"].to_numpy(float)[source_rows]
+    result = pd.DataFrame({
+        "Product No": inv_df["Product No"].to_numpy()[source_rows],
+        "Store": inv_df["Store"].to_numpy()[source_rows],
+        "date": inv_df["Start Date"].to_numpy()[source_rows] + offsets.astype("timedelta64[D]"),
+        "reference_raw_qty_onhand": raw_qty,
+        "reference_qty_onhand": np.maximum(raw_qty, 0.0),
+        "reference_unit_cost": inv_df["Stock Unit Cost Price"].to_numpy(float)[source_rows],
+        "reference_unit_selling_price": inv_df["Stock Unit Selling Price"].to_numpy(float)[source_rows],
+        "reference_stock_status": inv_df["Stock Status"].to_numpy()[source_rows],
+        "snapshot_start_date": inv_df["Start Date"].to_numpy()[source_rows],
+    })
+    for column, output in (("Cost of Stocks", "reference_raw_cost_of_stocks"), ("Stocks Selling Amount", "reference_raw_stocks_selling_amount")):
+        if column in inv_df:
+            result[output] = inv_df[column].to_numpy()[source_rows]
+    result = result.sort_values(["Product No", "Store", "date", "snapshot_start_date"]).drop_duplicates(
+        ["Product No", "Store", "date"], keep="last"
+    ).drop(columns="snapshot_start_date")
+    return result, {
         "raw_intervals_count": len(inv_df),
-        "expanded_observed_rows": len(expanded),
-        "raw_negative_records_floored": raw_negatives_count,
-        "min_raw_qty_before_flooring": min_raw_qty,
-        "conflicts_resolved": conflicts_count,
+        "expanded_reference_rows": len(result),
+        "raw_negative_records": int((inv_df["Qty on hand"] < 0).sum()),
+        "min_raw_qty": float(inv_df["Qty on hand"].min()),
     }
-    return expanded, stats
+
+
+def _daily_grid(inv_df: pd.DataFrame, sales: pd.DataFrame, config: DataConfig) -> pd.DataFrame:
+    starts = inv_df.groupby(["Product No", "Store"], as_index=False)["Start Date"].min().rename(columns={"Start Date": "inventory_start"})
+    sale_starts = sales.groupby(["Product No", "Store"], as_index=False)["date"].min().rename(columns={"date": "sales_start"})
+    pairs = starts.merge(sale_starts, on=["Product No", "Store"], how="outer")
+    pairs["start"] = pairs[["inventory_start", "sales_start"]].min(axis=1)
+    pairs = pairs[pairs["start"].notna()].sort_values(["Product No", "Store"]).reset_index(drop=True)
+    horizon = pd.Timestamp(config.observation_end_date)
+    counts = (horizon - pairs["start"]).dt.days.to_numpy(int) + 1
+    index = np.repeat(np.arange(len(pairs)), counts)
+    offsets = np.arange(counts.sum()) - np.repeat(np.r_[0, np.cumsum(counts)[:-1]], counts)
+    return pd.DataFrame({
+        "Product No": pairs["Product No"].to_numpy()[index],
+        "Store": pairs["Store"].to_numpy()[index],
+        "date": pairs["start"].to_numpy()[index] + offsets.astype("timedelta64[D]"),
+    })
 
 
 def reconstruct_daily_onhand(
-    inv_df: pd.DataFrame,
-    sales_df: pd.DataFrame,
-    config: DataConfig = DEFAULT_CONFIG,
+    inv_df: pd.DataFrame, sales_df: pd.DataFrame, config: DataConfig = DEFAULT_CONFIG
 ) -> Tuple[pd.DataFrame, Dict[str, Any]]:
-    """Reconstruct complete, gap-free daily on-hand inventory per (Product No, Store).
+    """Build daily causal stock estimates and retrospective reference coverage.
 
-    For every pair with >=1 inventory record, builds a contiguous daily timeline from
-    its first observed inventory date through the observation horizon end (2026-04-24).
-    Gaps between intervals and post-depletion periods are reconstructed using daily sales:
-    carrying forward the previous known on-hand and decrementing by net sales (floored at 0).
-
-    Args:
-        inv_df: Cleaned inventory interval records.
-        sales_df: Raw sales ledger.
-        config: System data configuration.
-
-    Returns:
-        Tuple containing:
-            - pd.DataFrame: Full contiguous daily on-hand table.
-            - Dict[str, Any]: Detailed execution and reconciliation metrics.
+    Interval end dates are used only in the separate historical reference view.
+    The causal state is updated from snapshots at their start date and from
+    same-day purchases/returns; a later snapshot or interval ending never
+    changes an earlier causal row.
     """
-    logger.info("Starting Phase 1 daily on-hand reconstruction pipeline...")
+    reference, stats = expand_inventory_intervals(inv_df)
+    sales = aggregate_daily_sales(sales_df)
+    grid = _daily_grid(inv_df, sales, config)
+    snap_cols = ["Product No", "Store", "Start Date", "Qty on hand", "Stock Unit Cost Price", "Stock Unit Selling Price", "Stock Status"]
+    snapshots = inv_df[snap_cols].sort_values(["Product No", "Store", "Start Date"]).drop_duplicates(
+        ["Product No", "Store", "Start Date"], keep="last"
+    ).rename(columns={
+        "Start Date": "date", "Qty on hand": "snapshot_raw_qty_onhand", "Stock Unit Cost Price": "snapshot_unit_cost",
+        "Stock Unit Selling Price": "snapshot_unit_selling_price", "Stock Status": "snapshot_stock_status",
+    })
+    data = grid.merge(sales, on=["Product No", "Store", "date"], how="left")
+    data = data.merge(snapshots, on=["Product No", "Store", "date"], how="left")
+    data = data.merge(reference, on=["Product No", "Store", "date"], how="left")
+    for column in ("raw_qty_sold", "gross_qty_sold", "returned_qty", "net_qty_sold"):
+        data[column] = data[column].fillna(0.0)
+    data = data.sort_values(["Product No", "Store", "date"]).reset_index(drop=True)
 
-    # 1. Expand observed intervals and resolve any duplicates/negatives
-    expanded_obs, expansion_stats = expand_inventory_intervals(inv_df)
+    causal_qty = np.full(len(data), np.nan)
+    raw_qty = np.full(len(data), np.nan)
+    source = np.full(len(data), "unknown_before_anchor", dtype=object)
+    adjustment = np.full(len(data), np.nan)
+    shortfall = np.zeros(len(data), dtype=float)
+    costs = np.full(len(data), np.nan)
+    prices = np.full(len(data), np.nan)
+    statuses = np.full(len(data), None, dtype=object)
+    unresolved = np.zeros(len(data), dtype=bool)
+    cost_source = np.full(len(data), "unavailable", dtype=object)
 
-    # 2. Aggregate net daily sales per (Product No, Store, Date)
-    daily_sales = aggregate_daily_sales(sales_df)
-    daily_sales = daily_sales.rename(columns={"net_qty_sold": "sales_qty"})
+    # Keep the state machine sequential, but read its inputs as arrays.  A
+    # DataFrame ``iloc`` call for every pair-day made the full 14M-row build
+    # needlessly expensive.
+    dates = data["date"].to_numpy()
+    gross = data["gross_qty_sold"].to_numpy(dtype=float)
+    returned = data["returned_qty"].to_numpy(dtype=float)
+    snapshot_qty = data["snapshot_raw_qty_onhand"].to_numpy(dtype=float)
+    snapshot_cost = data["snapshot_unit_cost"].to_numpy(dtype=float)
+    snapshot_price = data["snapshot_unit_selling_price"].to_numpy(dtype=float)
+    snapshot_status = data["snapshot_stock_status"].to_numpy(dtype=object)
 
-    # 3. Determine active span per (Product No, Store) pair with >=1 inventory record
-    pair_starts = (
-        inv_df.groupby(["Product No", "Store"])["Start Date"]
-        .min()
-        .reset_index()
-        .sort_values(["Product No", "Store"])
-        .reset_index(drop=True)
-    )
+    for _, positions in data.groupby(["Product No", "Store"], sort=False).indices.items():
+        discrepancy_open = False
+        previous: float | None = None
+        previous_cost: float | None = None
+        previous_price: float | None = None
+        previous_status: object | None = None
+        for pos in positions:
+            is_snapshot = np.isfinite(snapshot_qty[pos])
+            if np.isfinite(snapshot_cost[pos]) and snapshot_cost[pos] > 0:
+                previous_cost = snapshot_cost[pos]
+            if previous_cost is not None:
+                costs[pos] = previous_cost
+                cost_source[pos] = "snapshot_observed" if np.isfinite(snapshot_cost[pos]) and snapshot_cost[pos] > 0 else "pair_prior_assumed"
+            if np.isfinite(snapshot_price[pos]):
+                previous_price = snapshot_price[pos]
+            if is_snapshot:
+                discrepancy_open = False
+                observed_raw = snapshot_qty[pos]
+                observed = max(0.0, observed_raw)
+                raw_qty[pos] = observed_raw
+                if previous is not None:
+                    shortfall[pos] = max(0.0, gross[pos] - previous)
+                    # Snapshot quantities are closing stock.  Purchases
+                    # consume opening stock first; returns arrive at day end.
+                    expected = max(0.0, previous - gross[pos]) + returned[pos]
+                    adjustment[pos] = observed - expected
+                causal_qty[pos] = observed
+                source[pos] = "snapshot_observed"
+                previous = observed
+                raw_cost = snapshot_cost[pos]
+                if np.isfinite(raw_cost) and raw_cost > 0:
+                    previous_cost = raw_cost
+                    costs[pos] = raw_cost
+                    cost_source[pos] = "snapshot_observed"
+                if np.isfinite(snapshot_price[pos]):
+                    previous_price = snapshot_price[pos]
+                previous_status = snapshot_status[pos]
+            elif previous is not None:
+                demand = gross[pos]
+                # Returns are a day-end movement.  They cannot make a
+                # purchase earlier that same day fulfillable.
+                shortfall[pos] = max(0.0, demand - previous)
+                discrepancy_open |= shortfall[pos] > 0
+                previous = max(0.0, previous - demand) + returned[pos]
+                causal_qty[pos] = previous
+                source[pos] = "bridged_assumed"
+                if previous_cost is not None:
+                    costs[pos] = previous_cost
+                    cost_source[pos] = "pair_prior_assumed"
+            unresolved[pos] = discrepancy_open
+            if np.isnan(costs[pos]) and is_snapshot and previous_cost is not None:
+                costs[pos] = previous_cost
+            if previous_price is not None:
+                prices[pos] = previous_price
+            if previous_status is not None:
+                statuses[pos] = previous_status
 
-    horizon_end = pd.to_datetime(config.observation_end_date)
-    pair_starts["span_days"] = (horizon_end - pair_starts["Start Date"]).dt.days + 1
-
-    # 4. Generate the complete contiguous daily grid across active spans
-    span_days = pair_starts["span_days"].to_numpy()
-    total_grid_rows = int(span_days.sum())
-
-    rep_idx = np.repeat(np.arange(len(pair_starts)), span_days)
-    grid_starts = np.zeros(len(span_days), dtype=np.int64)
-    grid_starts[1:] = np.cumsum(span_days[:-1])
-    grid_offsets = np.arange(total_grid_rows) - np.repeat(grid_starts, span_days)
-    grid_dates = pair_starts["Start Date"].to_numpy()[rep_idx] + grid_offsets.astype("timedelta64[D]")
-
-    grid_df = pd.DataFrame(
-        {
-            "Product No": pair_starts["Product No"].to_numpy()[rep_idx],
-            "Store": pair_starts["Store"].to_numpy()[rep_idx],
-            "date": grid_dates,
-        }
-    )
-
-    logger.info(
-        "Generated full contiguous grid for %d pairs: %d total calendar rows.",
-        len(pair_starts),
-        len(grid_df),
-    )
-
-    # 5. Merge observed daily records onto the contiguous grid
-    merged = grid_df.merge(
-        expanded_obs,
-        on=["Product No", "Store", "date"],
-        how="left",
-    )
-
-    # 6. Merge net daily sales onto the grid
-    merged = merged.merge(
-        daily_sales[["Product No", "Store", "date", "sales_qty"]],
-        on=["Product No", "Store", "date"],
-        how="left",
-    )
-    merged["sales_qty"] = merged["sales_qty"].fillna(0.0).astype(np.float64)
-
-    # 7. Forward-fill pricing, cost, and catalog status across gaps
-    merged["unit_cost"] = merged["unit_cost"].ffill().bfill()
-    merged["unit_selling_price"] = merged["unit_selling_price"].ffill().bfill()
-    merged["stock_status"] = merged["stock_status"].ffill().bfill()
-
-    # 8. Reconstruct on-hand stock and source flags across unobserved intervals
-    is_pair_start = np.zeros(len(merged), dtype=bool)
-    is_pair_start[grid_starts] = True
-
-    # Identify last active date per pair (last observed inventory or last sale)
-    # Beyond the last active date, a product is retired/exhausted and does not hold ghost stock
-    last_obs = expanded_obs.groupby(["Product No", "Store"])["date"].max()
-    last_sales = daily_sales[daily_sales["sales_qty"] > 0].groupby(["Product No", "Store"])["date"].max()
-    last_active_lookup = pd.concat([last_obs, last_sales], axis=1).max(axis=1).to_dict()
-
-    qty_array = merged["qty_onhand"].to_numpy(copy=True)
-    sales_array = merged["sales_qty"].to_numpy()
-    is_observed_mask = (merged["source"] == "observed").to_numpy()
-    dates_array = merged["date"].to_numpy()
-    products_array = merged["Product No"].to_numpy()
-    stores_array = merged["Store"].to_numpy()
-    horizon_end = pd.to_datetime(config.observation_end_date)
-
-    logger.info("Executing forward reconstruction loop over %d daily records...", len(qty_array))
-
-    # Single sequential pass per pair to reconcile gaps with net sales
-    for i in range(len(qty_array)):
-        if is_pair_start[i]:
-            if not is_observed_mask[i]:
-                # If first day in span lacked observed record, initialize at 0
-                qty_array[i] = 0.0
-        else:
-            if not is_observed_mask[i]:
-                # If date is past the product's last active date, it is retired/exhausted (shelf stock = 0)
-                p = products_array[i]
-                s = stores_array[i]
-                d = dates_array[i]
-                if d > last_active_lookup.get((p, s), horizon_end):
-                    qty_array[i] = 0.0
-                else:
-                    # Gap day: carry forward previous on-hand, decrement by net sales, floor at 0
-                    qty_array[i] = max(0.0, qty_array[i - 1] - sales_array[i])
-
-    merged["qty_onhand"] = qty_array
-    merged["source"] = np.where(is_observed_mask, "observed", "reconstructed")
-
-    # Final cleanup and schema conformation
-    result_df = merged[list(config.daily_onhand_columns)].copy()
-
-    # Format numeric types
-    result_df["qty_onhand"] = result_df["qty_onhand"].round(4)
-    result_df["unit_cost"] = result_df["unit_cost"].round(4)
-    result_df["unit_selling_price"] = result_df["unit_selling_price"].round(4)
-
-    summary_stats = {
-        **expansion_stats,
-        "total_pairs_reconstructed": len(pair_starts),
-        "total_daily_rows": len(result_df),
-        "observed_rows_count": int((result_df["source"] == "observed").sum()),
-        "reconstructed_rows_count": int((result_df["source"] == "reconstructed").sum()),
-        "distinct_products": int(result_df["Product No"].nunique()),
-        "distinct_stores": int(result_df["Store"].nunique()),
-        "min_date": str(result_df["date"].min().date()),
-        "max_date": str(result_df["date"].max().date()),
-    }
-
-    logger.info(
-        "Reconstruction finished: %d observed rows, %d reconstructed rows. Total: %d",
-        summary_stats["observed_rows_count"],
-        summary_stats["reconstructed_rows_count"],
-        summary_stats["total_daily_rows"],
-    )
-
-    return result_df, summary_stats
+    data["stock_discrepancy_unresolved"] = unresolved
+    data["qty_onhand"] = causal_qty
+    data["raw_qty_onhand"] = raw_qty
+    data["source"] = source
+    data["stock_known"] = data["qty_onhand"].notna()
+    data["reconciliation_adjustment"] = adjustment
+    data["unexplained_shortfall"] = shortfall
+    data["unit_cost"] = costs
+    data["unit_selling_price"] = prices
+    data["stock_status"] = statuses
+    data["cost_source"] = cost_source
+    data["valuation_eligible"] = data["stock_known"] & data["unit_cost"].notna() & (data["unit_cost"] > 0)
+    wanted = list(config.daily_onhand_columns) + [
+        "stock_discrepancy_unresolved", "raw_qty_sold", "gross_qty_sold", "returned_qty", "net_qty_sold", "reference_raw_qty_onhand", "reference_qty_onhand",
+        "reference_unit_cost", "reference_unit_selling_price", "reference_stock_status", "cost_source", "valuation_eligible",
+    ]
+    wanted += [c for c in ("gross_sales_amount", "total_cogs", "transaction_count", "reference_raw_cost_of_stocks", "reference_raw_stocks_selling_amount") if c in data]
+    result = data[[column for column in wanted if column in data.columns]].copy()
+    stats.update({
+        "total_daily_rows": len(result),
+        "known_stock_rows": int(result["stock_known"].sum()),
+        "unknown_tail_rows": int((result["source"] == "unknown_tail").sum()),
+        "bridged_rows": int((result["source"] == "bridged_assumed").sum()),
+        "gross_purchase_units": float(result["gross_qty_sold"].sum()),
+        "returned_units": float(result["returned_qty"].sum()),
+        "raw_quantity_units": float(result["raw_qty_sold"].sum()),
+    })
+    return result, stats

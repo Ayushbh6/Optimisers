@@ -85,8 +85,8 @@ def _serve_static(start_response, path: str):
 def app(environ, start_response):
     """Serve stateless showcase APIs; Vercel serves files in public before WSGI."""
     method = environ.get("REQUEST_METHOD", "GET").upper()
-    path = environ.get("PATH_INFO", "/").rstrip("/")
     query = parse_qs(environ.get("QUERY_STRING", ""))
+    path = query.get("_axis_path", [environ.get("PATH_INFO", "/")])[0].rstrip("/")
     try:
         if method == "GET":
             if path == "/api/basket/api/health":

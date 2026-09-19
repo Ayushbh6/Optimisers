@@ -38,6 +38,10 @@ def test_vercel_preview_contract_keeps_demos_same_origin() -> None:
     project = tomllib.loads((ROOT / "deployment" / "vercel-preview.pyproject.toml").read_text())
 
     assert config["headers"]
+    assert config["rewrites"] == [
+        {"source": "/api/basket/:route*", "destination": "/api/app?_axis_path=/api/basket/:route*"},
+        {"source": "/api/stock/:route*", "destination": "/api/app?_axis_path=/api/stock/:route*"},
+    ]
     assert project["tool"]["vercel"]["entrypoint"] == "api.app:app"
 
 
@@ -59,3 +63,21 @@ def test_wsgi_entrypoint_exposes_the_same_origin_api() -> None:
     assert captured["status"] == "200 OK"
     assert captured["headers"]["Content-Type"] == "application/json; charset=utf-8"
     assert len(json.loads(body)) == 3
+
+
+def test_wsgi_entrypoint_uses_the_original_rewritten_api_path() -> None:
+    captured: dict = {}
+
+    def start_response(status, headers):
+        captured["status"] = status
+
+    body = b"".join(app({
+        "REQUEST_METHOD": "GET",
+        "PATH_INFO": "/api/app",
+        "QUERY_STRING": "_axis_path=/api/stock/api/health",
+        "CONTENT_LENGTH": "0",
+        "wsgi.input": BytesIO(),
+    }, start_response))
+
+    assert captured["status"] == "200 OK"
+    assert json.loads(body)["product"] == "stock-watch"

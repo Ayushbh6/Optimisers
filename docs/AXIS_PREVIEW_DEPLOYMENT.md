@@ -1,6 +1,6 @@
 # Axis preview deployment
 
-Status: ready for a short internal Vercel preview; nothing has been uploaded.
+Status: deployed as the short internal showcase at <https://axis-software-demo.vercel.app> on 19 September 2026.
 
 ## Visitor journey
 
@@ -16,19 +16,19 @@ The preview has no account, database, uploaded customer data, cookies or analyti
 
 The generated preview bundle excludes the repository's research dependency file entirely. The two demo APIs use the Python standard library and include only their source code plus the two compact synthetic case-study directories.
 
-## Prepare—but do not deploy
+## Repeat the manual deployment
 
 ```sh
 cd website
 npm ci
-PUBLIC_SITE_URL=https://YOUR-PREVIEW-URL.vercel.app npm run build
+PUBLIC_SITE_URL=https://axis-software-demo.vercel.app npm run build
 cd ..
 node deployment/prepare-vercel-preview.mjs
 ```
 
-Inspect `.vercel-preview/`, then deploy that directory only when approved. The preview publishes `robots.txt` with `Disallow: /`; remove that restriction during a later public launch review.
+Inspect `.vercel-preview/`, link it only to the `axis-software-demo` Vercel project, then deploy that directory. The preview publishes `robots.txt` with `Disallow: /`; remove that restriction during a later public launch review.
 
-The bundle can be tested without linking or uploading a Vercel project:
+The bundle can be tested without uploading a Vercel deployment:
 
 ```sh
 cd .vercel-preview
@@ -41,3 +41,7 @@ npx --yes vercel@latest dev -L --listen 127.0.0.1:4322
 - replace the internal-preview hosting arrangement with a commercially compliant plan;
 - change `robots.txt` only after the publication review;
 - rerun the website, API, download and phone checks against the deployed URL.
+
+## Live verification
+
+The production smoke on 19 September 2026 verified Home, Work, About, Contact, both embedded demos, both API health/example routes, both complete recommendation journeys, all three CSV exports, the branded 404 and the security headers. The project is not connected for automatic Git deployments; releases remain explicit through the minimal staging directory.

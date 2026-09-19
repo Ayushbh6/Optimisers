@@ -1,5 +1,15 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [
+    {
+      "source": "/api/basket/:route*",
+      "destination": "/api/app?_axis_path=/api/basket/:route*"
+    },
+    {
+      "source": "/api/stock/:route*",
+      "destination": "/api/app?_axis_path=/api/stock/:route*"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",

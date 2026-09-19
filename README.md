@@ -58,7 +58,7 @@ npm audit
 
 ## Preview deployment
 
-The Vercel preview is prepared but not deployed. Follow `docs/AXIS_PREVIEW_DEPLOYMENT.md` only after approval. The generated `.vercel-preview/` directory, dependency installs, browser screenshots, caches and private CV source files are deliberately excluded from Git.
+The internal showcase is live at <https://axis-software-demo.vercel.app>. `docs/AXIS_PREVIEW_DEPLOYMENT.md` records the deployment boundary and repeatable manual release process. The generated `.vercel-preview/` directory, dependency installs, browser screenshots, caches and private CV source files are deliberately excluded from Git.
 
 ## Honest boundary
 

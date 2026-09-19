@@ -131,7 +131,7 @@ Both policies are evaluated using the **exact same metric calculators and accoun
 
 ## 3. Audit Baseline Reproduction Verification
 
-Before simulating new replenishment rules, the simulation engine verified that evaluating the historical `daily_onhand.parquet` ledger faithfully reproduces the enterprise audit figures documented in `docs/OPTIMISER_LOGIC.md` and `docs/BUSINESS_CONTEXT.md` within the required $\le 5\%$ tolerance:
+Before simulating new replenishment rules, the simulation engine verified that evaluating the historical `daily_onhand.parquet` ledger faithfully reproduces the enterprise audit figures documented in `docs/OPTIMISER_LOGIC.md` and `docs/BUSINESS_CONTEXT.md` within the required $\\le 5\\%$ tolerance:
 
 | Audit Metric | Documented Benchmark | Reconstructed Engine Output | Status |
 |---|---|---|---|
@@ -145,7 +145,7 @@ Before simulating new replenishment rules, the simulation engine verified that e
 ## 4. Anti-Leakage Simulation Guardrails
 
 The simulation guarantees mathematical integrity via 4 non-negotiable guardrails:
-1. **Strict Day-by-Day Chronology:** Evaluates calendar days sequentially ($t = 0 \dots 327$). Decisions made on day $t$ have zero visibility into future days ($> t$).
+1. **Strict Day-by-Day Chronology:** Evaluates calendar days sequentially ($t = 0 \\dots 327$). Decisions made on day $t$ have zero visibility into future days ($> t$).
 2. **Exclusion of Retrospective Sentinels:** Retrospective metadata (such as open-ended validity dates) is excluded from decision logic.
 3. **Lost Sales Accounting:** During stockouts, unmet consumer demand is recorded as lost sales.
 4. **Lead Time Pipeline Delay:** Orders placed on day $t$ remain in transit for exactly $L$ days and only become available for sales upon arrival at $t + L$.

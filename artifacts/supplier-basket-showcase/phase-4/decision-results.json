@@ -1,0 +1,354 @@
+{
+  "cases": [
+    {
+      "accounting_errors": [],
+      "buyer": {
+        "accounting_errors": [],
+        "average_daily_exposure_eur": "435.77",
+        "basket_id": "BUYER",
+        "booked_lines": 5,
+        "booked_units": 96,
+        "complete_lines": 5,
+        "delivery_charge_eur": "20.00",
+        "delivery_failures": [],
+        "ending_incoming_eur": "0.00",
+        "ending_stock_eur": "355.20",
+        "ending_stock_plus_commitments_eur": "355.20",
+        "ending_undelivered_commitments_eur": "0.00",
+        "expired_cost_eur": "0.00",
+        "expired_units": 0,
+        "immediate_cash_eur": "620.00",
+        "lines": [
+          {
+            "cases": 5,
+            "expected_arrival": "2026-09-22",
+            "line_value_eur": "240.00",
+            "product_id": "PRD-001",
+            "quantity_units": 60,
+            "unit_cost_eur": "4.00"
+          },
+          {
+            "cases": 2,
+            "expected_arrival": "2026-09-22",
+            "line_value_eur": "120.00",
+            "product_id": "PRD-002",
+            "quantity_units": 24,
+            "unit_cost_eur": "5.00"
+          },
+          {
+            "cases": 1,
+            "expected_arrival": "2026-09-22",
+            "line_value_eur": "240.00",
+            "product_id": "PRD-003",
+            "quantity_units": 24,
+            "unit_cost_eur": "10.00"
+          }
+        ],
+        "merchandise_eur": "600.00",
+        "on_time_units": 96,
+        "sum_28_daily_exposure_eur": "12201.60"
+      },
+      "case_id": "positive_moq_composition",
+      "decision_hash": "beda8bd6db28a92cb0d371eacb4b2a9b148d44123740809e9874756ab65b28f7",
+      "product_changes": [
+        {
+          "buyer_cases": 5,
+          "change_cases": 3,
+          "product_id": "PRD-001",
+          "reason": "Used an already-needed product to satisfy the supplier minimum",
+          "selected_cases": 8
+        },
+        {
+          "buyer_cases": 1,
+          "change_cases": -1,
+          "product_id": "PRD-003",
+          "reason": "Removed unnecessary minimum-order top-up",
+          "selected_cases": 0
+        }
+      ],
+      "search_report": {
+        "buyer_basket_always_included": true,
+        "case_step": 1,
+        "elapsed_ms": 2.765,
+        "generated_alternatives": 9,
+        "max_alternatives": 12,
+        "max_changed_lines": 2,
+        "physically_replayed": 8,
+        "rejected_preflight": 1,
+        "safe_alternative_survivors": 2
+      },
+      "selected": {
+        "accounting_errors": [],
+        "average_daily_exposure_eur": "339.77",
+        "basket_id": "POS-RM-003-REPAIR-001",
+        "booked_lines": 5,
+        "booked_units": 96,
+        "complete_lines": 5,
+        "delivery_charge_eur": "20.00",
+        "delivery_failures": [],
+        "ending_incoming_eur": "0.00",
+        "ending_stock_eur": "259.20",
+        "ending_stock_plus_commitments_eur": "259.20",
+        "ending_undelivered_commitments_eur": "0.00",
+        "expired_cost_eur": "0.00",
+        "expired_units": 0,
+        "immediate_cash_eur": "524.00",
+        "lines": [
+          {
+            "cases": 8,
+            "expected_arrival": "2026-09-22",
+            "line_value_eur": "384.00",
+            "product_id": "PRD-001",
+            "quantity_units": 96,
+            "unit_cost_eur": "4.00"
+          },
+          {
+            "cases": 2,
+            "expected_arrival": "2026-09-22",
+            "line_value_eur": "120.00",
+            "product_id": "PRD-002",
+            "quantity_units": 24,
+            "unit_cost_eur": "5.00"
+          }
+        ],
+        "merchandise_eur": "504.00",
+        "on_time_units": 96,
+        "sum_28_daily_exposure_eur": "9513.60"
+      },
+      "selected_equals_fresh_physical_replay": true,
+      "selected_matches_hand_cash": true,
+      "selected_matches_hand_service": true,
+      "verdict": "accept_proposed"
+    },
+    {
+      "accounting_errors": [],
+      "buyer": {
+        "accounting_errors": [],
+        "average_daily_exposure_eur": "52.71",
+        "basket_id": "BUYER",
+        "booked_lines": 4,
+        "booked_units": 54,
+        "complete_lines": 4,
+        "delivery_charge_eur": "15.00",
+        "delivery_failures": [],
+        "ending_incoming_eur": "0.00",
+        "ending_stock_eur": "0.00",
+        "ending_stock_plus_commitments_eur": "0.00",
+        "ending_undelivered_commitments_eur": "0.00",
+        "expired_cost_eur": "0.00",
+        "expired_units": 0,
+        "immediate_cash_eur": "213.00",
+        "lines": [
+          {
+            "cases": 2,
+            "expected_arrival": "2026-09-23",
+            "line_value_eur": "120.00",
+            "product_id": "PRD-004",
+            "quantity_units": 24,
+            "unit_cost_eur": "5.00"
+          },
+          {
+            "cases": 1,
+            "expected_arrival": "2026-09-23",
+            "line_value_eur": "48.00",
+            "product_id": "PRD-005",
+            "quantity_units": 6,
+            "unit_cost_eur": "8.00"
+          },
+          {
+            "cases": 1,
+            "expected_arrival": "2026-09-23",
+            "line_value_eur": "30.00",
+            "product_id": "PRD-006",
+            "quantity_units": 12,
+            "unit_cost_eur": "2.50"
+          }
+        ],
+        "merchandise_eur": "198.00",
+        "on_time_units": 54,
+        "sum_28_daily_exposure_eur": "1476.00"
+      },
+      "case_id": "unsafe_cheaper_delivery_loss",
+      "decision_hash": "29e14cae6e724bade2f32d4a0491bee4010286b326a869722b0213537c34175d",
+      "product_changes": [],
+      "search_report": {
+        "buyer_basket_always_included": true,
+        "case_step": 1,
+        "elapsed_ms": 2.442,
+        "generated_alternatives": 10,
+        "max_alternatives": 12,
+        "max_changed_lines": 2,
+        "physically_replayed": 9,
+        "rejected_preflight": 1,
+        "safe_alternative_survivors": 0
+      },
+      "selected": {
+        "accounting_errors": [],
+        "average_daily_exposure_eur": "52.71",
+        "basket_id": "BUYER",
+        "booked_lines": 4,
+        "booked_units": 54,
+        "complete_lines": 4,
+        "delivery_charge_eur": "15.00",
+        "delivery_failures": [],
+        "ending_incoming_eur": "0.00",
+        "ending_stock_eur": "0.00",
+        "ending_stock_plus_commitments_eur": "0.00",
+        "ending_undelivered_commitments_eur": "0.00",
+        "expired_cost_eur": "0.00",
+        "expired_units": 0,
+        "immediate_cash_eur": "213.00",
+        "lines": [
+          {
+            "cases": 2,
+            "expected_arrival": "2026-09-23",
+            "line_value_eur": "120.00",
+            "product_id": "PRD-004",
+            "quantity_units": 24,
+            "unit_cost_eur": "5.00"
+          },
+          {
+            "cases": 1,
+            "expected_arrival": "2026-09-23",
+            "line_value_eur": "48.00",
+            "product_id": "PRD-005",
+            "quantity_units": 6,
+            "unit_cost_eur": "8.00"
+          },
+          {
+            "cases": 1,
+            "expected_arrival": "2026-09-23",
+            "line_value_eur": "30.00",
+            "product_id": "PRD-006",
+            "quantity_units": 12,
+            "unit_cost_eur": "2.50"
+          }
+        ],
+        "merchandise_eur": "198.00",
+        "on_time_units": 54,
+        "sum_28_daily_exposure_eur": "1476.00"
+      },
+      "selected_equals_fresh_physical_replay": true,
+      "selected_matches_hand_cash": true,
+      "selected_matches_hand_service": true,
+      "verdict": "retain_buyer"
+    },
+    {
+      "accounting_errors": [],
+      "buyer": {
+        "accounting_errors": [],
+        "average_daily_exposure_eur": "45.47",
+        "basket_id": "BUYER",
+        "booked_lines": 4,
+        "booked_units": 54,
+        "complete_lines": 4,
+        "delivery_charge_eur": "15.00",
+        "delivery_failures": [],
+        "ending_incoming_eur": "0.00",
+        "ending_stock_eur": "0.00",
+        "ending_stock_plus_commitments_eur": "0.00",
+        "ending_undelivered_commitments_eur": "0.00",
+        "expired_cost_eur": "0.00",
+        "expired_units": 0,
+        "immediate_cash_eur": "166.20",
+        "lines": [
+          {
+            "cases": 1,
+            "expected_arrival": "2026-09-23",
+            "line_value_eur": "48.00",
+            "product_id": "PRD-005",
+            "quantity_units": 6,
+            "unit_cost_eur": "8.00"
+          },
+          {
+            "cases": 2,
+            "expected_arrival": "2026-09-23",
+            "line_value_eur": "60.00",
+            "product_id": "PRD-006",
+            "quantity_units": 24,
+            "unit_cost_eur": "2.50"
+          },
+          {
+            "cases": 2,
+            "expected_arrival": "2026-09-23",
+            "line_value_eur": "43.20",
+            "product_id": "PRD-007",
+            "quantity_units": 24,
+            "unit_cost_eur": "1.80"
+          }
+        ],
+        "merchandise_eur": "151.20",
+        "on_time_units": 54,
+        "sum_28_daily_exposure_eur": "1273.20"
+      },
+      "case_id": "no_change_control",
+      "decision_hash": "5c6c584011bf32e41292d4c08912e1a06b4382008aff88b08aa63b8c0de57d0c",
+      "product_changes": [],
+      "search_report": {
+        "buyer_basket_always_included": true,
+        "case_step": 1,
+        "elapsed_ms": 2.313,
+        "generated_alternatives": 12,
+        "max_alternatives": 12,
+        "max_changed_lines": 2,
+        "physically_replayed": 9,
+        "rejected_preflight": 3,
+        "safe_alternative_survivors": 0
+      },
+      "selected": {
+        "accounting_errors": [],
+        "average_daily_exposure_eur": "45.47",
+        "basket_id": "BUYER",
+        "booked_lines": 4,
+        "booked_units": 54,
+        "complete_lines": 4,
+        "delivery_charge_eur": "15.00",
+        "delivery_failures": [],
+        "ending_incoming_eur": "0.00",
+        "ending_stock_eur": "0.00",
+        "ending_stock_plus_commitments_eur": "0.00",
+        "ending_undelivered_commitments_eur": "0.00",
+        "expired_cost_eur": "0.00",
+        "expired_units": 0,
+        "immediate_cash_eur": "166.20",
+        "lines": [
+          {
+            "cases": 1,
+            "expected_arrival": "2026-09-23",
+            "line_value_eur": "48.00",
+            "product_id": "PRD-005",
+            "quantity_units": 6,
+            "unit_cost_eur": "8.00"
+          },
+          {
+            "cases": 2,
+            "expected_arrival": "2026-09-23",
+            "line_value_eur": "60.00",
+            "product_id": "PRD-006",
+            "quantity_units": 24,
+            "unit_cost_eur": "2.50"
+          },
+          {
+            "cases": 2,
+            "expected_arrival": "2026-09-23",
+            "line_value_eur": "43.20",
+            "product_id": "PRD-007",
+            "quantity_units": 24,
+            "unit_cost_eur": "1.80"
+          }
+        ],
+        "merchandise_eur": "151.20",
+        "on_time_units": 54,
+        "sum_28_daily_exposure_eur": "1273.20"
+      },
+      "selected_equals_fresh_physical_replay": true,
+      "selected_matches_hand_cash": true,
+      "selected_matches_hand_service": true,
+      "verdict": "retain_buyer"
+    }
+  ],
+  "phase": 4,
+  "schema_version": "1.0",
+  "selection_rule": "protect booked units, then minimise average exposure, expiry, delivery charge and stable basket signature",
+  "status": "PASS"
+}

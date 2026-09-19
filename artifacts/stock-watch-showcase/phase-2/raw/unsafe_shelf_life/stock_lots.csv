@@ -1,0 +1,2 @@
+row_id,case_id,product_ref,lot_id,quantity,uom,expiry_date,stock_status
+UNS-STK-001,unsafe_shelf_life,Fruit Bar 12pk,FRUIT-L08,48,EA,2026-10-20,AVAILABLE

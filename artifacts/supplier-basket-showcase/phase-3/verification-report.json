@@ -1,0 +1,43 @@
+{
+  "cases": [
+    {
+      "all_source_rows_retain_identity": true,
+      "case_id": "positive_moq_composition",
+      "golden_case_exact_match": true,
+      "initially_blocked": true,
+      "input_hash": "7441e5b6b59193683ed091d7a69322f3beaf35090f2ecab4c14bb721b7d88ab1",
+      "output_hash": "9b509b85b29f431a8b55ae53d5e50738c8681aeafe44888dedeb2d04d2315358",
+      "required_action": "ISS-002",
+      "source_rows": 24
+    },
+    {
+      "all_source_rows_retain_identity": true,
+      "case_id": "unsafe_cheaper_delivery_loss",
+      "golden_case_exact_match": true,
+      "initially_blocked": false,
+      "input_hash": "8f76c784cbf3ea03b23a09e6b3c0cdf67a60a8589a28f0db836309081bb7f4c6",
+      "output_hash": "4b46662be3848baecf0d09bdce9e1e0b0cebe0288a2024b9ccd1194657775333",
+      "required_action": null,
+      "source_rows": 15
+    },
+    {
+      "all_source_rows_retain_identity": true,
+      "case_id": "no_change_control",
+      "golden_case_exact_match": true,
+      "initially_blocked": true,
+      "input_hash": "2261f96d7c7771ec045c42a81e109400c72bb0ec5c9fcbfe98707dcc14dcafc0",
+      "output_hash": "d2a0caa34b798196b66edeedd85ccd558d6de1c4213f58f3ada1769279ac0812",
+      "required_action": "ISS-005",
+      "source_rows": 14
+    }
+  ],
+  "checks": {
+    "all_golden_cases_exact": true,
+    "deterministic_reimport_covered_by_test": "tests/test_supplier_basket_showcase.py",
+    "unresolved_critical_issues_block": true
+  },
+  "claim_boundary": "Synthetic fixture reconciliation only; no client benefit claim.",
+  "phase": 3,
+  "schema_version": "1.0",
+  "status": "PASS"
+}

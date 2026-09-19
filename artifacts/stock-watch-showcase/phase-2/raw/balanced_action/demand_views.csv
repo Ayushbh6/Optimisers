@@ -1,0 +1,4 @@
+row_id,case_id,view_id,event_id,product_ref,quantity_units,due_date,min_shelf_life_days,known_at
+BAL-DMD-001,balanced_action,nominal,NOM-OAT-01,PRD-OAT,6,2026-10-17,5,2026-10-05T08:00:00+02:00
+BAL-DMD-002,balanced_action,higher,HI-OAT-01,Oat Crkr,12,2026-10-17,5,2026-10-05T08:00:00+02:00
+BAL-DMD-003,balanced_action,irregular,IRR-OAT-01,PRD-OAT,12,2026-10-08,5,2026-10-05T08:00:00+02:00

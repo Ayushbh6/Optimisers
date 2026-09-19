@@ -1,0 +1,3 @@
+row_id,case_id,product_ref,lot_id,quantity,uom,expiry_date,stock_status
+CTL-STK-001,healthy_control,Tom Jars 12,TOM-L21,24,EA,2026-12-31,AVAILABLE
+CTL-STK-002,healthy_control,Lentil 12pk,LEN-L11,36,EA,2027-01-31,AVAILABLE

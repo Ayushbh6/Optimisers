@@ -1,0 +1,4 @@
+source_row_id,source_system,product_ref,description,supplier_ref,base_uom,case_size,product_min_cases,unit_cost_eur,cost_effective_from,cost_effective_to
+CTL-PROD-005,warehouse_erp,OLV-6,Olive Oil 1L,BEACON,bottle,6,1,8.00,2026-09-01,2026-12-31
+CTL-PROD-006,warehouse_erp,PSTA-12,Pasta 500g,BEACON,pack,12,1,2.50,2026-09-01,2026-12-31
+CTL-PROD-007,warehouse_erp,CHICK-12,Chickpeas 400g,BEACON,tin,12,1,1.80,2026-09-01,2026-12-31

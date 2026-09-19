@@ -1,0 +1,336 @@
+{
+  "assumptions": [
+    "Synthetic case study; not realised client savings",
+    "Only records available by the 18 September 2026 09:00 decision were used",
+    "Customer freshness requires at least 60 calendar days remaining",
+    "Unknown future demand, margins and shortage penalties are excluded"
+  ],
+  "buyer": {
+    "accounting_errors": [],
+    "average_daily_exposure_eur": "52.71",
+    "basket_id": "BUYER",
+    "booked_lines": 4,
+    "booked_units": 54,
+    "complete_lines": 4,
+    "delivery_charge_eur": "15.00",
+    "delivery_failures": [],
+    "ending_incoming_eur": "0.00",
+    "ending_stock_eur": "0.00",
+    "ending_stock_plus_commitments_eur": "0.00",
+    "ending_undelivered_commitments_eur": "0.00",
+    "expired_cost_eur": "0.00",
+    "expired_units": 0,
+    "immediate_cash_eur": "213.00",
+    "lines": [
+      {
+        "base_uom": "pack",
+        "case_size": 12,
+        "cases": 2,
+        "expected_arrival": "2026-09-23",
+        "line_value_eur": "120.00",
+        "product_id": "PRD-004",
+        "product_name": "Nougat Bars",
+        "quantity_units": 24,
+        "unit_cost_eur": "5.00"
+      },
+      {
+        "base_uom": "bottle",
+        "case_size": 6,
+        "cases": 1,
+        "expected_arrival": "2026-09-23",
+        "line_value_eur": "48.00",
+        "product_id": "PRD-005",
+        "product_name": "Olive Oil",
+        "quantity_units": 6,
+        "unit_cost_eur": "8.00"
+      },
+      {
+        "base_uom": "pack",
+        "case_size": 12,
+        "cases": 1,
+        "expected_arrival": "2026-09-23",
+        "line_value_eur": "30.00",
+        "product_id": "PRD-006",
+        "product_name": "Pasta",
+        "quantity_units": 12,
+        "unit_cost_eur": "2.50"
+      }
+    ],
+    "merchandise_eur": "198.00",
+    "on_time_units": 54,
+    "sum_28_daily_exposure_eur": "1476.00"
+  },
+  "buyer_action": "Keep and send the buyer draft",
+  "case_id": "unsafe_cheaper_delivery_loss",
+  "claim_boundary": "Synthetic case-study result. This is not a realised client saving.",
+  "comparison": {
+    "average_exposure_change_eur": "0.00",
+    "cash_change_eur": "0.00",
+    "ending_stock_plus_commitments_change_eur": "0.00",
+    "expired_units_change": 0,
+    "on_time_units_change": 0
+  },
+  "decision_hash": "29e14cae6e724bade2f32d4a0491bee4010286b326a869722b0213537c34175d",
+  "delivery_risks": [
+    "UNS-CO-003: 6 PRD-005 units late on 2026-09-25",
+    "UNS-CO-004: 12 PRD-006 units late on 2026-09-26",
+    "UNS-CO-002: 12 PRD-004 units late on 2026-09-24",
+    "UNS-CO-002: 12 PRD-004 units late on 2026-09-24",
+    "UNS-CO-002: 24 PRD-004 units late on 2026-09-24",
+    "UNS-CO-002: 24 PRD-004 units late on 2026-09-24"
+  ],
+  "input_hash": "8f76c784cbf3ea03b23a09e6b3c0cdf67a60a8589a28f0db836309081bb7f4c6",
+  "operational_consequences": {
+    "booked_units_protected": 54,
+    "booked_units_total": 54,
+    "ending_change_eur": "0.00",
+    "ending_stock_plus_commitments_eur": "0.00",
+    "expected_arrival": "2026-09-23",
+    "expired_units": 0
+  },
+  "product_changes": [],
+  "rejected_alternatives": [
+    {
+      "candidate_id": "UNS-RED-004-1",
+      "cash_eur": null,
+      "delivery_failures": [],
+      "generation_reason": "Reduce PRD-004 by one whole case",
+      "reasons": [
+        "Supplier merchandise minimum is \u20ac150.00"
+      ],
+      "status": "rejected_preflight"
+    },
+    {
+      "candidate_id": "UNS-RED-005-1",
+      "cash_eur": "165.00",
+      "delivery_failures": [
+        {
+          "customer_id": "CUS-005",
+          "due_date": "2026-09-25",
+          "line_id": "UNS-CO-003",
+          "on_time_units": 0,
+          "product_id": "PRD-005",
+          "requested_units": 6,
+          "undelivered_units": 6
+        }
+      ],
+      "generation_reason": "Reduce PRD-005 by one whole case",
+      "reasons": [
+        "Booked delivery regression: 6 fewer on-time units",
+        "Ending stock plus commitments is higher than the buyer basket"
+      ],
+      "status": "rejected_physical"
+    },
+    {
+      "candidate_id": "UNS-RED-006-1",
+      "cash_eur": "183.00",
+      "delivery_failures": [
+        {
+          "customer_id": "CUS-006",
+          "due_date": "2026-09-26",
+          "line_id": "UNS-CO-004",
+          "on_time_units": 0,
+          "product_id": "PRD-006",
+          "requested_units": 12,
+          "undelivered_units": 12
+        }
+      ],
+      "generation_reason": "Reduce PRD-006 by one whole case",
+      "reasons": [
+        "Booked delivery regression: 12 fewer on-time units",
+        "Ending stock plus commitments is higher than the buyer basket"
+      ],
+      "status": "rejected_physical"
+    },
+    {
+      "candidate_id": "UNS-INC-004-1",
+      "cash_eur": "273.00",
+      "delivery_failures": [],
+      "generation_reason": "Increase PRD-004 by one whole case",
+      "reasons": [
+        "Ending stock plus commitments is higher than the buyer basket"
+      ],
+      "status": "rejected_physical"
+    },
+    {
+      "candidate_id": "UNS-INC-005-1",
+      "cash_eur": "261.00",
+      "delivery_failures": [],
+      "generation_reason": "Increase PRD-005 by one whole case",
+      "reasons": [
+        "Ending stock plus commitments is higher than the buyer basket"
+      ],
+      "status": "rejected_physical"
+    },
+    {
+      "candidate_id": "UNS-INC-006-1",
+      "cash_eur": "243.00",
+      "delivery_failures": [],
+      "generation_reason": "Increase PRD-006 by one whole case",
+      "reasons": [
+        "Ending stock plus commitments is higher than the buyer basket"
+      ],
+      "status": "rejected_physical"
+    },
+    {
+      "candidate_id": "UNS-RED-004-REPAIR-005",
+      "cash_eur": "201.00",
+      "delivery_failures": [
+        {
+          "customer_id": "CUS-005",
+          "due_date": "2026-09-24",
+          "line_id": "UNS-CO-002",
+          "on_time_units": 12,
+          "product_id": "PRD-004",
+          "requested_units": 24,
+          "undelivered_units": 12
+        }
+      ],
+      "generation_reason": "Reduce PRD-004; restore the supplier minimum with PRD-005",
+      "reasons": [
+        "Booked delivery regression: 12 fewer on-time units",
+        "Ending stock plus commitments is higher than the buyer basket"
+      ],
+      "status": "rejected_physical"
+    },
+    {
+      "candidate_id": "UNS-RED-004-REPAIR-006",
+      "cash_eur": "183.00",
+      "delivery_failures": [
+        {
+          "customer_id": "CUS-005",
+          "due_date": "2026-09-24",
+          "line_id": "UNS-CO-002",
+          "on_time_units": 12,
+          "product_id": "PRD-004",
+          "requested_units": 24,
+          "undelivered_units": 12
+        }
+      ],
+      "generation_reason": "Reduce PRD-004; restore the supplier minimum with PRD-006",
+      "reasons": [
+        "Booked delivery regression: 12 fewer on-time units",
+        "Ending stock plus commitments is higher than the buyer basket"
+      ],
+      "status": "rejected_physical"
+    },
+    {
+      "candidate_id": "UNS-RM-004-REPAIR-005",
+      "cash_eur": "189.00",
+      "delivery_failures": [
+        {
+          "customer_id": "CUS-005",
+          "due_date": "2026-09-24",
+          "line_id": "UNS-CO-002",
+          "on_time_units": 0,
+          "product_id": "PRD-004",
+          "requested_units": 24,
+          "undelivered_units": 24
+        }
+      ],
+      "generation_reason": "Remove PRD-004; restore the supplier minimum with PRD-005",
+      "reasons": [
+        "Booked delivery regression: 24 fewer on-time units",
+        "Ending stock plus commitments is higher than the buyer basket"
+      ],
+      "status": "rejected_physical"
+    },
+    {
+      "candidate_id": "UNS-RM-004-REPAIR-006",
+      "cash_eur": "183.00",
+      "delivery_failures": [
+        {
+          "customer_id": "CUS-005",
+          "due_date": "2026-09-24",
+          "line_id": "UNS-CO-002",
+          "on_time_units": 0,
+          "product_id": "PRD-004",
+          "requested_units": 24,
+          "undelivered_units": 24
+        }
+      ],
+      "generation_reason": "Remove PRD-004; restore the supplier minimum with PRD-006",
+      "reasons": [
+        "Booked delivery regression: 24 fewer on-time units",
+        "Ending stock plus commitments is higher than the buyer basket"
+      ],
+      "status": "rejected_physical"
+    }
+  ],
+  "schema_version": "1.0",
+  "search_report": {
+    "buyer_basket_always_included": true,
+    "case_step": 1,
+    "elapsed_ms": 2.442,
+    "generated_alternatives": 10,
+    "max_alternatives": 12,
+    "max_changed_lines": 2,
+    "physically_replayed": 9,
+    "rejected_preflight": 1,
+    "safe_alternative_survivors": 0
+  },
+  "selected": {
+    "accounting_errors": [],
+    "average_daily_exposure_eur": "52.71",
+    "basket_id": "BUYER",
+    "booked_lines": 4,
+    "booked_units": 54,
+    "complete_lines": 4,
+    "delivery_charge_eur": "15.00",
+    "delivery_failures": [],
+    "ending_incoming_eur": "0.00",
+    "ending_stock_eur": "0.00",
+    "ending_stock_plus_commitments_eur": "0.00",
+    "ending_undelivered_commitments_eur": "0.00",
+    "expired_cost_eur": "0.00",
+    "expired_units": 0,
+    "immediate_cash_eur": "213.00",
+    "lines": [
+      {
+        "base_uom": "pack",
+        "case_size": 12,
+        "cases": 2,
+        "expected_arrival": "2026-09-23",
+        "line_value_eur": "120.00",
+        "product_id": "PRD-004",
+        "product_name": "Nougat Bars",
+        "quantity_units": 24,
+        "unit_cost_eur": "5.00"
+      },
+      {
+        "base_uom": "bottle",
+        "case_size": 6,
+        "cases": 1,
+        "expected_arrival": "2026-09-23",
+        "line_value_eur": "48.00",
+        "product_id": "PRD-005",
+        "product_name": "Olive Oil",
+        "quantity_units": 6,
+        "unit_cost_eur": "8.00"
+      },
+      {
+        "base_uom": "pack",
+        "case_size": 12,
+        "cases": 1,
+        "expected_arrival": "2026-09-23",
+        "line_value_eur": "30.00",
+        "product_id": "PRD-006",
+        "product_name": "Pasta",
+        "quantity_units": 12,
+        "unit_cost_eur": "2.50"
+      }
+    ],
+    "merchandise_eur": "198.00",
+    "on_time_units": 54,
+    "sum_28_daily_exposure_eur": "1476.00"
+  },
+  "summary": "Keep the buyer basket. No lower-exposure alternative protects every booked delivery. The challenged basket needs \u20ac30.00 less cash but leaves 12 booked units late.",
+  "supplier": {
+    "delivery_charge_eur": "15.00",
+    "name": "Beacon Grocery Supply",
+    "order_day": "Friday",
+    "supplier_id": "SUP-B"
+  },
+  "synthetic_case_study": true,
+  "verdict": "retain_buyer"
+}

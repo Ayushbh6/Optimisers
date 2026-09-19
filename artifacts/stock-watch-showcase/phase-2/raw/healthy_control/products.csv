@@ -1,0 +1,3 @@
+row_id,product_id,product_name,supplier_id,case_size,unit_cost_eur,date_type,new_receipt_expiry_date,max_new_cases
+CTL-PROD-001,PRD-TOMATO,Tomato Jars,SUP-NORTH,12,1.80,best_before,2027-03-31,0
+CTL-PROD-002,PRD-LENTIL,Lentil Soup,SUP-NORTH,12,1.20,best_before,2027-01-31,0

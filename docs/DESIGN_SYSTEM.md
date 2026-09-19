@@ -1,5 +1,7 @@
 # Website Design System
 
+> **19 September 2026 update:** current supplied references are `docs/references/Idea.png` (hero composition) and `docs/references/main-hero.png` (clean source). Earlier `/design-references/` paths below are historical. The approved first version has fixed framing and four navigable sections, with overflow confined to the middle. Charcoal, warm ivory and muted amber define the site and both demos; preserve demo geometry and legibility. Original portraits are `docs/references/Me.png` and `docs/references/Max-image.jpeg`.
+
 > Status: Authoritative design source
 >
 > This document defines the visual direction, design principles, and UI constraints for the studio website.

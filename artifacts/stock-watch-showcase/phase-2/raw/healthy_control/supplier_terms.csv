@@ -1,0 +1,2 @@
+row_id,case_id,supplier_id,review_date,order_weekday,lead_days,delivery_charge_eur,budget_eur,receipt_capacity_units,effective_from,effective_to
+CTL-TERM-001,healthy_control,SUP-NORTH,2026-10-05,MONDAY,4,10.00,300.00,200,2026-10-01,2026-12-31

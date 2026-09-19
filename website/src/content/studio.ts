@@ -1,0 +1,8 @@
+export const founders = [
+  {name: 'Ayush Bhattacharya', short: 'Ayush', role: 'Software · AI · Data', image: '/images/ayush.webp', email: 'bhatt.ayush.1998@gmail.com', github: 'https://github.com/Ayushbh6', description: 'Builds software that turns complex information into usable decisions. His experience spans applied AI, banking risk and systems that keep human judgement in the loop.', background: 'MSc Quantitative Finance · WU Vienna'},
+  {name: 'Maximilian Trentini', short: 'Max', role: 'Mathematics · Modelling · Data', image: '/images/max.webp', email: 'maximiliantrentini@gmail.com', github: 'https://github.com/TheSailed', description: 'Builds and tests models for uncertain, changing systems. His experience spans energy demand, derivatives pricing and quantitative research.', background: 'MSc Quantitative Finance · WU Vienna'},
+];
+export const projects = [
+  {number: '01', name: 'Supplier Basket Review', question: 'A better order. Before you send it.', description: 'Compare a planned purchase with alternatives that use less cash while protecting booked customer deliveries.', image: '/images/basket.webp', alt: 'Actual Supplier Basket Review interface showing a purchasing decision', href: import.meta.env.PUBLIC_BASKET_URL || '/demos/basket/index.html', tag: 'Purchasing decisions'},
+  {number: '02', name: 'Stock Watch', question: 'Know what to buy. And what to stop buying.', description: 'See what may run out, what may expire and which incoming orders need a second look.', image: '/images/stock.webp', alt: 'Actual Stock Watch interface showing stock and purchasing actions', href: import.meta.env.PUBLIC_STOCK_URL || '/demos/stock/index.html', tag: 'Stock & expiry planning'},
+];

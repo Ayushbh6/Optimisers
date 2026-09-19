@@ -1,0 +1,6 @@
+source_row_id,source_system,order_ref,line_ref,amendment_sequence,status,customer_ref,product_ref,quantity,uom,booked_at,due_date
+UNS-CO-ROW-001,sales_erp,SO-UNS-001,UNS-CO-001,1,booked,CUS-004,NGB-12,12,pack,2026-09-14T11:00:00+02:00,2026-09-21
+UNS-CO-ROW-002-A1,sales_erp,SO-UNS-002,UNS-CO-002,1,superseded,CUS-005,NGB-12,12,pack,2026-09-16T08:45:00+02:00,2026-09-24
+UNS-CO-ROW-002-A2,sales_erp,SO-UNS-002,UNS-CO-002,2,booked,CUS-005,NGB-12,24,pack,2026-09-17T08:45:00+02:00,2026-09-24
+UNS-CO-ROW-003,sales_erp,SO-UNS-002,UNS-CO-003,1,booked,CUS-005,OLV-6,6,bottle,2026-09-16T13:15:00+02:00,2026-09-25
+UNS-CO-ROW-004,sales_erp,SO-UNS-003,UNS-CO-004,1,booked,CUS-006,PSTA-12,12,pack,2026-09-17T15:30:00+02:00,2026-09-26

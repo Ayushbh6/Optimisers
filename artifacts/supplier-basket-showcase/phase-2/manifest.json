@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "package_version": "supplier-basket-showcase-phase-2-v1",
+  "created_date": "2026-09-18",
+  "case_study_type": "synthetic_predeclared_showcase",
+  "phase_1_sources_sha256": {
+    "artifacts/supplier-basket-showcase/phase-1/contract.json": "0739282d4f4f31fecbd6097adcab417674b927005fd051f76497cd02de81fe92",
+    "artifacts/supplier-basket-showcase/phase-1/expected-results.json": "83d4e644b34ad18adb93300f60181a63b6f1c896d25fc79acc19124cacb1850d"
+  },
+  "counts": {
+    "cases": 3,
+    "raw_csv_files": 21,
+    "raw_source_rows": 53,
+    "issues": 7
+  },
+  "file_hashes_sha256": {
+    "artifacts/supplier-basket-showcase/phase-2/golden/normalized-ledger.json": "7f695babef315ba62d4df26278b1732c0bbf92b9345274430398046ab989da59",
+    "artifacts/supplier-basket-showcase/phase-2/issue-register.json": "ab92ee5dd5e849715d3362b15b5e25202f993dbb333315c00e5105ffa8c2c705",
+    "artifacts/supplier-basket-showcase/phase-2/raw/no_change_control/customer_orders.csv": "c7663692a93e4743a441504022f832ae1f5a3c28e892d23d894b000f4460034d",
+    "artifacts/supplier-basket-showcase/phase-2/raw/no_change_control/products.csv": "73195c1c71e7ae44e6bd4b859a141694c04eb46e8be28974640be819efededbd",
+    "artifacts/supplier-basket-showcase/phase-2/raw/no_change_control/purchase_orders.csv": "42f6aeb7e4b21b573f9afcc81b306d9a81d47cb41f132f82a2c9a0afa4b393b2",
+    "artifacts/supplier-basket-showcase/phase-2/raw/no_change_control/receipts.csv": "3b70c8e8b161dc8c8f4e9596d53232040ab2a954b618f4b166e882e3046c7922",
+    "artifacts/supplier-basket-showcase/phase-2/raw/no_change_control/resolutions.csv": "cfa5ac859f51403e05b3e80a93c6a97adc096ef5293a4420c21e3dd2be0e1ece",
+    "artifacts/supplier-basket-showcase/phase-2/raw/no_change_control/stock_snapshot.csv": "6a71a232d8911f0155bbc7ff40fea60686f01cef3632e2d7a3f97d4caa3a4587",
+    "artifacts/supplier-basket-showcase/phase-2/raw/no_change_control/supplier_terms.csv": "2b8e3d57a70e0760a20470b021666788ac234bf99ec5d18217a8df5597680d66",
+    "artifacts/supplier-basket-showcase/phase-2/raw/positive_moq_composition/customer_orders.csv": "84bd737eb6850cfd9180a71be2059961b5fb47c31b64faaa6bcb157eb7f529a7",
+    "artifacts/supplier-basket-showcase/phase-2/raw/positive_moq_composition/products.csv": "668ea4ddee0f75bf9b75f1c7b9c23ebecfbff6fe6d7455ed44d82296e2307b36",
+    "artifacts/supplier-basket-showcase/phase-2/raw/positive_moq_composition/purchase_orders.csv": "d0025aa94384db438e1e3012762f38299b4db425f2c3570a5867b1e64acc5a0f",
+    "artifacts/supplier-basket-showcase/phase-2/raw/positive_moq_composition/receipts.csv": "6d6a08a8135f1c44e9cc98300fb0b16be0c5644a6795d60eea5bc7d77613c73f",
+    "artifacts/supplier-basket-showcase/phase-2/raw/positive_moq_composition/resolutions.csv": "41611018653dc216ee15bd5f1c41e4a3a5e6661a4f79f2e25a411a1759c52456",
+    "artifacts/supplier-basket-showcase/phase-2/raw/positive_moq_composition/stock_snapshot.csv": "ce8a2f4b60f4d463df8574e6b935f78b7d10adfb455338d43883c5a178fca041",
+    "artifacts/supplier-basket-showcase/phase-2/raw/positive_moq_composition/supplier_terms.csv": "ce46134c0b5d43c2d9c82124f1bc315ec9261691bc62bec16263cc7aedc92a4b",
+    "artifacts/supplier-basket-showcase/phase-2/raw/unsafe_cheaper_delivery_loss/customer_orders.csv": "64d8ffaefdfb835d9bfd5c4c738a8b6b1c866d28a2b1159e5d5e893d56b301fb",
+    "artifacts/supplier-basket-showcase/phase-2/raw/unsafe_cheaper_delivery_loss/products.csv": "d1f8406b3b50460185a3b106cb912427f710b8c439dccfceb2959db5e282e039",
+    "artifacts/supplier-basket-showcase/phase-2/raw/unsafe_cheaper_delivery_loss/purchase_orders.csv": "a2c4f397525f22e07fdedf6c1aafc359d32f61f5b5e9aa8dd5c9bef827e45544",
+    "artifacts/supplier-basket-showcase/phase-2/raw/unsafe_cheaper_delivery_loss/receipts.csv": "3b70c8e8b161dc8c8f4e9596d53232040ab2a954b618f4b166e882e3046c7922",
+    "artifacts/supplier-basket-showcase/phase-2/raw/unsafe_cheaper_delivery_loss/resolutions.csv": "2a349dafdb3698d6fa7e13f8d1b4d05b64c8fabe46b615fb1ca0e04f5c30eaae",
+    "artifacts/supplier-basket-showcase/phase-2/raw/unsafe_cheaper_delivery_loss/stock_snapshot.csv": "5c8aca80b40043e5b12da09f47d31fb62b7dd603b79c9285d4721e1d7b5779ca",
+    "artifacts/supplier-basket-showcase/phase-2/raw/unsafe_cheaper_delivery_loss/supplier_terms.csv": "3f49a38a3f8181d615e946870c68695bc6ede75a81c479aefdee0da0c780d505",
+    "artifacts/supplier-basket-showcase/phase-2/row-accounting.csv": "786a6f52ed0c5f6b85fa44e489b153f220026f397e7f0de8a7660bf3fac320eb",
+    "artifacts/supplier-basket-showcase/phase-2/verification-report.json": "40346ffe8619c1dd41c19cda6d7ce12db8f3cd9f528e8ffa470cc220f6b7cf56",
+    "artifacts/supplier-basket-showcase/phase-2/verify_phase_2.py": "2dec0300c09ed50b816674b4adcfa991e4f6e62239fbfc83a6b41e4e3e4c7d08",
+    "docs/showcase/phase-2/PHASE_2_REVIEW.md": "0d08d9e26d1167e41a8941d444fd19d756349667628b1e9c8a9b98da95b67071",
+    "docs/showcase/phase-2/RAW_DATA_PACKAGE.md": "57f60218ca707492c1c8d91e4869b1486e6825881c2bf305036b4b3bac2359b6"
+  },
+  "claim_boundary": "Synthetic raw-data fixture and reconciliation evidence only; no realised client saving or general performance claim."
+}

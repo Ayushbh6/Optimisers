@@ -1,0 +1,3 @@
+row_id,case_id,product_ref,lot_id,quantity,uom,expiry_date,stock_status
+BAL-STK-001,balanced_action,Soup Cup 12x,SOUP-L01,12,EA,2026-12-31,AVAILABLE
+BAL-STK-002,balanced_action,Oat Crkr,OAT-L17,5,,2026-10-25,AVAILABLE

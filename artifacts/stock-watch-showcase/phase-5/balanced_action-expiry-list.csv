@@ -1,0 +1,2 @@
+product_id,product_name,lot_id,projected_expiry_date,projected_units,demand_view,decision_hash,synthetic_example
+PRD-OAT,Oat Crackers,OAT-L17,2026-10-26,24,higher,d35136aa3ca286e2a594cb4aeab6cb887f560a34049f7ddc2fa5225946f0f99a,true

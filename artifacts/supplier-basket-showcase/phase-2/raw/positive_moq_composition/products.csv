@@ -1,0 +1,5 @@
+source_row_id,source_system,product_ref,description,supplier_ref,base_uom,case_size,product_min_cases,unit_cost_eur,cost_effective_from,cost_effective_to
+POS-PROD-001,warehouse_erp,TS-400,Tomato Soup 400g,ALDER,tin,12,1,4.00,2026-09-01,2026-12-31
+POS-PROD-002,warehouse_erp,OAT-CRK,Oat Crackers 250g,ALDER,pack,12,1,5.00,2026-09-01,2026-12-31
+POS-PROD-003,warehouse_erp,HNY-DROP,Honey Drops 300g,ALDER,jar,24,1,10.00,2026-09-01,2026-12-31
+POS-PROD-008,warehouse_erp,TEA-BRKFST,Breakfast Tea 80 bag,BEACON,box,24,1,2.40,2026-09-01,2026-12-31

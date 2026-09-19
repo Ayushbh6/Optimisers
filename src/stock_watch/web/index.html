@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Ledgerline — Stock Watch</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%2317201c'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-size='18' fill='%23fffdf8'%3EL%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./assets/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="Ledgerline Stock Watch home">
+      <span class="brand-mark" aria-hidden="true">L</span>
+      <span><strong>Ledgerline</strong><small>Stock Watch</small></span>
+    </a>
+    <div class="top-actions"><a class="studio-back" href="/work/">← Axis <span class="back-detail">/ Work</span></a><span class="example-label">Example data</span><button id="reset" class="reset-button" type="button">Start over</button></div>
+  </header>
+
+  <main id="scroll-region" class="scroll-region">
+    <div id="top" class="shell">
+      <section class="intro">
+        <p class="eyebrow">This week's inventory review</p>
+        <h1>What will run out?<br>What may expire?</h1>
+        <p>See what to buy now, what to buy less of, and which stock to use first—without putting customer orders at risk.</p>
+      </section>
+
+      <section class="scenario-section" aria-labelledby="scenario-title">
+        <div class="section-head compact"><div><p class="step">Choose an example</p><h2 id="scenario-title">What should we check?</h2></div><p>Each example tests a different buyer decision.</p></div>
+        <div id="scenario-list" class="scenario-list" role="radiogroup" aria-label="Example inventory situation"></div>
+        <button id="review-button" class="button primary" type="button">Review this week's stock</button>
+      </section>
+
+      <div id="notice" class="notice" role="alert" hidden></div>
+      <div id="review" hidden>
+        <section class="block" aria-labelledby="records-title">
+          <div class="section-head"><div><p class="step">1 · Check the records</p><h2 id="records-title">Records ready.</h2></div><span id="record-status" class="status">Checked</span></div>
+          <p id="record-copy" class="support-copy"></p>
+          <div id="issue-actions"></div>
+          <details class="details"><summary>View record checks</summary><div class="audit"><span>Example <strong id="case-label"></strong></span><span>Source rows <strong id="row-count"></strong></span><span>Input fingerprint <code id="input-hash"></code></span></div></details>
+        </section>
+
+        <section id="decision" class="block" hidden aria-labelledby="decision-title">
+          <div class="section-head"><div><p class="step">2 · This week's answer</p><h2 id="decision-title"></h2></div><span id="verdict" class="status success"></span></div>
+          <p id="decision-copy" class="decision-copy"></p>
+
+          <div class="signal-line" aria-label="Inventory signals">
+            <div><span>Runs out</span><strong id="run-out"></strong><small id="run-out-note"></small></div>
+            <div><span>May expire</span><strong id="expiry"></strong><small>Higher-demand view</small></div>
+            <div><span>Booked orders</span><strong id="booked"></strong><small>Delivered on time</small></div>
+          </div>
+
+          <section class="action-section" aria-labelledby="actions-title"><p class="step">Buyer instructions</p><h3 id="actions-title">What to do this week</h3><div id="action-list" class="action-list"></div></section>
+
+          <section class="comparison" aria-labelledby="compare-title">
+            <div class="comparison-head"><div><p class="step">Before &amp; after</p><h3 id="compare-title">What changes if we follow the plan?</h3></div><p>Exact 28-day replay</p></div>
+            <div id="charts" class="charts"></div>
+            <p class="fine-print">Projected results from synthetic records. They are not realised savings or guaranteed waste prevention.</p>
+          </section>
+
+          <div class="explain-grid">
+            <section><p class="step">Why this is safe</p><h3>Customer orders stay protected</h3><p id="safety-copy"></p></section>
+            <section><p class="step">What still needs attention</p><h3 id="risk-title"></h3><p id="risk-copy"></p></section>
+          </div>
+
+          <div class="downloads"><div><p class="step">Ready for buyer review</p><h3>Take the action list with you</h3></div><div><a id="order-export" class="button light" href="#">Download order actions</a><a id="risk-export" class="button outline" href="#">Download expiry list</a></div></div>
+
+          <details class="details"><summary>View calculation audit</summary><p id="search-proof"></p><code id="decision-hash"></code></details>
+        </section>
+      </div>
+    </div>
+  </main>
+  <footer><span>Synthetic case study</span><span>No realised savings claim</span></footer>
+  <script src="./assets/app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+supplier_id,supplier_name,product_id,product_name,cases,units,base_uom,unit_cost_eur,line_value_eur,expected_arrival,decision_hash,synthetic_case_study
+SUP-B,Beacon Grocery Supply,PRD-004,Nougat Bars,2,24,pack,5.00,120.00,2026-09-23,29e14cae6e724bade2f32d4a0491bee4010286b326a869722b0213537c34175d,true
+SUP-B,Beacon Grocery Supply,PRD-005,Olive Oil,1,6,bottle,8.00,48.00,2026-09-23,29e14cae6e724bade2f32d4a0491bee4010286b326a869722b0213537c34175d,true
+SUP-B,Beacon Grocery Supply,PRD-006,Pasta,1,12,pack,2.50,30.00,2026-09-23,29e14cae6e724bade2f32d4a0491bee4010286b326a869722b0213537c34175d,true

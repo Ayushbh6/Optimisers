@@ -1,0 +1,80 @@
+{
+  "all_audits_passed": true,
+  "cases": [
+    {
+      "candidates_replayed": 2044,
+      "change": {
+        "complete_line_service_points": 0.0,
+        "ending_investment_cents": -67428,
+        "expiry_cents": 0,
+        "investment_cents": -64350.10714285716,
+        "investment_fraction": -0.08306644590028955,
+        "service_points": 0.0
+      },
+      "changed_decisions": 6,
+      "customer_regressions": 0,
+      "family": "ordinary",
+      "product_regressions": 0,
+      "search_runtime_seconds": 788.7553055027383,
+      "seed": 1101,
+      "total_decisions": 32
+    },
+    {
+      "candidates_replayed": 1330,
+      "change": {
+        "complete_line_service_points": 0.0,
+        "ending_investment_cents": -4794,
+        "expiry_cents": 0,
+        "investment_cents": -342.42857142857974,
+        "investment_fraction": -0.0008343071122071111,
+        "service_points": 0.0
+      },
+      "changed_decisions": 1,
+      "customer_regressions": 0,
+      "family": "restricted_spending",
+      "product_regressions": 0,
+      "search_runtime_seconds": 504.9396047110786,
+      "seed": 1101,
+      "total_decisions": 32
+    },
+    {
+      "candidates_replayed": 2170,
+      "change": {
+        "complete_line_service_points": 0.0,
+        "ending_investment_cents": -106620,
+        "expiry_cents": 0,
+        "investment_cents": -66362.89285714296,
+        "investment_fraction": -0.08203148513236436,
+        "service_points": 0.0
+      },
+      "changed_decisions": 7,
+      "customer_regressions": 0,
+      "family": "supplier_disruption",
+      "product_regressions": 0,
+      "search_runtime_seconds": 889.6447290851502,
+      "seed": 1101,
+      "total_decisions": 32
+    },
+    {
+      "candidates_replayed": 1099,
+      "change": {
+        "complete_line_service_points": -0.33670033670033517,
+        "ending_investment_cents": -79476,
+        "expiry_cents": 0,
+        "investment_cents": -77154.85714285716,
+        "investment_fraction": -0.08228863651452734,
+        "service_points": -0.4809619238476892
+      },
+      "changed_decisions": 6,
+      "customer_regressions": 1,
+      "family": "ample_stock",
+      "product_regressions": 1,
+      "search_runtime_seconds": 432.1753607089049,
+      "seed": 1101,
+      "total_decisions": 32
+    }
+  ],
+  "fresh_evaluation_opened": false,
+  "full_18_case_batch_started": false,
+  "permits_savings_claim": false
+}

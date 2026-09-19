@@ -1,0 +1,26 @@
+{
+  "contract_version": "stock-watch-v1",
+  "review_date": "2026-10-05",
+  "window_days": 28,
+  "event_order": ["expire-unusable-lots", "receive", "dispatch-booked", "dispatch-projected", "close"],
+  "required_views": ["lower", "nominal", "higher", "irregular"],
+  "candidate_limit": 25,
+  "cases": [
+    {
+      "case_id": "balanced_action",
+      "expected_action": {"PRD-SOUP": 2, "PRD-OAT": 0},
+      "reason": "Order Soup Cups before booked demand runs short; cancel the changeable short-dated Oat Crackers receipt."
+    },
+    {
+      "case_id": "unsafe_shelf_life",
+      "expected_action": {"PRD-FRUIT": 4},
+      "reason": "Keep the incoming Fruit Bars because the old lot cannot meet the customer's remaining shelf-life rule."
+    },
+    {
+      "case_id": "healthy_control",
+      "expected_action": {"PRD-TOMATO": 2},
+      "reason": "Keep the healthy incoming plan; lower quantities fail the higher and irregular demand views."
+    }
+  ],
+  "claim_boundary": "Synthetic case-study evidence only; no realised savings, sell-through or waste-prevention claim."
+}

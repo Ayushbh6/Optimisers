@@ -1,0 +1,5 @@
+source_row_id,source_system,order_ref,line_ref,amendment_sequence,status,customer_ref,product_ref,quantity,uom,booked_at,due_date
+CTL-CO-ROW-001,sales_erp,SO-CTL-001,CTL-CO-001,1,booked,CUS-001,OLV-6,6,bottle,2026-09-15T08:30:00+02:00,2026-09-24
+CTL-CO-ROW-002,sales_erp,SO-CTL-002,CTL-CO-002,1,booked,CUS-002,PSTA-12,12,pack,2026-09-15T10:45:00+02:00,2026-09-25
+CTL-CO-ROW-003,sales_erp,SO-CTL-003,CTL-CO-003,1,booked,CUS-003,PSTA-12,12,pack,2026-09-16T09:15:00+02:00,2026-09-28
+CTL-CO-ROW-004,sales_erp,SO-CTL-004,CTL-CO-004,1,booked,CUS-004,CHICK-12,24,tin,2026-09-17T12:00:00+02:00,2026-09-29

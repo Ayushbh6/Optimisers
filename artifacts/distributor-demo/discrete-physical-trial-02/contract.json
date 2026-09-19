@@ -1,0 +1,86 @@
+{
+  "case_selection": "The first declared development seed for each of the four user-required families",
+  "cases": [
+    {
+      "family": "ordinary",
+      "seed": 1101
+    },
+    {
+      "family": "restricted_spending",
+      "seed": 1101
+    },
+    {
+      "family": "supplier_disruption",
+      "seed": 1101
+    },
+    {
+      "family": "ample_stock",
+      "seed": 1101
+    }
+  ],
+  "comparison": "Both policies start from the same immutable generated records and evolve independently; each decision commits only that policy's current-day purchases.",
+  "development_only": true,
+  "future_policy": "Commit only today's candidate basket; in every demand view, recalculate competent stock cover at each later supplier decision from that replay's physical state.",
+  "hypothesis": "Exact physical replay of bounded supplier-basket edits, with future stock-cover decisions recalculated from each evolving candidate state, can reduce average stock plus commitments without reducing the deliveries achieved by the independently evolving stock-cover policy.",
+  "search_bounds": {
+    "case_steps": 1,
+    "historical_views": 4,
+    "max_candidates": 40,
+    "max_lines": 8,
+    "max_two_line_candidates": 8
+  },
+  "settings": {
+    "delay_workdays": 0,
+    "demand_multiplier": 1.0,
+    "forecast_method": "mean8",
+    "horizon_days": 28,
+    "incoming_freshness_days": 60,
+    "safety_workdays": 0,
+    "solve_seconds": 3.0
+  },
+  "sources": {
+    "docs/DISTRIBUTOR_DISCRETE_DIAGNOSIS_01.md": "39d8fd8fa84e9dfd329888960cf032a594f8566fdcbba32350f4cb6102f62216",
+    "docs/DISTRIBUTOR_IMPLEMENTATION_PLAN.md": "3f0a14ecb5249ebc220780cae35c172f64a01eaa19b18c86cdc974cdc85ef62e",
+    "docs/DISTRIBUTOR_ITERATION_PROTOCOL.md": "cb3c2f5d9081208100ba27f01de3d7cae4a4f6746a05fd1b8c044778d0383b98",
+    "pytest.ini": "c809c969ec7e11b9ff37784e9c6fcc0b7c5148d168e18b05aed797e03fbd6ead",
+    "requirements.txt": "1980dce7187ab5132d04f5acaf36b9dbaa5ebe4ce417d5c5a4a7aadd960b3764",
+    "src/demo_data/__init__.py": "79043e2099211cd9fe0695a345bf41b4da5131436d9dfee5734d3749cbb4efbb",
+    "src/demo_data/__main__.py": "0a7e53a81f1c83da3c61dd39fae087877d87854c95b7b4ccadcd04e1d0e43e8e",
+    "src/demo_data/audit.py": "1fe9ff8ec7da558372e5f0eca387d4560c8f8cf8df6aa5d5cc76f49885f63c7f",
+    "src/demo_data/catalog.py": "9de3cf91895d2b0ad6db572377276c7d582d46c2285817440c1238d83fefa096",
+    "src/demo_data/cli.py": "77e9146bc0260a216411cf565f7e38f86b72b928f9f87ae7513c9ca3830cacec",
+    "src/demo_data/config.py": "83377faaf8b553d1014daf83b26d5eab2d1ecf98f40956c67120d999198e9a18",
+    "src/demo_data/engine.py": "e44ad878fcef61466586fa2aca2594d70ebca87c93fd7158b75f1fc6e36bd694",
+    "src/demo_data/external.py": "eba2b57f4c0fd4748af8c1bad54f47cdcd50013b6815829a5e88dd6b6b35d001",
+    "src/demo_data/generator.py": "ddd4ca9cb6decb92f6522ba8b74663161977121a7cc4f530b7d85e9093ced454",
+    "src/demo_data/integrity.py": "c969e617cade4b22a9a252459594e2cede8c0e0aecbfd1396e45371f6ebfce75",
+    "src/demo_data/reports.py": "d8e50aa3f893120b5671a0d4646ec17638b1d2e3d19e47f99c5d4c29aacb6b07",
+    "src/demo_data/schema.py": "253d62866fde3b342bb6fa26a6c17bb8cc015baecb2d3105c3c81c4812a18fc1",
+    "src/demo_data/snapshot.py": "0cb6156a576c045a48fca6ff82a61e5cfbce3c30a8f96fe7730e373fb2e9a049",
+    "src/demo_data/storage.py": "8f41a98c410fcc8e0e4aae36fcb3bd91aaa9b8b66e5db652f02829297c06e34e",
+    "src/demo_data/utils.py": "26c2809172ef49eaeced8e5a65a6d1ffaa8ec754b83cc37da8b8b3c20a6f9142",
+    "src/distributor_research/discrete_trial.py": "a4551ea691e7f89c7a8da86e345ed4389d264a5117efd20cca5c3bb4c2a398bd",
+    "src/replenishment/__init__.py": "51d9e1cad66b7b2f94bcdede003295ed71dbc4e6d1016c0421175984667c815f",
+    "src/replenishment/baseline.py": "7e9eb549c714e85f0efab1e2145845bb177f0e8ce5a5d96c0be5519904b8f0c2",
+    "src/replenishment/batch.py": "1844af3fa6980a18ef5199a399869eee3c0e56b9e56d259fc9721422320fd18a",
+    "src/replenishment/cli.py": "4c147860066b4f2e9b8ccc102c346526c46e31ccc75ce35cd0b1f982ab6e10b7",
+    "src/replenishment/contracts.py": "2c91b96455df5b89106d8233e00c6dee75215eda0500f4bae08ea04fb193394d",
+    "src/replenishment/discrete.py": "e209e422990a739256431f00e317b4ab6dc2a550bcb5d14f1e76519afb851796",
+    "src/replenishment/evaluator.py": "4ec0c21ca74b1a018cb25fc2f7b7c2f689e5e483a98c4d6fed7abcf297cdfe08",
+    "src/replenishment/forecast.py": "e6e924ec9deceb0af1162581956ed6f4826e7427810d52f7d3c6ddcbad16c631",
+    "src/replenishment/joint.py": "4c0fe43d81d0b816564ef91a8f81aa6fb02a663524554b878777989386bfef2b",
+    "src/replenishment/patterns.py": "5a95e545b6f78cefeed0e9eb6c3ba474781ce6372751aa2b3bf81b24e34c8507",
+    "src/replenishment/physical.py": "2f3735829ccb816cca6069b4fe58b315d8bce5c866909ab26acc1d0826891791",
+    "src/replenishment/planner.py": "ac49400d3c8f14cbee0e86cae824ee45988b9ae196e8f88db626327a1361d0c8",
+    "src/replenishment/projection.py": "0c82e37176238094ed1313c87672b1a49d95cd281e83e7b59dbdef4a96d332af",
+    "src/replenishment/risk.py": "f06d4dd2577dd495cf407eb53bfec469b0cb4512c398e35547707074927b56c8",
+    "src/replenishment/scenarios.py": "7750e64a2681490b6867dca1f5ef690d84281c61e63f23bc555eb62042bbce11",
+    "src/replenishment/solver.py": "d13bb8026752b31e9bfaae35ceb2e14432e844a6a92c524b8476399df4a4bfa1",
+    "src/replenishment/state.py": "81989f622ae7e096602c4a5f4b86148c5ce075c50c9df86c57bbd7e09a8188e1",
+    "src/replenishment/validation.py": "4572cec032ac0b49c8fd8dae464ea5a40363c269afac6c20dfe01eba36826834",
+    "tests/test_distributor_discrete.py": "526887fde7ebef21b456206aece67fa5b10369fba19eda56c89a2107fc7221e4",
+    "tests/test_distributor_planner_risk.py": "ed5e331d4de649da8cf5d538f04f9ba52cc29de4eea14b0ee83073b0894a87e2"
+  },
+  "stop": "Report these four cases only; do not start the 18-case batch or open seeds 91301-91305.",
+  "synthetic": true
+}

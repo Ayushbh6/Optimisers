@@ -1,0 +1,2 @@
+row_id,case_id,line_id,product_ref,cases,status,expected_arrival,expiry_date,change_cutoff,amends_row_id
+UNS-PO-001,unsafe_shelf_life,PO-3001,Fruit Bar 12pk,4,open,2026-10-09,2026-12-31,2026-10-06,

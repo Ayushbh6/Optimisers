@@ -1,0 +1,2 @@
+action,product_id,product_name,current_cases,recommended_cases,arrival_date,line_value_eur,decision_hash,synthetic_example
+keep_order,PRD-TOMATO,Tomato Jars,2,2,2026-10-09,43.20,80bf8642ed3415b49490090d02ea97787f2acbc120a5dd1bfed0cb0d24f7500b,true

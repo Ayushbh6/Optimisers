@@ -1,0 +1,2 @@
+row_id,case_id,line_id,customer_id,product_ref,quantity_units,due_date,min_shelf_life_days,status,known_at
+UNS-CO-001,unsafe_shelf_life,SO-3001,CUS-HOTEL,PRD-FRUIT,36,2026-10-12,14,booked,2026-10-04T10:00:00+02:00

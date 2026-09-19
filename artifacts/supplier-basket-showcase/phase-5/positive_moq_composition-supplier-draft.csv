@@ -1,0 +1,3 @@
+supplier_id,supplier_name,product_id,product_name,cases,units,base_uom,unit_cost_eur,line_value_eur,expected_arrival,decision_hash,synthetic_case_study
+SUP-A,Alder Fine Foods,PRD-001,Tomato Soup,8,96,tin,4.00,384.00,2026-09-22,beda8bd6db28a92cb0d371eacb4b2a9b148d44123740809e9874756ab65b28f7,true
+SUP-A,Alder Fine Foods,PRD-002,Oat Crackers,2,24,pack,5.00,120.00,2026-09-22,beda8bd6db28a92cb0d371eacb4b2a9b148d44123740809e9874756ab65b28f7,true

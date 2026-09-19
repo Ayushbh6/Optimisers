@@ -1,0 +1,2941 @@
+{
+  "actions": [
+    {
+      "action": "cancel",
+      "current_cases": 4,
+      "product_id": "PRD-OAT",
+      "product_name": "Oat Crackers",
+      "selected_cases": 0
+    },
+    {
+      "action": "order_now",
+      "current_cases": 0,
+      "product_id": "PRD-SOUP",
+      "product_name": "Soup Cups",
+      "selected_cases": 2
+    }
+  ],
+  "at_risk_lots": [
+    {
+      "date": "2026-10-26",
+      "lot_id": "OAT-L17",
+      "product_id": "PRD-OAT",
+      "product_name": "Oat Crackers",
+      "quantity_units": 24
+    }
+  ],
+  "case_id": "balanced_action",
+  "claim_boundary": "Synthetic example. Projected outcomes are not realised savings or guaranteed waste prevention.",
+  "comparison": {
+    "booked_change_units": 24,
+    "cash_change_eur": "-24.00",
+    "ending_stock_change_eur": "0.00",
+    "expiry_change_units": -48
+  },
+  "current": {
+    "cash_eur": "82.00",
+    "delivery_charge_eur": "10.00",
+    "lines": [
+      {
+        "arrival_date": "2026-10-09",
+        "case_size": 12,
+        "cases": 4,
+        "change_cutoff": "2026-10-06",
+        "expiry_date": "2026-10-25",
+        "line_id": "PO-2001",
+        "line_value_eur": "72.00",
+        "product_id": "PRD-OAT",
+        "product_name": "Oat Crackers",
+        "quantity_units": 48,
+        "unit_cost_eur": "1.50"
+      }
+    ],
+    "merchandise_eur": "72.00",
+    "plan_id": "CURRENT",
+    "views": [
+      {
+        "accounting_errors": [],
+        "booked_on_time_units": 36,
+        "booked_units": 60,
+        "daily_ledger": [
+          {
+            "closing_stock_eur": "114.00",
+            "closing_stock_units": 72,
+            "date": "2026-10-05",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "114.00",
+            "closing_stock_units": 72,
+            "date": "2026-10-06",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "90.00",
+            "closing_stock_units": 60,
+            "date": "2026-10-07",
+            "dispatched_units": 12,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "90.00",
+            "closing_stock_units": 60,
+            "date": "2026-10-08",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "162.00",
+            "closing_stock_units": 108,
+            "date": "2026-10-09",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 48
+          },
+          {
+            "closing_stock_eur": "144.00",
+            "closing_stock_units": 96,
+            "date": "2026-10-10",
+            "dispatched_units": 12,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "144.00",
+            "closing_stock_units": 96,
+            "date": "2026-10-11",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "144.00",
+            "closing_stock_units": 96,
+            "date": "2026-10-12",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "144.00",
+            "closing_stock_units": 96,
+            "date": "2026-10-13",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "144.00",
+            "closing_stock_units": 96,
+            "date": "2026-10-14",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "144.00",
+            "closing_stock_units": 96,
+            "date": "2026-10-15",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "144.00",
+            "closing_stock_units": 96,
+            "date": "2026-10-16",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "144.00",
+            "closing_stock_units": 96,
+            "date": "2026-10-17",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "144.00",
+            "closing_stock_units": 96,
+            "date": "2026-10-18",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "144.00",
+            "closing_stock_units": 96,
+            "date": "2026-10-19",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "126.00",
+            "closing_stock_units": 84,
+            "date": "2026-10-20",
+            "dispatched_units": 12,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "126.00",
+            "closing_stock_units": 84,
+            "date": "2026-10-21",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "126.00",
+            "closing_stock_units": 84,
+            "date": "2026-10-22",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "126.00",
+            "closing_stock_units": 84,
+            "date": "2026-10-23",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "126.00",
+            "closing_stock_units": 84,
+            "date": "2026-10-24",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "126.00",
+            "closing_stock_units": 84,
+            "date": "2026-10-25",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-10-26",
+            "dispatched_units": 0,
+            "expired_lots": [
+              {
+                "lot_id": "OAT-L17",
+                "product_id": "PRD-OAT",
+                "quantity_units": 36
+              },
+              {
+                "lot_id": "PO-2001-LOT",
+                "product_id": "PRD-OAT",
+                "quantity_units": 48
+              }
+            ],
+            "expired_units": 84,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-10-27",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-10-28",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-10-29",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-10-30",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-10-31",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-11-01",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          }
+        ],
+        "ending_stock_eur": "0.00",
+        "ending_stock_units": 0,
+        "expired_cost_eur": "126.00",
+        "expired_units": 84,
+        "projected_fulfilled_units": 0,
+        "projected_units": 0,
+        "run_outs": [
+          {
+            "date": "2026-10-13",
+            "event_id": "SO-1002",
+            "kind": "booked",
+            "missing_units": 12,
+            "product_id": "PRD-SOUP"
+          },
+          {
+            "date": "2026-10-15",
+            "event_id": "SO-1003",
+            "kind": "booked",
+            "missing_units": 12,
+            "product_id": "PRD-SOUP"
+          }
+        ],
+        "view_id": "lower"
+      },
+      {
+        "accounting_errors": [],
+        "booked_on_time_units": 36,
+        "booked_units": 60,
+        "daily_ledger": [
+          {
+            "closing_stock_eur": "114.00",
+            "closing_stock_units": 72,
+            "date": "2026-10-05",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "114.00",
+            "closing_stock_units": 72,
+            "date": "2026-10-06",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "90.00",
+            "closing_stock_units": 60,
+            "date": "2026-10-07",
+            "dispatched_units": 12,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "90.00",
+            "closing_stock_units": 60,
+            "date": "2026-10-08",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "162.00",
+            "closing_stock_units": 108,
+            "date": "2026-10-09",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 48
+          },
+          {
+            "closing_stock_eur": "144.00",
+            "closing_stock_units": 96,
+            "date": "2026-10-10",
+            "dispatched_units": 12,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "144.00",
+            "closing_stock_units": 96,
+            "date": "2026-10-11",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "144.00",
+            "closing_stock_units": 96,
+            "date": "2026-10-12",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "144.00",
+            "closing_stock_units": 96,
+            "date": "2026-10-13",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "144.00",
+            "closing_stock_units": 96,
+            "date": "2026-10-14",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "144.00",
+            "closing_stock_units": 96,
+            "date": "2026-10-15",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "144.00",
+            "closing_stock_units": 96,
+            "date": "2026-10-16",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "135.00",
+            "closing_stock_units": 90,
+            "date": "2026-10-17",
+            "dispatched_units": 6,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "135.00",
+            "closing_stock_units": 90,
+            "date": "2026-10-18",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "135.00",
+            "closing_stock_units": 90,
+            "date": "2026-10-19",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "117.00",
+            "closing_stock_units": 78,
+            "date": "2026-10-20",
+            "dispatched_units": 12,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "117.00",
+            "closing_stock_units": 78,
+            "date": "2026-10-21",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "117.00",
+            "closing_stock_units": 78,
+            "date": "2026-10-22",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "117.00",
+            "closing_stock_units": 78,
+            "date": "2026-10-23",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "117.00",
+            "closing_stock_units": 78,
+            "date": "2026-10-24",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "117.00",
+            "closing_stock_units": 78,
+            "date": "2026-10-25",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-10-26",
+            "dispatched_units": 0,
+            "expired_lots": [
+              {
+                "lot_id": "OAT-L17",
+                "product_id": "PRD-OAT",
+                "quantity_units": 30
+              },
+              {
+                "lot_id": "PO-2001-LOT",
+                "product_id": "PRD-OAT",
+                "quantity_units": 48
+              }
+            ],
+            "expired_units": 78,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-10-27",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-10-28",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-10-29",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-10-30",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-10-31",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-11-01",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          }
+        ],
+        "ending_stock_eur": "0.00",
+        "ending_stock_units": 0,
+        "expired_cost_eur": "117.00",
+        "expired_units": 78,
+        "projected_fulfilled_units": 6,
+        "projected_units": 6,
+        "run_outs": [
+          {
+            "date": "2026-10-13",
+            "event_id": "SO-1002",
+            "kind": "booked",
+            "missing_units": 12,
+            "product_id": "PRD-SOUP"
+          },
+          {
+            "date": "2026-10-15",
+            "event_id": "SO-1003",
+            "kind": "booked",
+            "missing_units": 12,
+            "product_id": "PRD-SOUP"
+          }
+        ],
+        "view_id": "nominal"
+      },
+      {
+        "accounting_errors": [],
+        "booked_on_time_units": 36,
+        "booked_units": 60,
+        "daily_ledger": [
+          {
+            "closing_stock_eur": "114.00",
+            "closing_stock_units": 72,
+            "date": "2026-10-05",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "114.00",
+            "closing_stock_units": 72,
+            "date": "2026-10-06",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "90.00",
+            "closing_stock_units": 60,
+            "date": "2026-10-07",
+            "dispatched_units": 12,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "90.00",
+            "closing_stock_units": 60,
+            "date": "2026-10-08",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "162.00",
+            "closing_stock_units": 108,
+            "date": "2026-10-09",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 48
+          },
+          {
+            "closing_stock_eur": "144.00",
+            "closing_stock_units": 96,
+            "date": "2026-10-10",
+            "dispatched_units": 12,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "144.00",
+            "closing_stock_units": 96,
+            "date": "2026-10-11",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "144.00",
+            "closing_stock_units": 96,
+            "date": "2026-10-12",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "144.00",
+            "closing_stock_units": 96,
+            "date": "2026-10-13",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "144.00",
+            "closing_stock_units": 96,
+            "date": "2026-10-14",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "144.00",
+            "closing_stock_units": 96,
+            "date": "2026-10-15",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "144.00",
+            "closing_stock_units": 96,
+            "date": "2026-10-16",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "126.00",
+            "closing_stock_units": 84,
+            "date": "2026-10-17",
+            "dispatched_units": 12,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "126.00",
+            "closing_stock_units": 84,
+            "date": "2026-10-18",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "126.00",
+            "closing_stock_units": 84,
+            "date": "2026-10-19",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "108.00",
+            "closing_stock_units": 72,
+            "date": "2026-10-20",
+            "dispatched_units": 12,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "108.00",
+            "closing_stock_units": 72,
+            "date": "2026-10-21",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "108.00",
+            "closing_stock_units": 72,
+            "date": "2026-10-22",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "108.00",
+            "closing_stock_units": 72,
+            "date": "2026-10-23",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "108.00",
+            "closing_stock_units": 72,
+            "date": "2026-10-24",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "108.00",
+            "closing_stock_units": 72,
+            "date": "2026-10-25",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-10-26",
+            "dispatched_units": 0,
+            "expired_lots": [
+              {
+                "lot_id": "OAT-L17",
+                "product_id": "PRD-OAT",
+                "quantity_units": 24
+              },
+              {
+                "lot_id": "PO-2001-LOT",
+                "product_id": "PRD-OAT",
+                "quantity_units": 48
+              }
+            ],
+            "expired_units": 72,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-10-27",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-10-28",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-10-29",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-10-30",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-10-31",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-11-01",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          }
+        ],
+        "ending_stock_eur": "0.00",
+        "ending_stock_units": 0,
+        "expired_cost_eur": "108.00",
+        "expired_units": 72,
+        "projected_fulfilled_units": 12,
+        "projected_units": 12,
+        "run_outs": [
+          {
+            "date": "2026-10-13",
+            "event_id": "SO-1002",
+            "kind": "booked",
+            "missing_units": 12,
+            "product_id": "PRD-SOUP"
+          },
+          {
+            "date": "2026-10-15",
+            "event_id": "SO-1003",
+            "kind": "booked",
+            "missing_units": 12,
+            "product_id": "PRD-SOUP"
+          }
+        ],
+        "view_id": "higher"
+      },
+      {
+        "accounting_errors": [],
+        "booked_on_time_units": 36,
+        "booked_units": 60,
+        "daily_ledger": [
+          {
+            "closing_stock_eur": "114.00",
+            "closing_stock_units": 72,
+            "date": "2026-10-05",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "114.00",
+            "closing_stock_units": 72,
+            "date": "2026-10-06",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "90.00",
+            "closing_stock_units": 60,
+            "date": "2026-10-07",
+            "dispatched_units": 12,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "72.00",
+            "closing_stock_units": 48,
+            "date": "2026-10-08",
+            "dispatched_units": 12,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "144.00",
+            "closing_stock_units": 96,
+            "date": "2026-10-09",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 48
+          },
+          {
+            "closing_stock_eur": "126.00",
+            "closing_stock_units": 84,
+            "date": "2026-10-10",
+            "dispatched_units": 12,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "126.00",
+            "closing_stock_units": 84,
+            "date": "2026-10-11",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "126.00",
+            "closing_stock_units": 84,
+            "date": "2026-10-12",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "126.00",
+            "closing_stock_units": 84,
+            "date": "2026-10-13",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "126.00",
+            "closing_stock_units": 84,
+            "date": "2026-10-14",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "126.00",
+            "closing_stock_units": 84,
+            "date": "2026-10-15",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "126.00",
+            "closing_stock_units": 84,
+            "date": "2026-10-16",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "126.00",
+            "closing_stock_units": 84,
+            "date": "2026-10-17",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "126.00",
+            "closing_stock_units": 84,
+            "date": "2026-10-18",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "126.00",
+            "closing_stock_units": 84,
+            "date": "2026-10-19",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "108.00",
+            "closing_stock_units": 72,
+            "date": "2026-10-20",
+            "dispatched_units": 12,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "108.00",
+            "closing_stock_units": 72,
+            "date": "2026-10-21",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "108.00",
+            "closing_stock_units": 72,
+            "date": "2026-10-22",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "108.00",
+            "closing_stock_units": 72,
+            "date": "2026-10-23",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "108.00",
+            "closing_stock_units": 72,
+            "date": "2026-10-24",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "108.00",
+            "closing_stock_units": 72,
+            "date": "2026-10-25",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-10-26",
+            "dispatched_units": 0,
+            "expired_lots": [
+              {
+                "lot_id": "OAT-L17",
+                "product_id": "PRD-OAT",
+                "quantity_units": 24
+              },
+              {
+                "lot_id": "PO-2001-LOT",
+                "product_id": "PRD-OAT",
+                "quantity_units": 48
+              }
+            ],
+            "expired_units": 72,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-10-27",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-10-28",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-10-29",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-10-30",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-10-31",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-11-01",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          }
+        ],
+        "ending_stock_eur": "0.00",
+        "ending_stock_units": 0,
+        "expired_cost_eur": "108.00",
+        "expired_units": 72,
+        "projected_fulfilled_units": 12,
+        "projected_units": 12,
+        "run_outs": [
+          {
+            "date": "2026-10-13",
+            "event_id": "SO-1002",
+            "kind": "booked",
+            "missing_units": 12,
+            "product_id": "PRD-SOUP"
+          },
+          {
+            "date": "2026-10-15",
+            "event_id": "SO-1003",
+            "kind": "booked",
+            "missing_units": 12,
+            "product_id": "PRD-SOUP"
+          }
+        ],
+        "view_id": "irregular"
+      }
+    ]
+  },
+  "decision_hash": "d35136aa3ca286e2a594cb4aeab6cb887f560a34049f7ddc2fa5225946f0f99a",
+  "input_hash": "cde7f20228ddb2e0f6b9ce7b17f8cf344bb8422c48ef01e5c1b8bf5370a76e0a",
+  "rejected": [
+    {
+      "cash_eur": "0.00",
+      "lines": [
+        {
+          "arrival_date": "2026-10-09",
+          "case_size": 12,
+          "cases": 0,
+          "change_cutoff": "2026-10-06",
+          "expiry_date": "2026-10-25",
+          "line_id": "PO-2001",
+          "line_value_eur": "0.00",
+          "product_id": "PRD-OAT",
+          "product_name": "Oat Crackers",
+          "quantity_units": 0,
+          "unit_cost_eur": "1.50"
+        },
+        {
+          "arrival_date": "2026-10-09",
+          "case_size": 12,
+          "cases": 0,
+          "change_cutoff": "2026-10-05",
+          "expiry_date": "2026-12-31",
+          "line_id": "NEW-PRD-SOUP",
+          "line_value_eur": "0.00",
+          "product_id": "PRD-SOUP",
+          "product_name": "Soup Cups",
+          "quantity_units": 0,
+          "unit_cost_eur": "2.00"
+        }
+      ],
+      "plan_id": "PLAN-01",
+      "reasons": [
+        "lower: booked deliveries fall short by 24 units",
+        "nominal: booked deliveries fall short by 24 units",
+        "higher: booked deliveries fall short by 24 units",
+        "irregular: booked deliveries fall short by 24 units"
+      ]
+    },
+    {
+      "cash_eur": "34.00",
+      "lines": [
+        {
+          "arrival_date": "2026-10-09",
+          "case_size": 12,
+          "cases": 0,
+          "change_cutoff": "2026-10-06",
+          "expiry_date": "2026-10-25",
+          "line_id": "PO-2001",
+          "line_value_eur": "0.00",
+          "product_id": "PRD-OAT",
+          "product_name": "Oat Crackers",
+          "quantity_units": 0,
+          "unit_cost_eur": "1.50"
+        },
+        {
+          "arrival_date": "2026-10-09",
+          "case_size": 12,
+          "cases": 1,
+          "change_cutoff": "2026-10-05",
+          "expiry_date": "2026-12-31",
+          "line_id": "NEW-PRD-SOUP",
+          "line_value_eur": "24.00",
+          "product_id": "PRD-SOUP",
+          "product_name": "Soup Cups",
+          "quantity_units": 12,
+          "unit_cost_eur": "2.00"
+        }
+      ],
+      "plan_id": "PLAN-02",
+      "reasons": [
+        "lower: booked deliveries fall short by 12 units",
+        "nominal: booked deliveries fall short by 12 units",
+        "higher: booked deliveries fall short by 12 units",
+        "irregular: booked deliveries fall short by 12 units"
+      ]
+    },
+    {
+      "cash_eur": "82.00",
+      "lines": [
+        {
+          "arrival_date": "2026-10-09",
+          "case_size": 12,
+          "cases": 0,
+          "change_cutoff": "2026-10-06",
+          "expiry_date": "2026-10-25",
+          "line_id": "PO-2001",
+          "line_value_eur": "0.00",
+          "product_id": "PRD-OAT",
+          "product_name": "Oat Crackers",
+          "quantity_units": 0,
+          "unit_cost_eur": "1.50"
+        },
+        {
+          "arrival_date": "2026-10-09",
+          "case_size": 12,
+          "cases": 3,
+          "change_cutoff": "2026-10-05",
+          "expiry_date": "2026-12-31",
+          "line_id": "NEW-PRD-SOUP",
+          "line_value_eur": "72.00",
+          "product_id": "PRD-SOUP",
+          "product_name": "Soup Cups",
+          "quantity_units": 36,
+          "unit_cost_eur": "2.00"
+        }
+      ],
+      "plan_id": "PLAN-04",
+      "reasons": [
+        "lower: ending stock increases",
+        "nominal: ending stock increases",
+        "higher: ending stock increases",
+        "irregular: ending stock increases"
+      ]
+    },
+    {
+      "cash_eur": "28.00",
+      "lines": [
+        {
+          "arrival_date": "2026-10-09",
+          "case_size": 12,
+          "cases": 1,
+          "change_cutoff": "2026-10-06",
+          "expiry_date": "2026-10-25",
+          "line_id": "PO-2001",
+          "line_value_eur": "18.00",
+          "product_id": "PRD-OAT",
+          "product_name": "Oat Crackers",
+          "quantity_units": 12,
+          "unit_cost_eur": "1.50"
+        },
+        {
+          "arrival_date": "2026-10-09",
+          "case_size": 12,
+          "cases": 0,
+          "change_cutoff": "2026-10-05",
+          "expiry_date": "2026-12-31",
+          "line_id": "NEW-PRD-SOUP",
+          "line_value_eur": "0.00",
+          "product_id": "PRD-SOUP",
+          "product_name": "Soup Cups",
+          "quantity_units": 0,
+          "unit_cost_eur": "2.00"
+        }
+      ],
+      "plan_id": "PLAN-05",
+      "reasons": [
+        "lower: booked deliveries fall short by 24 units",
+        "nominal: booked deliveries fall short by 24 units",
+        "higher: booked deliveries fall short by 24 units",
+        "irregular: booked deliveries fall short by 24 units"
+      ]
+    },
+    {
+      "cash_eur": "52.00",
+      "lines": [
+        {
+          "arrival_date": "2026-10-09",
+          "case_size": 12,
+          "cases": 1,
+          "change_cutoff": "2026-10-06",
+          "expiry_date": "2026-10-25",
+          "line_id": "PO-2001",
+          "line_value_eur": "18.00",
+          "product_id": "PRD-OAT",
+          "product_name": "Oat Crackers",
+          "quantity_units": 12,
+          "unit_cost_eur": "1.50"
+        },
+        {
+          "arrival_date": "2026-10-09",
+          "case_size": 12,
+          "cases": 1,
+          "change_cutoff": "2026-10-05",
+          "expiry_date": "2026-12-31",
+          "line_id": "NEW-PRD-SOUP",
+          "line_value_eur": "24.00",
+          "product_id": "PRD-SOUP",
+          "product_name": "Soup Cups",
+          "quantity_units": 12,
+          "unit_cost_eur": "2.00"
+        }
+      ],
+      "plan_id": "PLAN-06",
+      "reasons": [
+        "lower: booked deliveries fall short by 12 units",
+        "nominal: booked deliveries fall short by 12 units",
+        "higher: booked deliveries fall short by 12 units",
+        "irregular: booked deliveries fall short by 12 units"
+      ]
+    },
+    {
+      "cash_eur": "100.00",
+      "lines": [
+        {
+          "arrival_date": "2026-10-09",
+          "case_size": 12,
+          "cases": 1,
+          "change_cutoff": "2026-10-06",
+          "expiry_date": "2026-10-25",
+          "line_id": "PO-2001",
+          "line_value_eur": "18.00",
+          "product_id": "PRD-OAT",
+          "product_name": "Oat Crackers",
+          "quantity_units": 12,
+          "unit_cost_eur": "1.50"
+        },
+        {
+          "arrival_date": "2026-10-09",
+          "case_size": 12,
+          "cases": 3,
+          "change_cutoff": "2026-10-05",
+          "expiry_date": "2026-12-31",
+          "line_id": "NEW-PRD-SOUP",
+          "line_value_eur": "72.00",
+          "product_id": "PRD-SOUP",
+          "product_name": "Soup Cups",
+          "quantity_units": 36,
+          "unit_cost_eur": "2.00"
+        }
+      ],
+      "plan_id": "PLAN-08",
+      "reasons": [
+        "lower: ending stock increases",
+        "nominal: ending stock increases",
+        "higher: ending stock increases",
+        "irregular: ending stock increases"
+      ]
+    },
+    {
+      "cash_eur": "46.00",
+      "lines": [
+        {
+          "arrival_date": "2026-10-09",
+          "case_size": 12,
+          "cases": 2,
+          "change_cutoff": "2026-10-06",
+          "expiry_date": "2026-10-25",
+          "line_id": "PO-2001",
+          "line_value_eur": "36.00",
+          "product_id": "PRD-OAT",
+          "product_name": "Oat Crackers",
+          "quantity_units": 24,
+          "unit_cost_eur": "1.50"
+        },
+        {
+          "arrival_date": "2026-10-09",
+          "case_size": 12,
+          "cases": 0,
+          "change_cutoff": "2026-10-05",
+          "expiry_date": "2026-12-31",
+          "line_id": "NEW-PRD-SOUP",
+          "line_value_eur": "0.00",
+          "product_id": "PRD-SOUP",
+          "product_name": "Soup Cups",
+          "quantity_units": 0,
+          "unit_cost_eur": "2.00"
+        }
+      ],
+      "plan_id": "PLAN-09",
+      "reasons": [
+        "lower: booked deliveries fall short by 24 units",
+        "nominal: booked deliveries fall short by 24 units",
+        "higher: booked deliveries fall short by 24 units",
+        "irregular: booked deliveries fall short by 24 units"
+      ]
+    },
+    {
+      "cash_eur": "70.00",
+      "lines": [
+        {
+          "arrival_date": "2026-10-09",
+          "case_size": 12,
+          "cases": 2,
+          "change_cutoff": "2026-10-06",
+          "expiry_date": "2026-10-25",
+          "line_id": "PO-2001",
+          "line_value_eur": "36.00",
+          "product_id": "PRD-OAT",
+          "product_name": "Oat Crackers",
+          "quantity_units": 24,
+          "unit_cost_eur": "1.50"
+        },
+        {
+          "arrival_date": "2026-10-09",
+          "case_size": 12,
+          "cases": 1,
+          "change_cutoff": "2026-10-05",
+          "expiry_date": "2026-12-31",
+          "line_id": "NEW-PRD-SOUP",
+          "line_value_eur": "24.00",
+          "product_id": "PRD-SOUP",
+          "product_name": "Soup Cups",
+          "quantity_units": 12,
+          "unit_cost_eur": "2.00"
+        }
+      ],
+      "plan_id": "PLAN-10",
+      "reasons": [
+        "lower: booked deliveries fall short by 12 units",
+        "nominal: booked deliveries fall short by 12 units",
+        "higher: booked deliveries fall short by 12 units",
+        "irregular: booked deliveries fall short by 12 units"
+      ]
+    },
+    {
+      "cash_eur": "118.00",
+      "lines": [
+        {
+          "arrival_date": "2026-10-09",
+          "case_size": 12,
+          "cases": 2,
+          "change_cutoff": "2026-10-06",
+          "expiry_date": "2026-10-25",
+          "line_id": "PO-2001",
+          "line_value_eur": "36.00",
+          "product_id": "PRD-OAT",
+          "product_name": "Oat Crackers",
+          "quantity_units": 24,
+          "unit_cost_eur": "1.50"
+        },
+        {
+          "arrival_date": "2026-10-09",
+          "case_size": 12,
+          "cases": 3,
+          "change_cutoff": "2026-10-05",
+          "expiry_date": "2026-12-31",
+          "line_id": "NEW-PRD-SOUP",
+          "line_value_eur": "72.00",
+          "product_id": "PRD-SOUP",
+          "product_name": "Soup Cups",
+          "quantity_units": 36,
+          "unit_cost_eur": "2.00"
+        }
+      ],
+      "plan_id": "PLAN-12",
+      "reasons": [
+        "lower: ending stock increases",
+        "nominal: ending stock increases",
+        "higher: ending stock increases",
+        "irregular: ending stock increases"
+      ]
+    },
+    {
+      "cash_eur": "64.00",
+      "lines": [
+        {
+          "arrival_date": "2026-10-09",
+          "case_size": 12,
+          "cases": 3,
+          "change_cutoff": "2026-10-06",
+          "expiry_date": "2026-10-25",
+          "line_id": "PO-2001",
+          "line_value_eur": "54.00",
+          "product_id": "PRD-OAT",
+          "product_name": "Oat Crackers",
+          "quantity_units": 36,
+          "unit_cost_eur": "1.50"
+        },
+        {
+          "arrival_date": "2026-10-09",
+          "case_size": 12,
+          "cases": 0,
+          "change_cutoff": "2026-10-05",
+          "expiry_date": "2026-12-31",
+          "line_id": "NEW-PRD-SOUP",
+          "line_value_eur": "0.00",
+          "product_id": "PRD-SOUP",
+          "product_name": "Soup Cups",
+          "quantity_units": 0,
+          "unit_cost_eur": "2.00"
+        }
+      ],
+      "plan_id": "PLAN-13",
+      "reasons": [
+        "lower: booked deliveries fall short by 24 units",
+        "nominal: booked deliveries fall short by 24 units",
+        "higher: booked deliveries fall short by 24 units",
+        "irregular: booked deliveries fall short by 24 units"
+      ]
+    },
+    {
+      "cash_eur": "88.00",
+      "lines": [
+        {
+          "arrival_date": "2026-10-09",
+          "case_size": 12,
+          "cases": 3,
+          "change_cutoff": "2026-10-06",
+          "expiry_date": "2026-10-25",
+          "line_id": "PO-2001",
+          "line_value_eur": "54.00",
+          "product_id": "PRD-OAT",
+          "product_name": "Oat Crackers",
+          "quantity_units": 36,
+          "unit_cost_eur": "1.50"
+        },
+        {
+          "arrival_date": "2026-10-09",
+          "case_size": 12,
+          "cases": 1,
+          "change_cutoff": "2026-10-05",
+          "expiry_date": "2026-12-31",
+          "line_id": "NEW-PRD-SOUP",
+          "line_value_eur": "24.00",
+          "product_id": "PRD-SOUP",
+          "product_name": "Soup Cups",
+          "quantity_units": 12,
+          "unit_cost_eur": "2.00"
+        }
+      ],
+      "plan_id": "PLAN-14",
+      "reasons": [
+        "lower: booked deliveries fall short by 12 units",
+        "nominal: booked deliveries fall short by 12 units",
+        "higher: booked deliveries fall short by 12 units",
+        "irregular: booked deliveries fall short by 12 units"
+      ]
+    },
+    {
+      "cash_eur": "136.00",
+      "lines": [
+        {
+          "arrival_date": "2026-10-09",
+          "case_size": 12,
+          "cases": 3,
+          "change_cutoff": "2026-10-06",
+          "expiry_date": "2026-10-25",
+          "line_id": "PO-2001",
+          "line_value_eur": "54.00",
+          "product_id": "PRD-OAT",
+          "product_name": "Oat Crackers",
+          "quantity_units": 36,
+          "unit_cost_eur": "1.50"
+        },
+        {
+          "arrival_date": "2026-10-09",
+          "case_size": 12,
+          "cases": 3,
+          "change_cutoff": "2026-10-05",
+          "expiry_date": "2026-12-31",
+          "line_id": "NEW-PRD-SOUP",
+          "line_value_eur": "72.00",
+          "product_id": "PRD-SOUP",
+          "product_name": "Soup Cups",
+          "quantity_units": 36,
+          "unit_cost_eur": "2.00"
+        }
+      ],
+      "plan_id": "PLAN-16",
+      "reasons": [
+        "lower: ending stock increases",
+        "nominal: ending stock increases",
+        "higher: ending stock increases",
+        "irregular: ending stock increases"
+      ]
+    },
+    {
+      "cash_eur": "82.00",
+      "lines": [
+        {
+          "arrival_date": "2026-10-09",
+          "case_size": 12,
+          "cases": 4,
+          "change_cutoff": "2026-10-06",
+          "expiry_date": "2026-10-25",
+          "line_id": "PO-2001",
+          "line_value_eur": "72.00",
+          "product_id": "PRD-OAT",
+          "product_name": "Oat Crackers",
+          "quantity_units": 48,
+          "unit_cost_eur": "1.50"
+        },
+        {
+          "arrival_date": "2026-10-09",
+          "case_size": 12,
+          "cases": 0,
+          "change_cutoff": "2026-10-05",
+          "expiry_date": "2026-12-31",
+          "line_id": "NEW-PRD-SOUP",
+          "line_value_eur": "0.00",
+          "product_id": "PRD-SOUP",
+          "product_name": "Soup Cups",
+          "quantity_units": 0,
+          "unit_cost_eur": "2.00"
+        }
+      ],
+      "plan_id": "PLAN-17",
+      "reasons": [
+        "lower: booked deliveries fall short by 24 units",
+        "nominal: booked deliveries fall short by 24 units",
+        "higher: booked deliveries fall short by 24 units",
+        "irregular: booked deliveries fall short by 24 units"
+      ]
+    },
+    {
+      "cash_eur": "106.00",
+      "lines": [
+        {
+          "arrival_date": "2026-10-09",
+          "case_size": 12,
+          "cases": 4,
+          "change_cutoff": "2026-10-06",
+          "expiry_date": "2026-10-25",
+          "line_id": "PO-2001",
+          "line_value_eur": "72.00",
+          "product_id": "PRD-OAT",
+          "product_name": "Oat Crackers",
+          "quantity_units": 48,
+          "unit_cost_eur": "1.50"
+        },
+        {
+          "arrival_date": "2026-10-09",
+          "case_size": 12,
+          "cases": 1,
+          "change_cutoff": "2026-10-05",
+          "expiry_date": "2026-12-31",
+          "line_id": "NEW-PRD-SOUP",
+          "line_value_eur": "24.00",
+          "product_id": "PRD-SOUP",
+          "product_name": "Soup Cups",
+          "quantity_units": 12,
+          "unit_cost_eur": "2.00"
+        }
+      ],
+      "plan_id": "PLAN-18",
+      "reasons": [
+        "lower: booked deliveries fall short by 12 units",
+        "nominal: booked deliveries fall short by 12 units",
+        "higher: booked deliveries fall short by 12 units",
+        "irregular: booked deliveries fall short by 12 units"
+      ]
+    },
+    {
+      "cash_eur": "154.00",
+      "lines": [
+        {
+          "arrival_date": "2026-10-09",
+          "case_size": 12,
+          "cases": 4,
+          "change_cutoff": "2026-10-06",
+          "expiry_date": "2026-10-25",
+          "line_id": "PO-2001",
+          "line_value_eur": "72.00",
+          "product_id": "PRD-OAT",
+          "product_name": "Oat Crackers",
+          "quantity_units": 48,
+          "unit_cost_eur": "1.50"
+        },
+        {
+          "arrival_date": "2026-10-09",
+          "case_size": 12,
+          "cases": 3,
+          "change_cutoff": "2026-10-05",
+          "expiry_date": "2026-12-31",
+          "line_id": "NEW-PRD-SOUP",
+          "line_value_eur": "72.00",
+          "product_id": "PRD-SOUP",
+          "product_name": "Soup Cups",
+          "quantity_units": 36,
+          "unit_cost_eur": "2.00"
+        }
+      ],
+      "plan_id": "PLAN-20",
+      "reasons": [
+        "lower: ending stock increases",
+        "nominal: ending stock increases",
+        "higher: ending stock increases",
+        "irregular: ending stock increases"
+      ]
+    }
+  ],
+  "search_report": {
+    "elapsed_ms": 11.163,
+    "generated_candidates": 20,
+    "maximum_candidates": 25,
+    "physically_replayed": 20,
+    "preflight_rejected": 0,
+    "survivors": 5
+  },
+  "selected": {
+    "cash_eur": "58.00",
+    "delivery_charge_eur": "10.00",
+    "lines": [
+      {
+        "arrival_date": "2026-10-09",
+        "case_size": 12,
+        "cases": 0,
+        "change_cutoff": "2026-10-06",
+        "expiry_date": "2026-10-25",
+        "line_id": "PO-2001",
+        "line_value_eur": "0.00",
+        "product_id": "PRD-OAT",
+        "product_name": "Oat Crackers",
+        "quantity_units": 0,
+        "unit_cost_eur": "1.50"
+      },
+      {
+        "arrival_date": "2026-10-09",
+        "case_size": 12,
+        "cases": 2,
+        "change_cutoff": "2026-10-05",
+        "expiry_date": "2026-12-31",
+        "line_id": "NEW-PRD-SOUP",
+        "line_value_eur": "48.00",
+        "product_id": "PRD-SOUP",
+        "product_name": "Soup Cups",
+        "quantity_units": 24,
+        "unit_cost_eur": "2.00"
+      }
+    ],
+    "merchandise_eur": "48.00",
+    "plan_id": "PLAN-03",
+    "views": [
+      {
+        "accounting_errors": [],
+        "booked_on_time_units": 60,
+        "booked_units": 60,
+        "daily_ledger": [
+          {
+            "closing_stock_eur": "114.00",
+            "closing_stock_units": 72,
+            "date": "2026-10-05",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "114.00",
+            "closing_stock_units": 72,
+            "date": "2026-10-06",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "90.00",
+            "closing_stock_units": 60,
+            "date": "2026-10-07",
+            "dispatched_units": 12,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "90.00",
+            "closing_stock_units": 60,
+            "date": "2026-10-08",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "138.00",
+            "closing_stock_units": 84,
+            "date": "2026-10-09",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 24
+          },
+          {
+            "closing_stock_eur": "120.00",
+            "closing_stock_units": 72,
+            "date": "2026-10-10",
+            "dispatched_units": 12,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "120.00",
+            "closing_stock_units": 72,
+            "date": "2026-10-11",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "120.00",
+            "closing_stock_units": 72,
+            "date": "2026-10-12",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "96.00",
+            "closing_stock_units": 60,
+            "date": "2026-10-13",
+            "dispatched_units": 12,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "96.00",
+            "closing_stock_units": 60,
+            "date": "2026-10-14",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "72.00",
+            "closing_stock_units": 48,
+            "date": "2026-10-15",
+            "dispatched_units": 12,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "72.00",
+            "closing_stock_units": 48,
+            "date": "2026-10-16",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "72.00",
+            "closing_stock_units": 48,
+            "date": "2026-10-17",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "72.00",
+            "closing_stock_units": 48,
+            "date": "2026-10-18",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "72.00",
+            "closing_stock_units": 48,
+            "date": "2026-10-19",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "54.00",
+            "closing_stock_units": 36,
+            "date": "2026-10-20",
+            "dispatched_units": 12,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "54.00",
+            "closing_stock_units": 36,
+            "date": "2026-10-21",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "54.00",
+            "closing_stock_units": 36,
+            "date": "2026-10-22",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "54.00",
+            "closing_stock_units": 36,
+            "date": "2026-10-23",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "54.00",
+            "closing_stock_units": 36,
+            "date": "2026-10-24",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "54.00",
+            "closing_stock_units": 36,
+            "date": "2026-10-25",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-10-26",
+            "dispatched_units": 0,
+            "expired_lots": [
+              {
+                "lot_id": "OAT-L17",
+                "product_id": "PRD-OAT",
+                "quantity_units": 36
+              }
+            ],
+            "expired_units": 36,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-10-27",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-10-28",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-10-29",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-10-30",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-10-31",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-11-01",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          }
+        ],
+        "ending_stock_eur": "0.00",
+        "ending_stock_units": 0,
+        "expired_cost_eur": "54.00",
+        "expired_units": 36,
+        "projected_fulfilled_units": 0,
+        "projected_units": 0,
+        "run_outs": [],
+        "view_id": "lower"
+      },
+      {
+        "accounting_errors": [],
+        "booked_on_time_units": 60,
+        "booked_units": 60,
+        "daily_ledger": [
+          {
+            "closing_stock_eur": "114.00",
+            "closing_stock_units": 72,
+            "date": "2026-10-05",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "114.00",
+            "closing_stock_units": 72,
+            "date": "2026-10-06",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "90.00",
+            "closing_stock_units": 60,
+            "date": "2026-10-07",
+            "dispatched_units": 12,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "90.00",
+            "closing_stock_units": 60,
+            "date": "2026-10-08",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "138.00",
+            "closing_stock_units": 84,
+            "date": "2026-10-09",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 24
+          },
+          {
+            "closing_stock_eur": "120.00",
+            "closing_stock_units": 72,
+            "date": "2026-10-10",
+            "dispatched_units": 12,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "120.00",
+            "closing_stock_units": 72,
+            "date": "2026-10-11",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "120.00",
+            "closing_stock_units": 72,
+            "date": "2026-10-12",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "96.00",
+            "closing_stock_units": 60,
+            "date": "2026-10-13",
+            "dispatched_units": 12,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "96.00",
+            "closing_stock_units": 60,
+            "date": "2026-10-14",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "72.00",
+            "closing_stock_units": 48,
+            "date": "2026-10-15",
+            "dispatched_units": 12,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "72.00",
+            "closing_stock_units": 48,
+            "date": "2026-10-16",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "63.00",
+            "closing_stock_units": 42,
+            "date": "2026-10-17",
+            "dispatched_units": 6,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "63.00",
+            "closing_stock_units": 42,
+            "date": "2026-10-18",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "63.00",
+            "closing_stock_units": 42,
+            "date": "2026-10-19",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "45.00",
+            "closing_stock_units": 30,
+            "date": "2026-10-20",
+            "dispatched_units": 12,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "45.00",
+            "closing_stock_units": 30,
+            "date": "2026-10-21",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "45.00",
+            "closing_stock_units": 30,
+            "date": "2026-10-22",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "45.00",
+            "closing_stock_units": 30,
+            "date": "2026-10-23",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "45.00",
+            "closing_stock_units": 30,
+            "date": "2026-10-24",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "45.00",
+            "closing_stock_units": 30,
+            "date": "2026-10-25",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-10-26",
+            "dispatched_units": 0,
+            "expired_lots": [
+              {
+                "lot_id": "OAT-L17",
+                "product_id": "PRD-OAT",
+                "quantity_units": 30
+              }
+            ],
+            "expired_units": 30,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-10-27",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-10-28",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-10-29",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-10-30",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-10-31",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-11-01",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          }
+        ],
+        "ending_stock_eur": "0.00",
+        "ending_stock_units": 0,
+        "expired_cost_eur": "45.00",
+        "expired_units": 30,
+        "projected_fulfilled_units": 6,
+        "projected_units": 6,
+        "run_outs": [],
+        "view_id": "nominal"
+      },
+      {
+        "accounting_errors": [],
+        "booked_on_time_units": 60,
+        "booked_units": 60,
+        "daily_ledger": [
+          {
+            "closing_stock_eur": "114.00",
+            "closing_stock_units": 72,
+            "date": "2026-10-05",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "114.00",
+            "closing_stock_units": 72,
+            "date": "2026-10-06",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "90.00",
+            "closing_stock_units": 60,
+            "date": "2026-10-07",
+            "dispatched_units": 12,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "90.00",
+            "closing_stock_units": 60,
+            "date": "2026-10-08",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "138.00",
+            "closing_stock_units": 84,
+            "date": "2026-10-09",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 24
+          },
+          {
+            "closing_stock_eur": "120.00",
+            "closing_stock_units": 72,
+            "date": "2026-10-10",
+            "dispatched_units": 12,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "120.00",
+            "closing_stock_units": 72,
+            "date": "2026-10-11",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "120.00",
+            "closing_stock_units": 72,
+            "date": "2026-10-12",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "96.00",
+            "closing_stock_units": 60,
+            "date": "2026-10-13",
+            "dispatched_units": 12,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "96.00",
+            "closing_stock_units": 60,
+            "date": "2026-10-14",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "72.00",
+            "closing_stock_units": 48,
+            "date": "2026-10-15",
+            "dispatched_units": 12,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "72.00",
+            "closing_stock_units": 48,
+            "date": "2026-10-16",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "54.00",
+            "closing_stock_units": 36,
+            "date": "2026-10-17",
+            "dispatched_units": 12,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "54.00",
+            "closing_stock_units": 36,
+            "date": "2026-10-18",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "54.00",
+            "closing_stock_units": 36,
+            "date": "2026-10-19",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "36.00",
+            "closing_stock_units": 24,
+            "date": "2026-10-20",
+            "dispatched_units": 12,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "36.00",
+            "closing_stock_units": 24,
+            "date": "2026-10-21",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "36.00",
+            "closing_stock_units": 24,
+            "date": "2026-10-22",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "36.00",
+            "closing_stock_units": 24,
+            "date": "2026-10-23",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "36.00",
+            "closing_stock_units": 24,
+            "date": "2026-10-24",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "36.00",
+            "closing_stock_units": 24,
+            "date": "2026-10-25",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-10-26",
+            "dispatched_units": 0,
+            "expired_lots": [
+              {
+                "lot_id": "OAT-L17",
+                "product_id": "PRD-OAT",
+                "quantity_units": 24
+              }
+            ],
+            "expired_units": 24,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-10-27",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-10-28",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-10-29",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-10-30",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-10-31",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-11-01",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          }
+        ],
+        "ending_stock_eur": "0.00",
+        "ending_stock_units": 0,
+        "expired_cost_eur": "36.00",
+        "expired_units": 24,
+        "projected_fulfilled_units": 12,
+        "projected_units": 12,
+        "run_outs": [],
+        "view_id": "higher"
+      },
+      {
+        "accounting_errors": [],
+        "booked_on_time_units": 60,
+        "booked_units": 60,
+        "daily_ledger": [
+          {
+            "closing_stock_eur": "114.00",
+            "closing_stock_units": 72,
+            "date": "2026-10-05",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "114.00",
+            "closing_stock_units": 72,
+            "date": "2026-10-06",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "90.00",
+            "closing_stock_units": 60,
+            "date": "2026-10-07",
+            "dispatched_units": 12,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "72.00",
+            "closing_stock_units": 48,
+            "date": "2026-10-08",
+            "dispatched_units": 12,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "120.00",
+            "closing_stock_units": 72,
+            "date": "2026-10-09",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 24
+          },
+          {
+            "closing_stock_eur": "102.00",
+            "closing_stock_units": 60,
+            "date": "2026-10-10",
+            "dispatched_units": 12,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "102.00",
+            "closing_stock_units": 60,
+            "date": "2026-10-11",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "102.00",
+            "closing_stock_units": 60,
+            "date": "2026-10-12",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "78.00",
+            "closing_stock_units": 48,
+            "date": "2026-10-13",
+            "dispatched_units": 12,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "78.00",
+            "closing_stock_units": 48,
+            "date": "2026-10-14",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "54.00",
+            "closing_stock_units": 36,
+            "date": "2026-10-15",
+            "dispatched_units": 12,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "54.00",
+            "closing_stock_units": 36,
+            "date": "2026-10-16",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "54.00",
+            "closing_stock_units": 36,
+            "date": "2026-10-17",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "54.00",
+            "closing_stock_units": 36,
+            "date": "2026-10-18",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "54.00",
+            "closing_stock_units": 36,
+            "date": "2026-10-19",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "36.00",
+            "closing_stock_units": 24,
+            "date": "2026-10-20",
+            "dispatched_units": 12,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "36.00",
+            "closing_stock_units": 24,
+            "date": "2026-10-21",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "36.00",
+            "closing_stock_units": 24,
+            "date": "2026-10-22",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "36.00",
+            "closing_stock_units": 24,
+            "date": "2026-10-23",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "36.00",
+            "closing_stock_units": 24,
+            "date": "2026-10-24",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "36.00",
+            "closing_stock_units": 24,
+            "date": "2026-10-25",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-10-26",
+            "dispatched_units": 0,
+            "expired_lots": [
+              {
+                "lot_id": "OAT-L17",
+                "product_id": "PRD-OAT",
+                "quantity_units": 24
+              }
+            ],
+            "expired_units": 24,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-10-27",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-10-28",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-10-29",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-10-30",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-10-31",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          },
+          {
+            "closing_stock_eur": "0.00",
+            "closing_stock_units": 0,
+            "date": "2026-11-01",
+            "dispatched_units": 0,
+            "expired_lots": [],
+            "expired_units": 0,
+            "received_units": 0
+          }
+        ],
+        "ending_stock_eur": "0.00",
+        "ending_stock_units": 0,
+        "expired_cost_eur": "36.00",
+        "expired_units": 24,
+        "projected_fulfilled_units": 12,
+        "projected_units": 12,
+        "run_outs": [],
+        "view_id": "irregular"
+      }
+    ]
+  },
+  "verdict": "change_plan"
+}

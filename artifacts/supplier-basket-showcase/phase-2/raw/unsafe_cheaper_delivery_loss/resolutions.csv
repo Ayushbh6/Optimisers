@@ -1,0 +1,3 @@
+resolution_id,issue_id,resolution_type,chosen_value,evidence_ref,resolved_by,resolved_at
+UNS-RES-003,ISS-003,latest_numbered_amendment,24_units,SO-UNS-002-amendment-history,system,2026-09-18T08:08:00+02:00
+UNS-RES-006,ISS-006,automatic_supplier_mapping,SUP-B,supplier-reference-registry-v1,system,2026-09-18T08:05:00+02:00

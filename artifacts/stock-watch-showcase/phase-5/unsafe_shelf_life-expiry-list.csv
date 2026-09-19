@@ -1,0 +1,2 @@
+product_id,product_name,lot_id,projected_expiry_date,projected_units,demand_view,decision_hash,synthetic_example
+PRD-FRUIT,Fruit Bars,FRUIT-L08,2026-10-21,48,higher,989114ef22ccd6225e2e1a5b8932b44c4b82343f75210d7a571019f01d253a85,true

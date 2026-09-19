@@ -1,0 +1,6 @@
+resolution_id,issue_id,resolution_type,chosen_value,evidence_ref,resolved_by,resolved_at
+POS-RES-001,ISS-001,automatic_alias_mapping,PRD-001,product-alias-registry-v1,system,2026-09-18T08:05:00+02:00
+POS-RES-002,ISS-002,buyer_confirmation,case,POS-PO-PDF-001,buyer-anna,2026-09-18T08:52:00+02:00
+POS-RES-004,ISS-004,linked_partial_receipt,24_on_hand_and_24_incoming,SUPPLIER-UPDATE-0917,system,2026-09-18T08:06:00+02:00
+POS-RES-006,ISS-006,automatic_supplier_mapping,SUP-A,supplier-reference-registry-v1,system,2026-09-18T08:05:00+02:00
+POS-RES-007,ISS-007,linked_po_receipt_reconciliation,do_not_double_count,PO-B-0910+GRN-0915-008,system,2026-09-18T08:06:00+02:00

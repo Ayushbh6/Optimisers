@@ -1,0 +1,26 @@
+{
+  "accessibility": {
+    "keyboard_focus_styles": true,
+    "reduced_motion_media_query": true,
+    "semantic_headings_and_landmarks": true,
+    "synthetic_label_visible": true
+  },
+  "flows": {
+    "console_errors_after_final_reload": 0,
+    "hard_blocker_to_no_change": "PASS",
+    "mobile_390_by_844": "PASS",
+    "positive_confirmation_to_export": "PASS",
+    "session_reset_and_deletion": "PASS",
+    "unsafe_rejection_and_buyer_retention": "PASS"
+  },
+  "phase": 6,
+  "port_3000_used": false,
+  "schema_version": "1.0",
+  "screenshots_sha256": {
+    "screenshots/redesign-mobile.png": "ad72a251194d7f08dac161d83fafb2a22c4acf27f8702e4a536fed430660adfd",
+    "screenshots/redesign-result.png": "bb99a45e3675ac7df9f4da8584c26c9c2a93a3db33cf51e596b484f1cac247e8",
+    "screenshots/redesign-start.png": "9d4ad101a6102ae1d409dc9ce4fe093fe58bff89b9699c2eeef665ea1e18f0fb"
+  },
+  "status": "PASS",
+  "url": "http://127.0.0.1:8765"
+}

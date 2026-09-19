@@ -1,0 +1,23 @@
+{
+  "name": "axis-studio-website",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "prepare:demos": "node scripts/prepare-demos.mjs",
+    "predev": "npm run prepare:demos",
+    "dev": "astro dev --host 127.0.0.1 --port 4321",
+    "prebuild": "npm run prepare:demos",
+    "build": "astro build",
+    "preview": "astro preview --host 127.0.0.1 --port 4321",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "@fontsource-variable/manrope": "^5.3.0",
+    "astro": "^7.3.3",
+    "sharp": "0.35.4"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.4",
+    "typescript": "^5.9.2"
+  }
+}

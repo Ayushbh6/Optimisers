@@ -1,0 +1,4 @@
+source_row_id,source_system,purchase_order_ref,line_ref,supplier_ref,product_ref,quantity,uom,ordered_at,expected_date,status
+UNS-PO-ROW-004,buyer_workbook,PO-B-0918-UNS,UNS-PO-004,Beacon Grocery,NGB-12,2,case,2026-09-18T08:40:00+02:00,2026-09-23,draft
+UNS-PO-ROW-005,buyer_workbook,PO-B-0918-UNS,UNS-PO-005,Beacon Grocery,OLV-6,1,case,2026-09-18T08:40:00+02:00,2026-09-23,draft
+UNS-PO-ROW-006,buyer_workbook,PO-B-0918-UNS,UNS-PO-006,Beacon Grocery,PSTA-12,1,case,2026-09-18T08:40:00+02:00,2026-09-23,draft

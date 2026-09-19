@@ -1,0 +1,3 @@
+action,product_id,product_name,current_cases,recommended_cases,arrival_date,line_value_eur,decision_hash,synthetic_example
+cancel,PRD-OAT,Oat Crackers,4,0,2026-10-09,0.00,d35136aa3ca286e2a594cb4aeab6cb887f560a34049f7ddc2fa5225946f0f99a,true
+order_now,PRD-SOUP,Soup Cups,0,2,2026-10-09,48.00,d35136aa3ca286e2a594cb4aeab6cb887f560a34049f7ddc2fa5225946f0f99a,true

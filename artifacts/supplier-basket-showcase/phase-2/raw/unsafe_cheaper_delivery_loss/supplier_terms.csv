@@ -1,0 +1,2 @@
+source_row_id,source_system,supplier_ref,supplier_name,order_weekday,lead_time_workdays,minimum_merchandise_eur,delivery_charge_eur,effective_from,effective_to
+UNS-TERM-001,purchasing_erp,Beacon Grocery,Beacon Grocery Supply,FRIDAY,3,150.00,15.00,2026-09-01,2026-12-31

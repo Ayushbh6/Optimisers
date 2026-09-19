@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "package_version": "supplier-basket-showcase-phase-2-v1",
+  "verified_at": "2026-09-18",
+  "verifier": "artifacts/supplier-basket-showcase/phase-2/verify_phase_2.py",
+  "command": "python3 -B artifacts/supplier-basket-showcase/phase-2/verify_phase_2.py",
+  "status": "PASS",
+  "counts": {
+    "raw_files": 21,
+    "source_rows": 53,
+    "accounted_rows": 53,
+    "issues": 7,
+    "cases": 3,
+    "booked_units": 204
+  },
+  "row_states": {
+    "accepted_as_supplied": 43,
+    "accepted_after_safe_normalization": 6,
+    "superseded_by_amendment": 2,
+    "accepted_after_buyer_confirmation": 1,
+    "accepted_after_authoritative_replacement": 1,
+    "blocked_unresolved": 0
+  },
+  "totals": {
+    "buyer_cash_eur": "999.20",
+    "unexplained_quantity_difference_units": 0,
+    "unexplained_cash_difference_eur": "0.00",
+    "unaccounted_source_rows": 0,
+    "duplicate_operational_contributions": 0
+  },
+  "case_results": [
+    {"case_id": "positive_moq_composition", "raw_rows": 24, "booked_units": 96, "buyer_cash_eur": "620.00", "unresolved_blockers": 0},
+    {"case_id": "unsafe_cheaper_delivery_loss", "raw_rows": 15, "booked_units": 54, "buyer_cash_eur": "213.00", "unresolved_blockers": 0},
+    {"case_id": "no_change_control", "raw_rows": 14, "booked_units": 54, "buyer_cash_eur": "166.20", "unresolved_blockers": 0}
+  ],
+  "claim_boundary": "Synthetic fixture verification only; no realised client saving or general performance claim."
+}

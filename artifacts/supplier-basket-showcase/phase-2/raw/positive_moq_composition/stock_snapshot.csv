@@ -1,0 +1,3 @@
+source_row_id,source_system,snapshot_at,product_ref,lot_ref,quantity,uom,expiry_date
+POS-STK-001,warehouse_erp,2026-09-18T08:00:00+02:00,Tom Soup 12x400g,LOT-POS-001,12,tin,2026-12-31
+POS-STK-008,warehouse_erp,2026-09-18T08:00:00+02:00,TEA-BRKFST,LOT-POS-008-A,24,box,2027-02-28

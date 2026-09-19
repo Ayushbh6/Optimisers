@@ -1,0 +1,16 @@
+---
+import Shell from '../layouts/Shell.astro';
+import {projects} from '../content/studio';
+---
+<Shell title="Selected work" section="Work">
+  <section class="page work-page" aria-labelledby="work-title">
+    <div class="page-heading"><div><p class="eyebrow">01 / Selected work</p><h1 id="work-title">Ideas, made useful.</h1></div><p class="intro-copy">Two working explorations of a practical question:<br />how can we make better inventory decisions?</p></div>
+    <div class="projects">{projects.map(project => <article class="project">
+      <a class="project-image" href={project.href} data-astro-reload aria-label={`Open ${project.name} demo`}><img src={project.image} alt={project.alt} width="1200" height="800" /><span class="image-cta" aria-hidden="true">Open demo →</span></a>
+      <div class="project-label"><span>{project.number} / {project.tag}</span><span>Synthetic case study</span></div>
+      <h2>{project.name}</h2><p class="project-question">{project.question}</p><p class="project-description">{project.description}</p>
+      <a class="text-link" href={project.href} data-astro-reload>Try the demo <span aria-hidden="true">→</span></a>
+    </article>)}</div>
+    <p class="work-note">Built with illustrative records and explicit checks. These demos show how the software works; they do not claim realised client savings.</p>
+  </section>
+</Shell>

@@ -1,0 +1,4 @@
+row_id,case_id,line_id,customer_id,product_ref,quantity_units,due_date,min_shelf_life_days,status,known_at
+CTL-CO-001,healthy_control,SO-4001,CUS-A,PRD-TOMATO,12,2026-10-07,7,booked,2026-10-03T09:00:00+02:00
+CTL-CO-002,healthy_control,SO-4002,CUS-B,Tom Jars 12,12,2026-10-14,7,booked,2026-10-04T09:00:00+02:00
+CTL-CO-003,healthy_control,SO-4003,CUS-C,PRD-LENTIL,12,2026-10-10,7,booked,2026-10-04T11:00:00+02:00

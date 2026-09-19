@@ -1,0 +1,10 @@
+*
+!src/
+!src/stock_watch/
+!src/stock_watch/**
+!artifacts/
+!artifacts/stock-watch-showcase/
+!artifacts/stock-watch-showcase/phase-1/
+!artifacts/stock-watch-showcase/phase-1/**
+!artifacts/stock-watch-showcase/phase-2/
+!artifacts/stock-watch-showcase/phase-2/**

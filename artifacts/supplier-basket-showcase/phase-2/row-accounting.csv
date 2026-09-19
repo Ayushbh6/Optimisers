@@ -1,0 +1,54 @@
+case_id,file,source_row_id,state,issue_ids,canonical_effect
+no_change_control,customer_orders.csv,CTL-CO-ROW-001,accepted_as_supplied,,Booked line CTL-CO-001
+no_change_control,customer_orders.csv,CTL-CO-ROW-002,accepted_as_supplied,,Booked line CTL-CO-002
+no_change_control,customer_orders.csv,CTL-CO-ROW-003,accepted_as_supplied,,Booked line CTL-CO-003
+no_change_control,customer_orders.csv,CTL-CO-ROW-004,accepted_as_supplied,,Booked line CTL-CO-004
+no_change_control,products.csv,CTL-PROD-005,accepted_as_supplied,,Canonical product PRD-005
+no_change_control,products.csv,CTL-PROD-006,accepted_as_supplied,,Canonical product PRD-006
+no_change_control,products.csv,CTL-PROD-007,accepted_as_supplied,,Canonical product PRD-007
+no_change_control,purchase_orders.csv,CTL-PO-ROW-005,accepted_as_supplied,,Buyer basket PRD-005 one case
+no_change_control,purchase_orders.csv,CTL-PO-ROW-006,accepted_as_supplied,,Buyer basket PRD-006 two cases
+no_change_control,purchase_orders.csv,CTL-PO-ROW-007,accepted_as_supplied,,Buyer basket PRD-007 two cases
+no_change_control,resolutions.csv,CTL-RES-005,accepted_as_supplied,ISS-005,Records authoritative minimum resolution
+no_change_control,resolutions.csv,CTL-RES-006,accepted_as_supplied,ISS-006,Records supplier mapping
+no_change_control,supplier_terms.csv,CTL-TERM-001,superseded_by_amendment,ISS-005,Incomplete term retained but excluded
+no_change_control,supplier_terms.csv,CTL-TERM-002,accepted_after_authoritative_replacement,ISS-005;ISS-006,Current SUP-B term with 150 euro minimum
+positive_moq_composition,customer_orders.csv,POS-CO-ROW-001,accepted_after_safe_normalization,ISS-001,Booked line POS-CO-001 mapped to PRD-001
+positive_moq_composition,customer_orders.csv,POS-CO-ROW-002,accepted_after_safe_normalization,ISS-001,Booked line POS-CO-002 mapped to PRD-001
+positive_moq_composition,customer_orders.csv,POS-CO-ROW-003,accepted_as_supplied,,Booked line POS-CO-003
+positive_moq_composition,customer_orders.csv,POS-CO-ROW-004,accepted_after_safe_normalization,ISS-001,Booked line POS-CO-004 mapped to PRD-001
+positive_moq_composition,customer_orders.csv,POS-CO-ROW-005,accepted_as_supplied,,Booked line POS-CO-005
+positive_moq_composition,products.csv,POS-PROD-001,accepted_as_supplied,,Product master TS-400 defines PRD-001
+positive_moq_composition,products.csv,POS-PROD-002,accepted_as_supplied,,Canonical product PRD-002
+positive_moq_composition,products.csv,POS-PROD-003,accepted_as_supplied,,Canonical product PRD-003
+positive_moq_composition,products.csv,POS-PROD-008,accepted_as_supplied,,Canonical product PRD-008
+positive_moq_composition,purchase_orders.csv,POS-PO-ROW-001,accepted_after_buyer_confirmation,ISS-001;ISS-002,Five confirmed cases equal 60 PRD-001 tins
+positive_moq_composition,purchase_orders.csv,POS-PO-ROW-002,accepted_as_supplied,,Buyer basket PRD-002 two cases
+positive_moq_composition,purchase_orders.csv,POS-PO-ROW-003,accepted_as_supplied,,Buyer basket PRD-003 one case
+positive_moq_composition,purchase_orders.csv,POS-PO-OLD-101,accepted_as_supplied,ISS-004;ISS-007,Original two-case Breakfast Tea commitment
+positive_moq_composition,purchase_orders.csv,POS-PO-OLD-101-ETA,accepted_as_supplied,ISS-004,Revised ETA applies to one outstanding case
+positive_moq_composition,receipts.csv,POS-REC-008,accepted_as_supplied,ISS-004;ISS-007,One received Breakfast Tea case
+positive_moq_composition,resolutions.csv,POS-RES-001,accepted_as_supplied,ISS-001,Records product alias mapping
+positive_moq_composition,resolutions.csv,POS-RES-002,accepted_as_supplied,ISS-002,Records buyer UOM confirmation
+positive_moq_composition,resolutions.csv,POS-RES-004,accepted_as_supplied,ISS-004,Records partial receipt reconciliation
+positive_moq_composition,resolutions.csv,POS-RES-006,accepted_as_supplied,ISS-006,Records supplier mapping
+positive_moq_composition,resolutions.csv,POS-RES-007,accepted_as_supplied,ISS-007,Records no-double-count reconciliation
+positive_moq_composition,stock_snapshot.csv,POS-STK-001,accepted_after_safe_normalization,ISS-001,Opening PRD-001 lot
+positive_moq_composition,stock_snapshot.csv,POS-STK-008,accepted_as_supplied,ISS-007,Opening PRD-008 lot counted once
+positive_moq_composition,supplier_terms.csv,POS-TERM-001,accepted_after_safe_normalization,ISS-006,Current SUP-A terms
+positive_moq_composition,supplier_terms.csv,POS-TERM-002,accepted_as_supplied,,Current SUP-B terms for existing incoming
+unsafe_cheaper_delivery_loss,customer_orders.csv,UNS-CO-ROW-001,accepted_as_supplied,,Booked line UNS-CO-001
+unsafe_cheaper_delivery_loss,customer_orders.csv,UNS-CO-ROW-002-A1,superseded_by_amendment,ISS-003,Earlier 12-unit version retained but excluded
+unsafe_cheaper_delivery_loss,customer_orders.csv,UNS-CO-ROW-002-A2,accepted_as_supplied,ISS-003,Active 24-unit booked line
+unsafe_cheaper_delivery_loss,customer_orders.csv,UNS-CO-ROW-003,accepted_as_supplied,,Booked line UNS-CO-003
+unsafe_cheaper_delivery_loss,customer_orders.csv,UNS-CO-ROW-004,accepted_as_supplied,,Booked line UNS-CO-004
+unsafe_cheaper_delivery_loss,products.csv,UNS-PROD-004,accepted_as_supplied,,Canonical product PRD-004
+unsafe_cheaper_delivery_loss,products.csv,UNS-PROD-005,accepted_as_supplied,,Canonical product PRD-005
+unsafe_cheaper_delivery_loss,products.csv,UNS-PROD-006,accepted_as_supplied,,Canonical product PRD-006
+unsafe_cheaper_delivery_loss,purchase_orders.csv,UNS-PO-ROW-004,accepted_as_supplied,,Buyer basket PRD-004 two cases
+unsafe_cheaper_delivery_loss,purchase_orders.csv,UNS-PO-ROW-005,accepted_as_supplied,,Buyer basket PRD-005 one case
+unsafe_cheaper_delivery_loss,purchase_orders.csv,UNS-PO-ROW-006,accepted_as_supplied,,Buyer basket PRD-006 one case
+unsafe_cheaper_delivery_loss,resolutions.csv,UNS-RES-003,accepted_as_supplied,ISS-003,Records amendment resolution
+unsafe_cheaper_delivery_loss,resolutions.csv,UNS-RES-006,accepted_as_supplied,ISS-006,Records supplier mapping
+unsafe_cheaper_delivery_loss,stock_snapshot.csv,UNS-STK-004,accepted_as_supplied,,Opening PRD-004 lot
+unsafe_cheaper_delivery_loss,supplier_terms.csv,UNS-TERM-001,accepted_after_safe_normalization,ISS-006,Current SUP-B terms

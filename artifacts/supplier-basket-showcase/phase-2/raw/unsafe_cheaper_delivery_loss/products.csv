@@ -1,0 +1,4 @@
+source_row_id,source_system,product_ref,description,supplier_ref,base_uom,case_size,product_min_cases,unit_cost_eur,cost_effective_from,cost_effective_to
+UNS-PROD-004,warehouse_erp,NGB-12,Nougat Bars,Beacon Grocery,pack,12,1,5.00,2026-09-01,2026-12-31
+UNS-PROD-005,warehouse_erp,OLV-6,Olive Oil 1L,Beacon Grocery,bottle,6,1,8.00,2026-09-01,2026-12-31
+UNS-PROD-006,warehouse_erp,PSTA-12,Pasta 500g,Beacon Grocery,pack,12,1,2.50,2026-09-01,2026-12-31

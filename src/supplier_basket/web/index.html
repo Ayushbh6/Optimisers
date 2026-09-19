@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Ledgerline — Weekly Order Check</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%2317201c'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-size='18' fill='%23fffdf8'%3EL%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./assets/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="Ledgerline home">
+      <span class="brand-mark" aria-hidden="true">L</span>
+      <span><strong>Ledgerline</strong><small>Weekly order check</small></span>
+    </a>
+    <div class="top-actions">
+      <a class="studio-back" href="/work/">← Axis <span class="back-detail">/ Work</span></a>
+      <span class="synthetic-flag">Example data</span>
+      <button id="reset-session" class="text-button" type="button">Start over</button>
+    </div>
+  </header>
+
+  <main id="scroll-region" class="scroll-region" aria-label="Order review">
+   <div id="top" class="shell">
+    <section class="intro">
+      <p class="eyebrow">Purchasing workspace</p>
+      <h1>Your weekly<br>order review.</h1>
+      <p class="intro-copy">Check the records. Compare the order. See what each change means for cash and booked deliveries.</p>
+    </section>
+
+    <section id="scenario-section" class="scenario-section" aria-labelledby="scenario-heading">
+      <div class="section-heading compact">
+        <div>
+          <p class="step-label">Choose an example</p>
+          <h2 id="scenario-heading">Three purchasing decisions</h2>
+        </div>
+        <p class="section-note">Pick one situation. Each runs as a separate review.</p>
+      </div>
+      <div id="scenario-list" class="scenario-list" role="radiogroup" aria-label="Example situation"></div>
+      <button id="load-case" class="button primary start-button" type="button">Review this order</button>
+
+    </section>
+
+    <div id="notice" class="notice" role="alert" hidden></div>
+
+    <div id="review" hidden>
+      <section id="check-section" class="section-block check-section">
+        <div class="section-heading">
+          <div>
+            <p class="step-label">1 · Check the records</p>
+            <h2 id="check-heading">One answer is needed first.</h2>
+          </div>
+          <span id="check-status" class="status-badge warning">Waiting for you</span>
+        </div>
+        <p id="check-copy" class="section-intro"></p>
+        <div id="action-list"></div>
+
+        <details class="audit-details">
+          <summary>View technical data checks</summary>
+          <div class="audit-grid">
+            <div><span>Example</span><strong id="case-title"></strong></div>
+            <div><span>Imported rows</span><strong id="row-count"></strong></div>
+            <div class="hash-row"><span>Input fingerprint</span><code id="input-hash"></code></div>
+          </div>
+          <div id="resolved-list" class="resolved-list"></div>
+        </details>
+      </section>
+
+      <section id="decision-section" class="section-block decision-section" hidden>
+        <div class="section-heading decision-head">
+          <div>
+            <p class="step-label">2 · Review the recommendation</p>
+            <h2 id="decision-heading">Recommendation ready.</h2>
+          </div>
+          <span id="verdict-badge" class="status-badge success"></span>
+        </div>
+        <p id="decision-summary" class="decision-summary"></p>
+
+        <section class="visual-comparison" aria-labelledby="comparison-heading">
+          <h3 id="comparison-heading">Before &amp; after</h3>
+          <p class="chart-key"><span>Buyer’s order</span><span>Recommended order</span></p>
+          <div id="comparison-charts" class="comparison-charts"></div>
+          <p class="chart-note">28-day synthetic replay · booked orders only, not a forecast of future sales.</p>
+        </section>
+
+        <div class="basket-compare">
+          <article>
+            <header><span>Buyer's current order</span><strong id="before-total">—</strong></header>
+            <div id="before-lines" class="basket-lines"></div>
+            <footer><span>Day 28 stock + commitments</span><strong id="before-ending">—</strong></footer>
+          </article>
+          <div class="compare-arrow" aria-hidden="true">→</div>
+          <article class="selected-basket">
+            <header><span>Recommended order</span><strong id="after-total">—</strong></header>
+            <div id="after-lines" class="basket-lines"></div>
+            <footer><span>Day 28 stock + commitments</span><strong id="after-ending">—</strong></footer>
+          </article>
+        </div>
+
+        <div class="decision-detail">
+          <div><h3>What changes</h3><ul id="change-list"></ul></div>
+          <div><h3>Why it is safe</h3><p id="delivery-proof"></p><div id="risk-list"></div></div>
+        </div>
+
+        <div class="export-row">
+          <div><h3 id="export-title">Ready for buyer review</h3><p id="export-note"></p></div>
+          <a id="export-button" class="button primary" href="#">Download supplier order</a>
+        </div>
+
+        <details class="audit-details decision-audit">
+          <summary>View calculation audit</summary>
+          <p id="search-proof"></p>
+          <code id="decision-hash"></code>
+        </details>
+      </section>
+    </div>
+   </div>
+  </main>
+
+  <footer class="footer"><span>Illustrative records only</span><span>No realised savings claim</span></footer>
+  <script src="./assets/app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+*
+!src/
+!src/supplier_basket/
+!src/supplier_basket/**
+!artifacts/
+!artifacts/supplier-basket-showcase/
+!artifacts/supplier-basket-showcase/phase-1/
+!artifacts/supplier-basket-showcase/phase-1/**
+!artifacts/supplier-basket-showcase/phase-2/
+!artifacts/supplier-basket-showcase/phase-2/**

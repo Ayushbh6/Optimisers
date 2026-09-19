@@ -1,0 +1,104 @@
+{
+  "schema_version": "1.0",
+  "contract_version": "supplier-basket-showcase-phase-1-v1",
+  "package_version": "supplier-basket-showcase-phase-2-v1",
+  "decision_timestamp": "2026-09-18T09:00:00+02:00",
+  "normalization_boundary": "Only predeclared mappings, explicit amendments, linked receipts and recorded resolutions are applied.",
+  "canonical_products": [
+    {"product_id": "PRD-001", "source_product_refs": ["TS-400", "Tom Soup 12x400g"], "case_size": 12, "base_uom": "tin", "unit_cost_eur": "4.00"},
+    {"product_id": "PRD-002", "source_product_refs": ["OAT-CRK"], "case_size": 12, "base_uom": "pack", "unit_cost_eur": "5.00"},
+    {"product_id": "PRD-003", "source_product_refs": ["HNY-DROP"], "case_size": 24, "base_uom": "jar", "unit_cost_eur": "10.00"},
+    {"product_id": "PRD-004", "source_product_refs": ["NGB-12"], "case_size": 12, "base_uom": "pack", "unit_cost_eur": "5.00"},
+    {"product_id": "PRD-005", "source_product_refs": ["OLV-6"], "case_size": 6, "base_uom": "bottle", "unit_cost_eur": "8.00"},
+    {"product_id": "PRD-006", "source_product_refs": ["PSTA-12"], "case_size": 12, "base_uom": "pack", "unit_cost_eur": "2.50"},
+    {"product_id": "PRD-007", "source_product_refs": ["CHICK-12"], "case_size": 12, "base_uom": "tin", "unit_cost_eur": "1.80"},
+    {"product_id": "PRD-008", "source_product_refs": ["TEA-BRKFST"], "case_size": 24, "base_uom": "box", "unit_cost_eur": "2.40"}
+  ],
+  "canonical_suppliers": [
+    {"supplier_id": "SUP-A", "source_supplier_refs": ["ALDER"], "minimum_merchandise_eur": "500.00", "delivery_charge_eur": "20.00", "lead_time_workdays": 2, "order_weekday": "FRIDAY"},
+    {"supplier_id": "SUP-B", "source_supplier_refs": ["BEACON", "Beacon Grocery"], "minimum_merchandise_eur": "150.00", "delivery_charge_eur": "15.00", "lead_time_workdays": 3, "order_weekday": "FRIDAY"}
+  ],
+  "cases": [
+    {
+      "case_id": "positive_moq_composition",
+      "supplier_id": "SUP-A",
+      "opening_stock": [
+        {"product_id": "PRD-001", "lot_id": "LOT-POS-001", "quantity_units": 12, "expiry_date": "2026-12-31", "source_row_ids": ["POS-STK-001"]},
+        {"product_id": "PRD-008", "lot_id": "LOT-POS-008-A", "quantity_units": 24, "expiry_date": "2027-02-28", "source_row_ids": ["POS-STK-008", "POS-REC-008"]}
+      ],
+      "known_incoming": [
+        {"product_id": "PRD-008", "quantity_units": 24, "arrival_date": "2026-09-28", "expiry_date": "2027-02-28", "source_row_ids": ["POS-PO-OLD-101", "POS-PO-OLD-101-ETA", "POS-REC-008"]}
+      ],
+      "booked_lines": [
+        {"line_id": "POS-CO-001", "customer_id": "CUS-001", "product_id": "PRD-001", "quantity_units": 12, "due_date": "2026-09-21", "source_row_ids": ["POS-CO-ROW-001"]},
+        {"line_id": "POS-CO-002", "customer_id": "CUS-002", "product_id": "PRD-001", "quantity_units": 36, "due_date": "2026-09-23", "source_row_ids": ["POS-CO-ROW-002"]},
+        {"line_id": "POS-CO-003", "customer_id": "CUS-002", "product_id": "PRD-002", "quantity_units": 12, "due_date": "2026-09-23", "source_row_ids": ["POS-CO-ROW-003"]},
+        {"line_id": "POS-CO-004", "customer_id": "CUS-003", "product_id": "PRD-001", "quantity_units": 24, "due_date": "2026-09-25", "source_row_ids": ["POS-CO-ROW-004"]},
+        {"line_id": "POS-CO-005", "customer_id": "CUS-003", "product_id": "PRD-002", "quantity_units": 12, "due_date": "2026-09-25", "source_row_ids": ["POS-CO-ROW-005"]}
+      ],
+      "buyer_basket": {
+        "arrival_date": "2026-09-22",
+        "lines": [
+          {"product_id": "PRD-001", "cases": 5, "quantity_units": 60, "line_value_eur": "240.00", "source_row_ids": ["POS-PO-ROW-001", "POS-RES-002"]},
+          {"product_id": "PRD-002", "cases": 2, "quantity_units": 24, "line_value_eur": "120.00", "source_row_ids": ["POS-PO-ROW-002"]},
+          {"product_id": "PRD-003", "cases": 1, "quantity_units": 24, "line_value_eur": "240.00", "source_row_ids": ["POS-PO-ROW-003"]}
+        ],
+        "merchandise_eur": "600.00",
+        "delivery_charge_eur": "20.00",
+        "immediate_cash_eur": "620.00"
+      },
+      "unresolved_blockers": []
+    },
+    {
+      "case_id": "unsafe_cheaper_delivery_loss",
+      "supplier_id": "SUP-B",
+      "opening_stock": [
+        {"product_id": "PRD-004", "lot_id": "LOT-UNS-004", "quantity_units": 12, "expiry_date": "2026-12-31", "source_row_ids": ["UNS-STK-004"]}
+      ],
+      "known_incoming": [],
+      "booked_lines": [
+        {"line_id": "UNS-CO-001", "customer_id": "CUS-004", "product_id": "PRD-004", "quantity_units": 12, "due_date": "2026-09-21", "source_row_ids": ["UNS-CO-ROW-001"]},
+        {"line_id": "UNS-CO-002", "customer_id": "CUS-005", "product_id": "PRD-004", "quantity_units": 24, "due_date": "2026-09-24", "source_row_ids": ["UNS-CO-ROW-002-A1", "UNS-CO-ROW-002-A2"]},
+        {"line_id": "UNS-CO-003", "customer_id": "CUS-005", "product_id": "PRD-005", "quantity_units": 6, "due_date": "2026-09-25", "source_row_ids": ["UNS-CO-ROW-003"]},
+        {"line_id": "UNS-CO-004", "customer_id": "CUS-006", "product_id": "PRD-006", "quantity_units": 12, "due_date": "2026-09-26", "source_row_ids": ["UNS-CO-ROW-004"]}
+      ],
+      "buyer_basket": {
+        "arrival_date": "2026-09-23",
+        "lines": [
+          {"product_id": "PRD-004", "cases": 2, "quantity_units": 24, "line_value_eur": "120.00", "source_row_ids": ["UNS-PO-ROW-004"]},
+          {"product_id": "PRD-005", "cases": 1, "quantity_units": 6, "line_value_eur": "48.00", "source_row_ids": ["UNS-PO-ROW-005"]},
+          {"product_id": "PRD-006", "cases": 1, "quantity_units": 12, "line_value_eur": "30.00", "source_row_ids": ["UNS-PO-ROW-006"]}
+        ],
+        "merchandise_eur": "198.00",
+        "delivery_charge_eur": "15.00",
+        "immediate_cash_eur": "213.00"
+      },
+      "unresolved_blockers": []
+    },
+    {
+      "case_id": "no_change_control",
+      "supplier_id": "SUP-B",
+      "opening_stock": [],
+      "known_incoming": [],
+      "booked_lines": [
+        {"line_id": "CTL-CO-001", "customer_id": "CUS-001", "product_id": "PRD-005", "quantity_units": 6, "due_date": "2026-09-24", "source_row_ids": ["CTL-CO-ROW-001"]},
+        {"line_id": "CTL-CO-002", "customer_id": "CUS-002", "product_id": "PRD-006", "quantity_units": 12, "due_date": "2026-09-25", "source_row_ids": ["CTL-CO-ROW-002"]},
+        {"line_id": "CTL-CO-003", "customer_id": "CUS-003", "product_id": "PRD-006", "quantity_units": 12, "due_date": "2026-09-28", "source_row_ids": ["CTL-CO-ROW-003"]},
+        {"line_id": "CTL-CO-004", "customer_id": "CUS-004", "product_id": "PRD-007", "quantity_units": 24, "due_date": "2026-09-29", "source_row_ids": ["CTL-CO-ROW-004"]}
+      ],
+      "buyer_basket": {
+        "arrival_date": "2026-09-23",
+        "lines": [
+          {"product_id": "PRD-005", "cases": 1, "quantity_units": 6, "line_value_eur": "48.00", "source_row_ids": ["CTL-PO-ROW-005"]},
+          {"product_id": "PRD-006", "cases": 2, "quantity_units": 24, "line_value_eur": "60.00", "source_row_ids": ["CTL-PO-ROW-006"]},
+          {"product_id": "PRD-007", "cases": 2, "quantity_units": 24, "line_value_eur": "43.20", "source_row_ids": ["CTL-PO-ROW-007"]}
+        ],
+        "merchandise_eur": "151.20",
+        "delivery_charge_eur": "15.00",
+        "immediate_cash_eur": "166.20"
+      },
+      "initial_blocker": "ISS-005",
+      "unresolved_blockers": []
+    }
+  ]
+}

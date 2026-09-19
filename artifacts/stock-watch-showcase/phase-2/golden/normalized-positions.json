@@ -1,0 +1,449 @@
+{
+  "cases": [
+    {
+      "booked_orders": [
+        {
+          "customer_id": "CUS-A",
+          "due_date": "2026-10-07",
+          "line_id": "SO-1001",
+          "min_shelf_life_days": 7,
+          "product_id": "PRD-SOUP",
+          "quantity_units": 12,
+          "source_row_ids": [
+            "BAL-CO-001"
+          ]
+        },
+        {
+          "customer_id": "CUS-B",
+          "due_date": "2026-10-13",
+          "line_id": "SO-1002",
+          "min_shelf_life_days": 7,
+          "product_id": "PRD-SOUP",
+          "quantity_units": 12,
+          "source_row_ids": [
+            "BAL-CO-002"
+          ]
+        },
+        {
+          "customer_id": "CUS-C",
+          "due_date": "2026-10-15",
+          "line_id": "SO-1003",
+          "min_shelf_life_days": 7,
+          "product_id": "PRD-SOUP",
+          "quantity_units": 12,
+          "source_row_ids": [
+            "BAL-CO-003"
+          ]
+        },
+        {
+          "customer_id": "CUS-A",
+          "due_date": "2026-10-10",
+          "line_id": "SO-1004",
+          "min_shelf_life_days": 5,
+          "product_id": "PRD-OAT",
+          "quantity_units": 12,
+          "source_row_ids": [
+            "BAL-CO-004"
+          ]
+        },
+        {
+          "customer_id": "CUS-D",
+          "due_date": "2026-10-20",
+          "line_id": "SO-1005",
+          "min_shelf_life_days": 5,
+          "product_id": "PRD-OAT",
+          "quantity_units": 12,
+          "source_row_ids": [
+            "BAL-CO-005"
+          ]
+        }
+      ],
+      "case_id": "balanced_action",
+      "demand_views": {
+        "higher": [
+          {
+            "due_date": "2026-10-17",
+            "event_id": "HI-OAT-01",
+            "min_shelf_life_days": 5,
+            "product_id": "PRD-OAT",
+            "quantity_units": 12,
+            "source_row_ids": [
+              "BAL-DMD-002"
+            ]
+          }
+        ],
+        "irregular": [
+          {
+            "due_date": "2026-10-08",
+            "event_id": "IRR-OAT-01",
+            "min_shelf_life_days": 5,
+            "product_id": "PRD-OAT",
+            "quantity_units": 12,
+            "source_row_ids": [
+              "BAL-DMD-003"
+            ]
+          }
+        ],
+        "lower": [],
+        "nominal": [
+          {
+            "due_date": "2026-10-17",
+            "event_id": "NOM-OAT-01",
+            "min_shelf_life_days": 5,
+            "product_id": "PRD-OAT",
+            "quantity_units": 6,
+            "source_row_ids": [
+              "BAL-DMD-001"
+            ]
+          }
+        ]
+      },
+      "input_hash": "cde7f20228ddb2e0f6b9ce7b17f8cf344bb8422c48ef01e5c1b8bf5370a76e0a",
+      "lots": [
+        {
+          "expiry_date": "2026-12-31",
+          "lot_id": "SOUP-L01",
+          "product_id": "PRD-SOUP",
+          "quantity_units": 12,
+          "source_row_ids": [
+            "BAL-STK-001"
+          ],
+          "stock_status": "AVAILABLE"
+        },
+        {
+          "expiry_date": "2026-10-25",
+          "lot_id": "OAT-L17",
+          "product_id": "PRD-OAT",
+          "quantity_units": 60,
+          "source_row_ids": [
+            "BAL-STK-002"
+          ],
+          "stock_status": "AVAILABLE"
+        }
+      ],
+      "products": {
+        "PRD-OAT": {
+          "case_size": 12,
+          "date_type": "best_before",
+          "max_new_cases": 0,
+          "new_receipt_expiry_date": "2026-10-25",
+          "product_id": "PRD-OAT",
+          "product_name": "Oat Crackers",
+          "source_row_ids": [
+            "BAL-PROD-002"
+          ],
+          "supplier_id": "SUP-NORTH",
+          "unit_cost_eur": "1.50"
+        },
+        "PRD-SOUP": {
+          "case_size": 12,
+          "date_type": "best_before",
+          "max_new_cases": 3,
+          "new_receipt_expiry_date": "2026-12-31",
+          "product_id": "PRD-SOUP",
+          "product_name": "Soup Cups",
+          "source_row_ids": [
+            "BAL-PROD-001"
+          ],
+          "supplier_id": "SUP-NORTH",
+          "unit_cost_eur": "2.00"
+        }
+      },
+      "purchases": [
+        {
+          "cases": 4,
+          "change_cutoff": "2026-10-06",
+          "expected_arrival": "2026-10-09",
+          "expiry_date": "2026-10-25",
+          "line_id": "PO-2001",
+          "product_id": "PRD-OAT",
+          "source_row_ids": [
+            "BAL-PO-001",
+            "BAL-PO-002"
+          ]
+        }
+      ],
+      "source_row_count": 17,
+      "supplier": {
+        "budget_eur": "300.00",
+        "delivery_charge_eur": "10.00",
+        "effective_from": "2026-10-01",
+        "effective_to": "2026-12-31",
+        "lead_days": 4,
+        "order_weekday": "MONDAY",
+        "receipt_capacity_units": 200,
+        "review_date": "2026-10-05",
+        "source_row_ids": [
+          "BAL-TERM-001"
+        ],
+        "supplier_id": "SUP-NORTH"
+      }
+    },
+    {
+      "booked_orders": [
+        {
+          "customer_id": "CUS-HOTEL",
+          "due_date": "2026-10-12",
+          "line_id": "SO-3001",
+          "min_shelf_life_days": 14,
+          "product_id": "PRD-FRUIT",
+          "quantity_units": 36,
+          "source_row_ids": [
+            "UNS-CO-001"
+          ]
+        }
+      ],
+      "case_id": "unsafe_shelf_life",
+      "demand_views": {
+        "higher": [
+          {
+            "due_date": "2026-10-22",
+            "event_id": "HI-FRUIT-01",
+            "min_shelf_life_days": 5,
+            "product_id": "PRD-FRUIT",
+            "quantity_units": 12,
+            "source_row_ids": [
+              "UNS-DMD-001"
+            ]
+          }
+        ],
+        "irregular": [
+          {
+            "due_date": "2026-10-22",
+            "event_id": "IRR-FRUIT-01",
+            "min_shelf_life_days": 5,
+            "product_id": "PRD-FRUIT",
+            "quantity_units": 12,
+            "source_row_ids": [
+              "UNS-DMD-002"
+            ]
+          }
+        ],
+        "lower": [],
+        "nominal": []
+      },
+      "input_hash": "bb90e11c0655c2ad7a9697eea5c505a2a6165a667df68b6f3370d6c6d48880e7",
+      "lots": [
+        {
+          "expiry_date": "2026-10-20",
+          "lot_id": "FRUIT-L08",
+          "product_id": "PRD-FRUIT",
+          "quantity_units": 48,
+          "source_row_ids": [
+            "UNS-STK-001"
+          ],
+          "stock_status": "AVAILABLE"
+        }
+      ],
+      "products": {
+        "PRD-FRUIT": {
+          "case_size": 12,
+          "date_type": "best_before",
+          "max_new_cases": 0,
+          "new_receipt_expiry_date": "2026-12-31",
+          "product_id": "PRD-FRUIT",
+          "product_name": "Fruit Bars",
+          "source_row_ids": [
+            "UNS-PROD-001"
+          ],
+          "supplier_id": "SUP-NORTH",
+          "unit_cost_eur": "2.20"
+        }
+      },
+      "purchases": [
+        {
+          "cases": 4,
+          "change_cutoff": "2026-10-06",
+          "expected_arrival": "2026-10-09",
+          "expiry_date": "2026-12-31",
+          "line_id": "PO-3001",
+          "product_id": "PRD-FRUIT",
+          "source_row_ids": [
+            "UNS-PO-001"
+          ]
+        }
+      ],
+      "source_row_count": 8,
+      "supplier": {
+        "budget_eur": "300.00",
+        "delivery_charge_eur": "10.00",
+        "effective_from": "2026-10-01",
+        "effective_to": "2026-12-31",
+        "lead_days": 4,
+        "order_weekday": "MONDAY",
+        "receipt_capacity_units": 200,
+        "review_date": "2026-10-05",
+        "source_row_ids": [
+          "UNS-TERM-001"
+        ],
+        "supplier_id": "SUP-NORTH"
+      }
+    },
+    {
+      "booked_orders": [
+        {
+          "customer_id": "CUS-A",
+          "due_date": "2026-10-07",
+          "line_id": "SO-4001",
+          "min_shelf_life_days": 7,
+          "product_id": "PRD-TOMATO",
+          "quantity_units": 12,
+          "source_row_ids": [
+            "CTL-CO-001"
+          ]
+        },
+        {
+          "customer_id": "CUS-B",
+          "due_date": "2026-10-14",
+          "line_id": "SO-4002",
+          "min_shelf_life_days": 7,
+          "product_id": "PRD-TOMATO",
+          "quantity_units": 12,
+          "source_row_ids": [
+            "CTL-CO-002"
+          ]
+        },
+        {
+          "customer_id": "CUS-C",
+          "due_date": "2026-10-10",
+          "line_id": "SO-4003",
+          "min_shelf_life_days": 7,
+          "product_id": "PRD-LENTIL",
+          "quantity_units": 12,
+          "source_row_ids": [
+            "CTL-CO-003"
+          ]
+        }
+      ],
+      "case_id": "healthy_control",
+      "demand_views": {
+        "higher": [
+          {
+            "due_date": "2026-10-20",
+            "event_id": "HI-TOM-01",
+            "min_shelf_life_days": 7,
+            "product_id": "PRD-TOMATO",
+            "quantity_units": 24,
+            "source_row_ids": [
+              "CTL-DMD-002"
+            ]
+          }
+        ],
+        "irregular": [
+          {
+            "due_date": "2026-10-18",
+            "event_id": "IRR-TOM-01",
+            "min_shelf_life_days": 7,
+            "product_id": "PRD-TOMATO",
+            "quantity_units": 12,
+            "source_row_ids": [
+              "CTL-DMD-003"
+            ]
+          },
+          {
+            "due_date": "2026-10-25",
+            "event_id": "IRR-TOM-02",
+            "min_shelf_life_days": 7,
+            "product_id": "PRD-TOMATO",
+            "quantity_units": 12,
+            "source_row_ids": [
+              "CTL-DMD-004"
+            ]
+          }
+        ],
+        "lower": [],
+        "nominal": [
+          {
+            "due_date": "2026-10-20",
+            "event_id": "NOM-TOM-01",
+            "min_shelf_life_days": 7,
+            "product_id": "PRD-TOMATO",
+            "quantity_units": 12,
+            "source_row_ids": [
+              "CTL-DMD-001"
+            ]
+          }
+        ]
+      },
+      "input_hash": "203daccc40e2155da411c4edcc30ab8797eb3c91fe6ab74f5c9f791c1de6b3e2",
+      "lots": [
+        {
+          "expiry_date": "2026-12-31",
+          "lot_id": "TOM-L21",
+          "product_id": "PRD-TOMATO",
+          "quantity_units": 24,
+          "source_row_ids": [
+            "CTL-STK-001"
+          ],
+          "stock_status": "AVAILABLE"
+        },
+        {
+          "expiry_date": "2027-01-31",
+          "lot_id": "LEN-L11",
+          "product_id": "PRD-LENTIL",
+          "quantity_units": 36,
+          "source_row_ids": [
+            "CTL-STK-002"
+          ],
+          "stock_status": "AVAILABLE"
+        }
+      ],
+      "products": {
+        "PRD-LENTIL": {
+          "case_size": 12,
+          "date_type": "best_before",
+          "max_new_cases": 0,
+          "new_receipt_expiry_date": "2027-01-31",
+          "product_id": "PRD-LENTIL",
+          "product_name": "Lentil Soup",
+          "source_row_ids": [
+            "CTL-PROD-002"
+          ],
+          "supplier_id": "SUP-NORTH",
+          "unit_cost_eur": "1.20"
+        },
+        "PRD-TOMATO": {
+          "case_size": 12,
+          "date_type": "best_before",
+          "max_new_cases": 0,
+          "new_receipt_expiry_date": "2027-03-31",
+          "product_id": "PRD-TOMATO",
+          "product_name": "Tomato Jars",
+          "source_row_ids": [
+            "CTL-PROD-001"
+          ],
+          "supplier_id": "SUP-NORTH",
+          "unit_cost_eur": "1.80"
+        }
+      },
+      "purchases": [
+        {
+          "cases": 2,
+          "change_cutoff": "2026-10-06",
+          "expected_arrival": "2026-10-09",
+          "expiry_date": "2027-03-31",
+          "line_id": "PO-4001",
+          "product_id": "PRD-TOMATO",
+          "source_row_ids": [
+            "CTL-PO-001"
+          ]
+        }
+      ],
+      "source_row_count": 15,
+      "supplier": {
+        "budget_eur": "300.00",
+        "delivery_charge_eur": "10.00",
+        "effective_from": "2026-10-01",
+        "effective_to": "2026-12-31",
+        "lead_days": 4,
+        "order_weekday": "MONDAY",
+        "receipt_capacity_units": 200,
+        "review_date": "2026-10-05",
+        "source_row_ids": [
+          "CTL-TERM-001"
+        ],
+        "supplier_id": "SUP-NORTH"
+      }
+    }
+  ]
+}

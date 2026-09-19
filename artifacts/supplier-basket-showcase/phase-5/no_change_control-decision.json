@@ -1,0 +1,356 @@
+{
+  "assumptions": [
+    "Synthetic case study; not realised client savings",
+    "Only records available by the 18 September 2026 09:00 decision were used",
+    "Customer freshness requires at least 60 calendar days remaining",
+    "Unknown future demand, margins and shortage penalties are excluded"
+  ],
+  "buyer": {
+    "accounting_errors": [],
+    "average_daily_exposure_eur": "45.47",
+    "basket_id": "BUYER",
+    "booked_lines": 4,
+    "booked_units": 54,
+    "complete_lines": 4,
+    "delivery_charge_eur": "15.00",
+    "delivery_failures": [],
+    "ending_incoming_eur": "0.00",
+    "ending_stock_eur": "0.00",
+    "ending_stock_plus_commitments_eur": "0.00",
+    "ending_undelivered_commitments_eur": "0.00",
+    "expired_cost_eur": "0.00",
+    "expired_units": 0,
+    "immediate_cash_eur": "166.20",
+    "lines": [
+      {
+        "base_uom": "bottle",
+        "case_size": 6,
+        "cases": 1,
+        "expected_arrival": "2026-09-23",
+        "line_value_eur": "48.00",
+        "product_id": "PRD-005",
+        "product_name": "Olive Oil",
+        "quantity_units": 6,
+        "unit_cost_eur": "8.00"
+      },
+      {
+        "base_uom": "pack",
+        "case_size": 12,
+        "cases": 2,
+        "expected_arrival": "2026-09-23",
+        "line_value_eur": "60.00",
+        "product_id": "PRD-006",
+        "product_name": "Pasta",
+        "quantity_units": 24,
+        "unit_cost_eur": "2.50"
+      },
+      {
+        "base_uom": "tin",
+        "case_size": 12,
+        "cases": 2,
+        "expected_arrival": "2026-09-23",
+        "line_value_eur": "43.20",
+        "product_id": "PRD-007",
+        "product_name": "Chickpeas",
+        "quantity_units": 24,
+        "unit_cost_eur": "1.80"
+      }
+    ],
+    "merchandise_eur": "151.20",
+    "on_time_units": 54,
+    "sum_28_daily_exposure_eur": "1273.20"
+  },
+  "buyer_action": "Keep and send the buyer draft",
+  "case_id": "no_change_control",
+  "claim_boundary": "Synthetic case-study result. This is not a realised client saving.",
+  "comparison": {
+    "average_exposure_change_eur": "0.00",
+    "cash_change_eur": "0.00",
+    "ending_stock_plus_commitments_change_eur": "0.00",
+    "expired_units_change": 0,
+    "on_time_units_change": 0
+  },
+  "decision_hash": "5c6c584011bf32e41292d4c08912e1a06b4382008aff88b08aa63b8c0de57d0c",
+  "delivery_risks": [
+    "CTL-CO-001: 6 PRD-005 units late on 2026-09-24",
+    "CTL-CO-001: 6 PRD-005 units late on 2026-09-24",
+    "CTL-CO-003: 12 PRD-006 units late on 2026-09-28",
+    "CTL-CO-003: 12 PRD-006 units late on 2026-09-28",
+    "CTL-CO-004: 12 PRD-007 units late on 2026-09-29",
+    "CTL-CO-004: 12 PRD-007 units late on 2026-09-29"
+  ],
+  "input_hash": "2261f96d7c7771ec045c42a81e109400c72bb0ec5c9fcbfe98707dcc14dcafc0",
+  "operational_consequences": {
+    "booked_units_protected": 54,
+    "booked_units_total": 54,
+    "ending_change_eur": "0.00",
+    "ending_stock_plus_commitments_eur": "0.00",
+    "expected_arrival": "2026-09-23",
+    "expired_units": 0
+  },
+  "product_changes": [],
+  "rejected_alternatives": [
+    {
+      "candidate_id": "CTL-RED-005-1",
+      "cash_eur": null,
+      "delivery_failures": [],
+      "generation_reason": "Reduce PRD-005 by one whole case",
+      "reasons": [
+        "Supplier merchandise minimum is \u20ac150.00"
+      ],
+      "status": "rejected_preflight"
+    },
+    {
+      "candidate_id": "CTL-RED-006-1",
+      "cash_eur": null,
+      "delivery_failures": [],
+      "generation_reason": "Reduce PRD-006 by one whole case",
+      "reasons": [
+        "Supplier merchandise minimum is \u20ac150.00"
+      ],
+      "status": "rejected_preflight"
+    },
+    {
+      "candidate_id": "CTL-RED-007-1",
+      "cash_eur": null,
+      "delivery_failures": [],
+      "generation_reason": "Reduce PRD-007 by one whole case",
+      "reasons": [
+        "Supplier merchandise minimum is \u20ac150.00"
+      ],
+      "status": "rejected_preflight"
+    },
+    {
+      "candidate_id": "CTL-INC-005-1",
+      "cash_eur": "214.20",
+      "delivery_failures": [],
+      "generation_reason": "Increase PRD-005 by one whole case",
+      "reasons": [
+        "Ending stock plus commitments is higher than the buyer basket"
+      ],
+      "status": "rejected_physical"
+    },
+    {
+      "candidate_id": "CTL-INC-006-1",
+      "cash_eur": "196.20",
+      "delivery_failures": [],
+      "generation_reason": "Increase PRD-006 by one whole case",
+      "reasons": [
+        "Ending stock plus commitments is higher than the buyer basket"
+      ],
+      "status": "rejected_physical"
+    },
+    {
+      "candidate_id": "CTL-INC-007-1",
+      "cash_eur": "187.80",
+      "delivery_failures": [],
+      "generation_reason": "Increase PRD-007 by one whole case",
+      "reasons": [
+        "Ending stock plus commitments is higher than the buyer basket"
+      ],
+      "status": "rejected_physical"
+    },
+    {
+      "candidate_id": "CTL-RM-005-REPAIR-006",
+      "cash_eur": "178.20",
+      "delivery_failures": [
+        {
+          "customer_id": "CUS-001",
+          "due_date": "2026-09-24",
+          "line_id": "CTL-CO-001",
+          "on_time_units": 0,
+          "product_id": "PRD-005",
+          "requested_units": 6,
+          "undelivered_units": 6
+        }
+      ],
+      "generation_reason": "Reduce PRD-005; restore the supplier minimum with PRD-006",
+      "reasons": [
+        "Booked delivery regression: 6 fewer on-time units",
+        "Ending stock plus commitments is higher than the buyer basket"
+      ],
+      "status": "rejected_physical"
+    },
+    {
+      "candidate_id": "CTL-RM-005-REPAIR-007",
+      "cash_eur": "183.00",
+      "delivery_failures": [
+        {
+          "customer_id": "CUS-001",
+          "due_date": "2026-09-24",
+          "line_id": "CTL-CO-001",
+          "on_time_units": 0,
+          "product_id": "PRD-005",
+          "requested_units": 6,
+          "undelivered_units": 6
+        }
+      ],
+      "generation_reason": "Reduce PRD-005; restore the supplier minimum with PRD-007",
+      "reasons": [
+        "Booked delivery regression: 6 fewer on-time units",
+        "Ending stock plus commitments is higher than the buyer basket"
+      ],
+      "status": "rejected_physical"
+    },
+    {
+      "candidate_id": "CTL-RED-006-REPAIR-005",
+      "cash_eur": "184.20",
+      "delivery_failures": [
+        {
+          "customer_id": "CUS-003",
+          "due_date": "2026-09-28",
+          "line_id": "CTL-CO-003",
+          "on_time_units": 0,
+          "product_id": "PRD-006",
+          "requested_units": 12,
+          "undelivered_units": 12
+        }
+      ],
+      "generation_reason": "Reduce PRD-006; restore the supplier minimum with PRD-005",
+      "reasons": [
+        "Booked delivery regression: 12 fewer on-time units",
+        "Ending stock plus commitments is higher than the buyer basket"
+      ],
+      "status": "rejected_physical"
+    },
+    {
+      "candidate_id": "CTL-RED-006-REPAIR-007",
+      "cash_eur": "179.40",
+      "delivery_failures": [
+        {
+          "customer_id": "CUS-003",
+          "due_date": "2026-09-28",
+          "line_id": "CTL-CO-003",
+          "on_time_units": 0,
+          "product_id": "PRD-006",
+          "requested_units": 12,
+          "undelivered_units": 12
+        }
+      ],
+      "generation_reason": "Reduce PRD-006; restore the supplier minimum with PRD-007",
+      "reasons": [
+        "Booked delivery regression: 12 fewer on-time units",
+        "Ending stock plus commitments is higher than the buyer basket"
+      ],
+      "status": "rejected_physical"
+    },
+    {
+      "candidate_id": "CTL-RED-007-REPAIR-005",
+      "cash_eur": "192.60",
+      "delivery_failures": [
+        {
+          "customer_id": "CUS-004",
+          "due_date": "2026-09-29",
+          "line_id": "CTL-CO-004",
+          "on_time_units": 12,
+          "product_id": "PRD-007",
+          "requested_units": 24,
+          "undelivered_units": 12
+        }
+      ],
+      "generation_reason": "Reduce PRD-007; restore the supplier minimum with PRD-005",
+      "reasons": [
+        "Booked delivery regression: 12 fewer on-time units",
+        "Ending stock plus commitments is higher than the buyer basket"
+      ],
+      "status": "rejected_physical"
+    },
+    {
+      "candidate_id": "CTL-RED-007-REPAIR-006",
+      "cash_eur": "174.60",
+      "delivery_failures": [
+        {
+          "customer_id": "CUS-004",
+          "due_date": "2026-09-29",
+          "line_id": "CTL-CO-004",
+          "on_time_units": 12,
+          "product_id": "PRD-007",
+          "requested_units": 24,
+          "undelivered_units": 12
+        }
+      ],
+      "generation_reason": "Reduce PRD-007; restore the supplier minimum with PRD-006",
+      "reasons": [
+        "Booked delivery regression: 12 fewer on-time units",
+        "Ending stock plus commitments is higher than the buyer basket"
+      ],
+      "status": "rejected_physical"
+    }
+  ],
+  "schema_version": "1.0",
+  "search_report": {
+    "buyer_basket_always_included": true,
+    "case_step": 1,
+    "elapsed_ms": 2.313,
+    "generated_alternatives": 12,
+    "max_alternatives": 12,
+    "max_changed_lines": 2,
+    "physically_replayed": 9,
+    "rejected_preflight": 3,
+    "safe_alternative_survivors": 0
+  },
+  "selected": {
+    "accounting_errors": [],
+    "average_daily_exposure_eur": "45.47",
+    "basket_id": "BUYER",
+    "booked_lines": 4,
+    "booked_units": 54,
+    "complete_lines": 4,
+    "delivery_charge_eur": "15.00",
+    "delivery_failures": [],
+    "ending_incoming_eur": "0.00",
+    "ending_stock_eur": "0.00",
+    "ending_stock_plus_commitments_eur": "0.00",
+    "ending_undelivered_commitments_eur": "0.00",
+    "expired_cost_eur": "0.00",
+    "expired_units": 0,
+    "immediate_cash_eur": "166.20",
+    "lines": [
+      {
+        "base_uom": "bottle",
+        "case_size": 6,
+        "cases": 1,
+        "expected_arrival": "2026-09-23",
+        "line_value_eur": "48.00",
+        "product_id": "PRD-005",
+        "product_name": "Olive Oil",
+        "quantity_units": 6,
+        "unit_cost_eur": "8.00"
+      },
+      {
+        "base_uom": "pack",
+        "case_size": 12,
+        "cases": 2,
+        "expected_arrival": "2026-09-23",
+        "line_value_eur": "60.00",
+        "product_id": "PRD-006",
+        "product_name": "Pasta",
+        "quantity_units": 24,
+        "unit_cost_eur": "2.50"
+      },
+      {
+        "base_uom": "tin",
+        "case_size": 12,
+        "cases": 2,
+        "expected_arrival": "2026-09-23",
+        "line_value_eur": "43.20",
+        "product_id": "PRD-007",
+        "product_name": "Chickpeas",
+        "quantity_units": 24,
+        "unit_cost_eur": "1.80"
+      }
+    ],
+    "merchandise_eur": "151.20",
+    "on_time_units": 54,
+    "sum_28_daily_exposure_eur": "1273.20"
+  },
+  "summary": "Keep the buyer basket. No lower-exposure alternative protects every booked delivery.",
+  "supplier": {
+    "delivery_charge_eur": "15.00",
+    "name": "Beacon Grocery Supply",
+    "order_day": "Friday",
+    "supplier_id": "SUP-B"
+  },
+  "synthetic_case_study": true,
+  "verdict": "retain_buyer"
+}

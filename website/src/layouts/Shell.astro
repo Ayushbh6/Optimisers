@@ -1,0 +1,39 @@
+---
+import '../styles/global.css';
+import { ClientRouter } from 'astro:transitions';
+interface Props { title: string; section: string; dark?: boolean; }
+const {title, section, dark = false} = Astro.props;
+const links = [['Home','/'],['Work','/work/'],['About','/about/'],['Contact','/contact/']];
+const description = 'Axis is an independent software studio building thoughtful tools for complex business problems.';
+const ogImage = Astro.site ? new URL('/images/hero.webp', Astro.site).toString() : undefined;
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).toString() : undefined;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#191a17" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={`${title} — Axis`} />
+    <meta property="og:description" content={description} />
+    {ogImage && <meta property="og:image" content={ogImage} />}
+    <meta name="twitter:card" content={ogImage ? 'summary_large_image' : 'summary'} />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <title>{title} — Axis</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <ClientRouter />
+    <slot name="head" />
+  </head>
+  <body class:list={[dark ? 'dark' : 'light', section === 'Home' && 'home']}>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <slot name="background" />
+    <header class="site-header">
+      <a class="wordmark" href="/" aria-label="Axis home"><span class="slash" aria-hidden="true">/</span> axis<span class="wordmark-note">Independent studio</span></a>
+      <nav aria-label="Main navigation">{links.map(([label,href]) => <a href={href} aria-current={section === label ? 'page' : undefined}>{label}</a>)}</nav>
+    </header>
+    <main id="main" tabindex="-1"><slot /></main>
+    <footer class="site-footer"><span>Software. Data. A different perspective.</span><span class="footer-right">Independent minds<span class="footer-dot" aria-hidden="true"></span>Shared curiosity</span></footer>
+  </body>
+</html>

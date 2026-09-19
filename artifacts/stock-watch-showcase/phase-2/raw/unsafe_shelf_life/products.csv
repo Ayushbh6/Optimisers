@@ -1,0 +1,2 @@
+row_id,product_id,product_name,supplier_id,case_size,unit_cost_eur,date_type,new_receipt_expiry_date,max_new_cases
+UNS-PROD-001,PRD-FRUIT,Fruit Bars,SUP-NORTH,12,2.20,best_before,2026-12-31,0

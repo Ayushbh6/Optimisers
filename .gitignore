@@ -42,6 +42,14 @@ Thumbs.db
 # Project specific caches
 .pytest_cache/
 design-references/
+website/public/demos/
+.vercel-preview/
+/.vercel/
+/output/
+
+# Private source documents used only to ground founder copy
+/docs/references/*CV*.pdf
 
 # Retained local pipeline evidence (large generated outputs)
 /artifacts/part1-final/
+.playwright-cli/

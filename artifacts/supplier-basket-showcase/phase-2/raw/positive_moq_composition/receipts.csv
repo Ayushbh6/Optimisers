@@ -1,0 +1,2 @@
+source_row_id,source_system,receipt_ref,purchase_order_ref,line_ref,product_ref,quantity,uom,received_at,lot_ref,expiry_date
+POS-REC-008,warehouse_erp,GRN-0915-008,PO-B-0910,POS-PO-OLD-101-L1,TEA-BRKFST,1,case,2026-09-15T08:10:00+02:00,LOT-POS-008-A,2027-02-28

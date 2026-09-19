@@ -1,0 +1,186 @@
+{
+  "product_purchases": {
+    "PRD-020": {
+      "baseline": [
+        {
+          "day": "2025-07-10",
+          "product": "PRD-020",
+          "supplier": "SUP-04",
+          "units": 12
+        },
+        {
+          "day": "2025-07-17",
+          "product": "PRD-020",
+          "supplier": "SUP-04",
+          "units": 12
+        },
+        {
+          "day": "2025-07-24",
+          "product": "PRD-020",
+          "supplier": "SUP-04",
+          "units": 12
+        },
+        {
+          "day": "2025-07-31",
+          "product": "PRD-020",
+          "supplier": "SUP-04",
+          "units": 12
+        },
+        {
+          "day": "2025-08-07",
+          "product": "PRD-020",
+          "supplier": "SUP-04",
+          "units": 12
+        },
+        {
+          "day": "2025-08-14",
+          "product": "PRD-020",
+          "supplier": "SUP-04",
+          "units": 12
+        },
+        {
+          "day": "2025-08-21",
+          "product": "PRD-020",
+          "supplier": "SUP-04",
+          "units": 12
+        },
+        {
+          "day": "2025-08-28",
+          "product": "PRD-020",
+          "supplier": "SUP-04",
+          "units": 12
+        }
+      ],
+      "candidate": [
+        {
+          "day": "2025-07-24",
+          "product": "PRD-020",
+          "supplier": "SUP-04",
+          "units": 12
+        },
+        {
+          "day": "2025-07-31",
+          "product": "PRD-020",
+          "supplier": "SUP-04",
+          "units": 12
+        },
+        {
+          "day": "2025-08-07",
+          "product": "PRD-020",
+          "supplier": "SUP-04",
+          "units": 12
+        },
+        {
+          "day": "2025-08-14",
+          "product": "PRD-020",
+          "supplier": "SUP-04",
+          "units": 12
+        },
+        {
+          "day": "2025-08-21",
+          "product": "PRD-020",
+          "supplier": "SUP-04",
+          "units": 12
+        },
+        {
+          "day": "2025-08-28",
+          "product": "PRD-020",
+          "supplier": "SUP-04",
+          "units": 12
+        }
+      ]
+    }
+  },
+  "regressions": [
+    {
+      "baseline": {
+        "cancellations": [],
+        "cancelled": 0,
+        "deliveries": [
+          {
+            "day": "2025-07-31",
+            "line": "F-CO-000102-L01",
+            "lot": "R-LOT-12",
+            "units": 12
+          }
+        ],
+        "metadata": {
+          "created": "2025-07-28",
+          "customer": "CUS-015",
+          "due": "2025-07-31",
+          "id": "F-CO-000102-L01",
+          "product": "PRD-020",
+          "units": 12
+        },
+        "on_time": 12,
+        "shipped": 12
+      },
+      "candidate": {
+        "cancellations": [],
+        "cancelled": 0,
+        "deliveries": [
+          {
+            "day": "2025-08-01",
+            "line": "F-CO-000102-L01",
+            "lot": "R-LOT-21",
+            "units": 12
+          }
+        ],
+        "metadata": {
+          "created": "2025-07-28",
+          "customer": "CUS-015",
+          "due": "2025-07-31",
+          "id": "F-CO-000102-L01",
+          "product": "PRD-020",
+          "units": 12
+        },
+        "on_time": 0,
+        "shipped": 12
+      },
+      "line": "F-CO-000102-L01"
+    }
+  ],
+  "settled": {
+    "baseline": {
+      "average_incoming_cents": 82958.78571428571,
+      "average_stock_cents": 854653.75,
+      "cancelled_units": 46,
+      "complete_line_service": 0.9595959595959596,
+      "ending_investment_cents": 853393,
+      "expiry_cents": 160867,
+      "fees_cents": 15000,
+      "investment_cents": 937612.5357142857,
+      "late_units": 38,
+      "on_time_units": 2411,
+      "open_units": 0,
+      "purchase_cents": 750216,
+      "requested_units": 2495,
+      "service": 0.9663326653306613,
+      "shipped_units": 2449
+    },
+    "candidate": {
+      "average_incoming_cents": 72159.0,
+      "average_stock_cents": 788298.6785714285,
+      "cancelled_units": 46,
+      "complete_line_service": 0.9562289562289562,
+      "ending_investment_cents": 773917,
+      "expiry_cents": 160867,
+      "fees_cents": 15000,
+      "investment_cents": 860457.6785714285,
+      "late_units": 50,
+      "on_time_units": 2399,
+      "open_units": 0,
+      "purchase_cents": 670740,
+      "requested_units": 2495,
+      "service": 0.9615230460921844,
+      "shipped_units": 2449
+    }
+  },
+  "source_hashes": {
+    "cases/ample_stock-1101.json": "40a61b36551df7c08c9cc78323970b39fcb2a4da16c6dc8d44b2128fb76f3617",
+    "contract.json": "2f68a9e50433494bec7d8a14bbf8f0aa240a661d87697b3bd120f2b364c810e3",
+    "src/replenishment/evaluator.py": "4ec0c21ca74b1a018cb25fc2f7b7c2f689e5e483a98c4d6fed7abcf297cdfe08",
+    "src/replenishment/physical.py": "2f3735829ccb816cca6069b4fe58b315d8bce5c866909ab26acc1d0826891791",
+    "trace_regression.py": "a3a083acc5f207005924b78242757830010dce2970ed0895af70efb91eae2c09"
+  }
+}

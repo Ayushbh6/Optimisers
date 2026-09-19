@@ -1,0 +1,242 @@
+[
+  {
+    "case_id": "balanced_action",
+    "file": "products.csv",
+    "row_id": "BAL-PROD-001",
+    "status": "accounted"
+  },
+  {
+    "case_id": "balanced_action",
+    "file": "products.csv",
+    "row_id": "BAL-PROD-002",
+    "status": "accounted"
+  },
+  {
+    "case_id": "balanced_action",
+    "file": "product_aliases.csv",
+    "row_id": "BAL-ALS-001",
+    "status": "accounted"
+  },
+  {
+    "case_id": "balanced_action",
+    "file": "product_aliases.csv",
+    "row_id": "BAL-ALS-002",
+    "status": "accounted"
+  },
+  {
+    "case_id": "balanced_action",
+    "file": "stock_lots.csv",
+    "row_id": "BAL-STK-001",
+    "status": "accounted"
+  },
+  {
+    "case_id": "balanced_action",
+    "file": "stock_lots.csv",
+    "row_id": "BAL-STK-002",
+    "status": "accounted"
+  },
+  {
+    "case_id": "balanced_action",
+    "file": "customer_orders.csv",
+    "row_id": "BAL-CO-001",
+    "status": "accounted"
+  },
+  {
+    "case_id": "balanced_action",
+    "file": "customer_orders.csv",
+    "row_id": "BAL-CO-002",
+    "status": "accounted"
+  },
+  {
+    "case_id": "balanced_action",
+    "file": "customer_orders.csv",
+    "row_id": "BAL-CO-003",
+    "status": "accounted"
+  },
+  {
+    "case_id": "balanced_action",
+    "file": "customer_orders.csv",
+    "row_id": "BAL-CO-004",
+    "status": "accounted"
+  },
+  {
+    "case_id": "balanced_action",
+    "file": "customer_orders.csv",
+    "row_id": "BAL-CO-005",
+    "status": "accounted"
+  },
+  {
+    "case_id": "balanced_action",
+    "file": "purchases.csv",
+    "row_id": "BAL-PO-001",
+    "status": "accounted"
+  },
+  {
+    "case_id": "balanced_action",
+    "file": "purchases.csv",
+    "row_id": "BAL-PO-002",
+    "status": "accounted"
+  },
+  {
+    "case_id": "balanced_action",
+    "file": "supplier_terms.csv",
+    "row_id": "BAL-TERM-001",
+    "status": "accounted"
+  },
+  {
+    "case_id": "balanced_action",
+    "file": "demand_views.csv",
+    "row_id": "BAL-DMD-001",
+    "status": "accounted"
+  },
+  {
+    "case_id": "balanced_action",
+    "file": "demand_views.csv",
+    "row_id": "BAL-DMD-002",
+    "status": "accounted"
+  },
+  {
+    "case_id": "balanced_action",
+    "file": "demand_views.csv",
+    "row_id": "BAL-DMD-003",
+    "status": "accounted"
+  },
+  {
+    "case_id": "unsafe_shelf_life",
+    "file": "products.csv",
+    "row_id": "UNS-PROD-001",
+    "status": "accounted"
+  },
+  {
+    "case_id": "unsafe_shelf_life",
+    "file": "product_aliases.csv",
+    "row_id": "UNS-ALS-001",
+    "status": "accounted"
+  },
+  {
+    "case_id": "unsafe_shelf_life",
+    "file": "stock_lots.csv",
+    "row_id": "UNS-STK-001",
+    "status": "accounted"
+  },
+  {
+    "case_id": "unsafe_shelf_life",
+    "file": "customer_orders.csv",
+    "row_id": "UNS-CO-001",
+    "status": "accounted"
+  },
+  {
+    "case_id": "unsafe_shelf_life",
+    "file": "purchases.csv",
+    "row_id": "UNS-PO-001",
+    "status": "accounted"
+  },
+  {
+    "case_id": "unsafe_shelf_life",
+    "file": "supplier_terms.csv",
+    "row_id": "UNS-TERM-001",
+    "status": "accounted"
+  },
+  {
+    "case_id": "unsafe_shelf_life",
+    "file": "demand_views.csv",
+    "row_id": "UNS-DMD-001",
+    "status": "accounted"
+  },
+  {
+    "case_id": "unsafe_shelf_life",
+    "file": "demand_views.csv",
+    "row_id": "UNS-DMD-002",
+    "status": "accounted"
+  },
+  {
+    "case_id": "healthy_control",
+    "file": "products.csv",
+    "row_id": "CTL-PROD-001",
+    "status": "accounted"
+  },
+  {
+    "case_id": "healthy_control",
+    "file": "products.csv",
+    "row_id": "CTL-PROD-002",
+    "status": "accounted"
+  },
+  {
+    "case_id": "healthy_control",
+    "file": "product_aliases.csv",
+    "row_id": "CTL-ALS-001",
+    "status": "accounted"
+  },
+  {
+    "case_id": "healthy_control",
+    "file": "product_aliases.csv",
+    "row_id": "CTL-ALS-002",
+    "status": "accounted"
+  },
+  {
+    "case_id": "healthy_control",
+    "file": "stock_lots.csv",
+    "row_id": "CTL-STK-001",
+    "status": "accounted"
+  },
+  {
+    "case_id": "healthy_control",
+    "file": "stock_lots.csv",
+    "row_id": "CTL-STK-002",
+    "status": "accounted"
+  },
+  {
+    "case_id": "healthy_control",
+    "file": "customer_orders.csv",
+    "row_id": "CTL-CO-001",
+    "status": "accounted"
+  },
+  {
+    "case_id": "healthy_control",
+    "file": "customer_orders.csv",
+    "row_id": "CTL-CO-002",
+    "status": "accounted"
+  },
+  {
+    "case_id": "healthy_control",
+    "file": "customer_orders.csv",
+    "row_id": "CTL-CO-003",
+    "status": "accounted"
+  },
+  {
+    "case_id": "healthy_control",
+    "file": "purchases.csv",
+    "row_id": "CTL-PO-001",
+    "status": "accounted"
+  },
+  {
+    "case_id": "healthy_control",
+    "file": "supplier_terms.csv",
+    "row_id": "CTL-TERM-001",
+    "status": "accounted"
+  },
+  {
+    "case_id": "healthy_control",
+    "file": "demand_views.csv",
+    "row_id": "CTL-DMD-001",
+    "status": "accounted"
+  },
+  {
+    "case_id": "healthy_control",
+    "file": "demand_views.csv",
+    "row_id": "CTL-DMD-002",
+    "status": "accounted"
+  },
+  {
+    "case_id": "healthy_control",
+    "file": "demand_views.csv",
+    "row_id": "CTL-DMD-003",
+    "status": "accounted"
+  },
+  {
+    "case_id": "healthy_control",
+    "file": "demand_views.csv",
+    "row_id": "CTL-DMD-004",
+    "status": "accounted"
+  }
+]

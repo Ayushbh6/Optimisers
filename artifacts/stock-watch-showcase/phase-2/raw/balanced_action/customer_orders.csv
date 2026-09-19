@@ -1,0 +1,6 @@
+row_id,case_id,line_id,customer_id,product_ref,quantity_units,due_date,min_shelf_life_days,status,known_at
+BAL-CO-001,balanced_action,SO-1001,CUS-A,Soup Cup 12x,12,2026-10-07,7,booked,2026-10-02T09:00:00+02:00
+BAL-CO-002,balanced_action,SO-1002,CUS-B,PRD-SOUP,12,2026-10-13,7,booked,2026-10-03T10:00:00+02:00
+BAL-CO-003,balanced_action,SO-1003,CUS-C,PRD-SOUP,12,2026-10-15,7,booked,2026-10-04T11:00:00+02:00
+BAL-CO-004,balanced_action,SO-1004,CUS-A,Oat Crkr,12,2026-10-10,5,booked,2026-10-03T08:00:00+02:00
+BAL-CO-005,balanced_action,SO-1005,CUS-D,PRD-OAT,12,2026-10-20,5,booked,2026-10-04T13:00:00+02:00

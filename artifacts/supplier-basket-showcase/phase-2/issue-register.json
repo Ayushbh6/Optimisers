@@ -1,0 +1,83 @@
+{
+  "schema_version": "1.0",
+  "package_version": "supplier-basket-showcase-phase-2-v1",
+  "issues": [
+    {
+      "issue_id": "ISS-001",
+      "case_id": "positive_moq_composition",
+      "classification": "safe_automatic_normalization",
+      "business_cause": "The warehouse export uses a readable product alias while the product master uses TS-400.",
+      "affected_source_row_ids": ["POS-STK-001", "POS-CO-ROW-001", "POS-CO-ROW-002", "POS-CO-ROW-004", "POS-PO-ROW-001"],
+      "initial_status": "open",
+      "final_status": "resolved_automatically",
+      "resolution_row_id": "POS-RES-001",
+      "canonical_effect": "Map Tom Soup 12x400g to PRD-001 and retain the original text."
+    },
+    {
+      "issue_id": "ISS-002",
+      "case_id": "positive_moq_composition",
+      "classification": "buyer_confirmation_required",
+      "business_cause": "The draft purchase workbook omitted the UOM on a quantity of 5.",
+      "affected_source_row_ids": ["POS-PO-ROW-001"],
+      "initial_status": "blocked",
+      "final_status": "resolved_after_buyer_confirmation",
+      "resolution_row_id": "POS-RES-002",
+      "canonical_effect": "Interpret quantity 5 as five cases, giving 60 tins."
+    },
+    {
+      "issue_id": "ISS-003",
+      "case_id": "unsafe_cheaper_delivery_loss",
+      "classification": "deterministic_amendment",
+      "business_cause": "The customer increased one line from 12 to 24 units.",
+      "affected_source_row_ids": ["UNS-CO-ROW-002-A1", "UNS-CO-ROW-002-A2"],
+      "initial_status": "open",
+      "final_status": "resolved_deterministically",
+      "resolution_row_id": "UNS-RES-003",
+      "canonical_effect": "Keep sequence 2 as the active 24-unit line and preserve sequence 1 as superseded."
+    },
+    {
+      "issue_id": "ISS-004",
+      "case_id": "positive_moq_composition",
+      "classification": "deterministic_linked_receipt",
+      "business_cause": "One of two Breakfast Tea cases arrived and the supplier revised the remainder date.",
+      "affected_source_row_ids": ["POS-PO-OLD-101", "POS-PO-OLD-101-ETA", "POS-REC-008"],
+      "initial_status": "open",
+      "final_status": "resolved_deterministically",
+      "resolution_row_id": "POS-RES-004",
+      "canonical_effect": "Record 24 boxes on hand and 24 boxes incoming on 28 September."
+    },
+    {
+      "issue_id": "ISS-005",
+      "case_id": "no_change_control",
+      "classification": "hard_blocker",
+      "business_cause": "The ERP term row omitted the supplier minimum needed to validate the basket.",
+      "affected_source_row_ids": ["CTL-TERM-001", "CTL-TERM-002"],
+      "initial_status": "blocked",
+      "final_status": "resolved_after_authoritative_replacement",
+      "resolution_row_id": "CTL-RES-005",
+      "canonical_effect": "Supersede the incomplete ERP term with the signed €150 term without overwriting the original row."
+    },
+    {
+      "issue_id": "ISS-006",
+      "case_id": "all",
+      "classification": "safe_automatic_normalization",
+      "business_cause": "Supplier labels differ across the warehouse, purchasing workbook and supplier portal.",
+      "affected_source_row_ids": ["POS-TERM-001", "UNS-TERM-001", "CTL-TERM-002"],
+      "initial_status": "open",
+      "final_status": "resolved_automatically",
+      "resolution_row_ids": ["POS-RES-006", "UNS-RES-006", "CTL-RES-006"],
+      "canonical_effect": "Map ALDER to SUP-A and BEACON or Beacon Grocery to SUP-B using the reference registry."
+    },
+    {
+      "issue_id": "ISS-007",
+      "case_id": "positive_moq_composition",
+      "classification": "deterministic_reconciliation",
+      "business_cause": "The stock snapshot and receipt both show the received Tea case while the purchase order still shows two ordered cases.",
+      "affected_source_row_ids": ["POS-STK-008", "POS-PO-OLD-101", "POS-REC-008"],
+      "initial_status": "open",
+      "final_status": "resolved_deterministically",
+      "resolution_row_id": "POS-RES-007",
+      "canonical_effect": "Count the received case once as stock and only the remaining case as incoming."
+    }
+  ]
+}

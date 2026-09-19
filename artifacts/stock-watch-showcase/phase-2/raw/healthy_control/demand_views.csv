@@ -1,0 +1,5 @@
+row_id,case_id,view_id,event_id,product_ref,quantity_units,due_date,min_shelf_life_days,known_at
+CTL-DMD-001,healthy_control,nominal,NOM-TOM-01,PRD-TOMATO,12,2026-10-20,7,2026-10-05T08:00:00+02:00
+CTL-DMD-002,healthy_control,higher,HI-TOM-01,PRD-TOMATO,24,2026-10-20,7,2026-10-05T08:00:00+02:00
+CTL-DMD-003,healthy_control,irregular,IRR-TOM-01,PRD-TOMATO,12,2026-10-18,7,2026-10-05T08:00:00+02:00
+CTL-DMD-004,healthy_control,irregular,IRR-TOM-02,PRD-TOMATO,12,2026-10-25,7,2026-10-05T08:00:00+02:00

@@ -1,0 +1,2 @@
+row_id,case_id,line_id,product_ref,cases,status,expected_arrival,expiry_date,change_cutoff,amends_row_id
+CTL-PO-001,healthy_control,PO-4001,Tom Jars 12,2,open,2026-10-09,2027-03-31,2026-10-06,

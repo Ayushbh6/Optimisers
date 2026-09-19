@@ -1,0 +1,14 @@
+[
+  {
+    "action_label": "Confirm 60 units",
+    "affected_rows": [
+      "BAL-STK-002"
+    ],
+    "case_id": "balanced_action",
+    "classification": "buyer_confirmation_required",
+    "detail": "The warehouse export says 5 but omits the unit. The signed count sheet records five 12-unit cases.",
+    "issue_id": "SW-ISS-001",
+    "status": "pending",
+    "title": "Confirm five cases of Oat Crackers"
+  }
+]

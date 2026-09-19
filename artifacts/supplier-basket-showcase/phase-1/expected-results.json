@@ -1,0 +1,211 @@
+{
+  "schema_version": "1.0",
+  "contract_version": "supplier-basket-showcase-phase-1-v1",
+  "calculation_basis": "independent hand calculation from contract.json facts",
+  "currency": "EUR",
+  "cases": [
+    {
+      "case_id": "positive_moq_composition",
+      "expected_verdict": "accept_proposed",
+      "booked_units": 96,
+      "booked_lines": 5,
+      "buyer": {
+        "basket_id": "POS-BUYER",
+        "merchandise_eur": "600.00",
+        "delivery_charge_eur": "20.00",
+        "immediate_cash_eur": "620.00",
+        "on_time_units": 96,
+        "complete_lines": 5,
+        "expired_units": 0,
+        "expired_cost_eur": "0.00",
+        "sum_28_daily_exposure_eur": "12201.60",
+        "average_daily_exposure_eur_unrounded": "435.7714285714285714285714286",
+        "average_daily_exposure_eur_display": "435.77",
+        "ending_stock_eur": "355.20",
+        "ending_incoming_eur": "0.00",
+        "ending_undelivered_commitments_eur": "0.00",
+        "ending_stock_plus_commitments_eur": "355.20",
+        "daily_exposure_segments": [
+          {"from": "2026-09-18", "through": "2026-09-20", "days": 3, "daily_eur": "763.20"},
+          {"from": "2026-09-21", "through": "2026-09-22", "days": 2, "daily_eur": "715.20"},
+          {"from": "2026-09-23", "through": "2026-09-24", "days": 2, "daily_eur": "511.20"},
+          {"from": "2026-09-25", "through": "2026-10-15", "days": 21, "daily_eur": "355.20"}
+        ]
+      },
+      "proposed": {
+        "basket_id": "POS-PROPOSED",
+        "merchandise_eur": "504.00",
+        "delivery_charge_eur": "20.00",
+        "immediate_cash_eur": "524.00",
+        "on_time_units": 96,
+        "complete_lines": 5,
+        "expired_units": 0,
+        "expired_cost_eur": "0.00",
+        "sum_28_daily_exposure_eur": "9513.60",
+        "average_daily_exposure_eur_unrounded": "339.7714285714285714285714286",
+        "average_daily_exposure_eur_display": "339.77",
+        "ending_stock_eur": "259.20",
+        "ending_incoming_eur": "0.00",
+        "ending_undelivered_commitments_eur": "0.00",
+        "ending_stock_plus_commitments_eur": "259.20",
+        "daily_exposure_segments": [
+          {"from": "2026-09-18", "through": "2026-09-20", "days": 3, "daily_eur": "667.20"},
+          {"from": "2026-09-21", "through": "2026-09-22", "days": 2, "daily_eur": "619.20"},
+          {"from": "2026-09-23", "through": "2026-09-24", "days": 2, "daily_eur": "415.20"},
+          {"from": "2026-09-25", "through": "2026-10-15", "days": 21, "daily_eur": "259.20"}
+        ]
+      },
+      "difference_proposed_minus_buyer": {
+        "immediate_cash_eur": "-96.00",
+        "on_time_units": 0,
+        "complete_lines": 0,
+        "expired_units": 0,
+        "average_daily_exposure_eur": "-96.00",
+        "ending_stock_plus_commitments_eur": "-96.00"
+      },
+      "positive_candidate_audit": [
+        {"candidate_id": "POS-RM-001-REPAIR-002", "cash_eur": "560.00", "on_time_units": 36, "complete_lines": 3, "ending_stock_plus_commitments_eur": "775.20", "outcome": "reject_delivery_loss"},
+        {"candidate_id": "POS-RM-002-REPAIR-001", "cash_eur": "548.00", "on_time_units": 72, "complete_lines": 3, "ending_stock_plus_commitments_eur": "523.20", "outcome": "reject_delivery_loss"},
+        {"candidate_id": "POS-RM-003-REPAIR-001", "cash_eur": "524.00", "on_time_units": 96, "complete_lines": 5, "ending_stock_plus_commitments_eur": "259.20", "outcome": "select"},
+        {"candidate_id": "POS-RM-003-REPAIR-002", "cash_eur": "560.00", "on_time_units": 96, "complete_lines": 5, "ending_stock_plus_commitments_eur": "295.20", "outcome": "safe_not_selected"},
+        {"candidate_id": "POS-RED-001-1", "cash_eur": "572.00", "on_time_units": 84, "complete_lines": 4, "ending_stock_plus_commitments_eur": "403.20", "outcome": "reject_delivery_loss"},
+        {"candidate_id": "POS-RED-002-1", "cash_eur": "560.00", "on_time_units": 84, "complete_lines": 4, "ending_stock_plus_commitments_eur": "415.20", "outcome": "reject_delivery_loss"},
+        {"candidate_id": "POS-INC-001-1", "cash_eur": "668.00", "on_time_units": 96, "complete_lines": 5, "ending_stock_plus_commitments_eur": "403.20", "outcome": "safe_not_selected"},
+        {"candidate_id": "POS-INC-002-1", "cash_eur": "680.00", "on_time_units": 96, "complete_lines": 5, "ending_stock_plus_commitments_eur": "415.20", "outcome": "safe_not_selected"},
+        {"candidate_id": "POS-INC-003-1", "merchandise_eur": "840.00", "cash_eur": "860.00", "precheck": "reject_weekly_allowance"}
+      ]
+    },
+    {
+      "case_id": "unsafe_cheaper_delivery_loss",
+      "expected_verdict": "reject_challenged_retain_buyer",
+      "booked_units": 54,
+      "booked_lines": 4,
+      "buyer": {
+        "basket_id": "UNS-BUYER",
+        "merchandise_eur": "198.00",
+        "delivery_charge_eur": "15.00",
+        "immediate_cash_eur": "213.00",
+        "on_time_units": 54,
+        "complete_lines": 4,
+        "expired_units": 0,
+        "expired_cost_eur": "0.00",
+        "sum_28_daily_exposure_eur": "1476.00",
+        "average_daily_exposure_eur_unrounded": "52.71428571428571428571428571",
+        "average_daily_exposure_eur_display": "52.71",
+        "ending_stock_eur": "0.00",
+        "ending_incoming_eur": "0.00",
+        "ending_undelivered_commitments_eur": "0.00",
+        "ending_stock_plus_commitments_eur": "0.00",
+        "daily_exposure_segments": [
+          {"from": "2026-09-18", "through": "2026-09-20", "days": 3, "daily_eur": "258.00"},
+          {"from": "2026-09-21", "through": "2026-09-23", "days": 3, "daily_eur": "198.00"},
+          {"from": "2026-09-24", "through": "2026-09-24", "days": 1, "daily_eur": "78.00"},
+          {"from": "2026-09-25", "through": "2026-09-25", "days": 1, "daily_eur": "30.00"},
+          {"from": "2026-09-26", "through": "2026-10-15", "days": 20, "daily_eur": "0.00"}
+        ]
+      },
+      "challenged": {
+        "basket_id": "UNS-CHEAPER",
+        "merchandise_eur": "168.00",
+        "delivery_charge_eur": "15.00",
+        "immediate_cash_eur": "183.00",
+        "on_time_units": 42,
+        "complete_lines": 3,
+        "failed_line_id": "UNS-CO-002",
+        "failed_date": "2026-09-24",
+        "undelivered_units": 12,
+        "expired_units": 0,
+        "expired_cost_eur": "0.00",
+        "sum_28_daily_exposure_eur": "3276.00",
+        "average_daily_exposure_eur_unrounded": "117.00",
+        "average_daily_exposure_eur_display": "117.00",
+        "ending_stock_eur": "30.00",
+        "ending_incoming_eur": "0.00",
+        "ending_undelivered_commitments_eur": "60.00",
+        "ending_stock_plus_commitments_eur": "90.00",
+        "daily_exposure_segments": [
+          {"from": "2026-09-18", "through": "2026-09-20", "days": 3, "daily_eur": "228.00"},
+          {"from": "2026-09-21", "through": "2026-09-24", "days": 4, "daily_eur": "168.00"},
+          {"from": "2026-09-25", "through": "2026-09-25", "days": 1, "daily_eur": "120.00"},
+          {"from": "2026-09-26", "through": "2026-10-15", "days": 20, "daily_eur": "90.00"}
+        ]
+      },
+      "difference_challenged_minus_buyer": {
+        "immediate_cash_eur": "-30.00",
+        "on_time_units": -12,
+        "complete_lines": -1,
+        "expired_units": 0,
+        "average_daily_exposure_eur": "64.28571428571428571428571429",
+        "ending_stock_plus_commitments_eur": "90.00"
+      }
+    },
+    {
+      "case_id": "no_change_control",
+      "expected_verdict": "retain_buyer",
+      "booked_units": 54,
+      "booked_lines": 4,
+      "buyer": {
+        "basket_id": "CTL-BUYER",
+        "merchandise_eur": "151.20",
+        "delivery_charge_eur": "15.00",
+        "immediate_cash_eur": "166.20",
+        "on_time_units": 54,
+        "complete_lines": 4,
+        "expired_units": 0,
+        "expired_cost_eur": "0.00",
+        "sum_28_daily_exposure_eur": "1273.20",
+        "average_daily_exposure_eur_unrounded": "45.47142857142857142857142857",
+        "average_daily_exposure_eur_display": "45.47",
+        "ending_stock_eur": "0.00",
+        "ending_incoming_eur": "0.00",
+        "ending_undelivered_commitments_eur": "0.00",
+        "ending_stock_plus_commitments_eur": "0.00",
+        "daily_exposure_segments": [
+          {"from": "2026-09-18", "through": "2026-09-23", "days": 6, "daily_eur": "151.20"},
+          {"from": "2026-09-24", "through": "2026-09-24", "days": 1, "daily_eur": "103.20"},
+          {"from": "2026-09-25", "through": "2026-09-27", "days": 3, "daily_eur": "73.20"},
+          {"from": "2026-09-28", "through": "2026-09-28", "days": 1, "daily_eur": "43.20"},
+          {"from": "2026-09-29", "through": "2026-10-15", "days": 17, "daily_eur": "0.00"}
+        ]
+      },
+      "bounded_candidate_audit": [
+        {"candidate_id": "CTL-RED-005-1", "merchandise_eur": "103.20", "cash_eur": "118.20", "precheck": "reject_supplier_minimum"},
+        {"candidate_id": "CTL-RED-006-1", "merchandise_eur": "121.20", "cash_eur": "136.20", "precheck": "reject_supplier_minimum"},
+        {"candidate_id": "CTL-RED-007-1", "merchandise_eur": "129.60", "cash_eur": "144.60", "precheck": "reject_supplier_minimum"},
+        {"candidate_id": "CTL-INC-005-1", "merchandise_eur": "199.20", "cash_eur": "214.20", "on_time_units": 54, "ending_stock_plus_commitments_eur": "48.00", "outcome": "safe_but_worse"},
+        {"candidate_id": "CTL-INC-006-1", "merchandise_eur": "181.20", "cash_eur": "196.20", "on_time_units": 54, "ending_stock_plus_commitments_eur": "30.00", "outcome": "safe_but_worse"},
+        {"candidate_id": "CTL-INC-007-1", "merchandise_eur": "172.80", "cash_eur": "187.80", "on_time_units": 54, "ending_stock_plus_commitments_eur": "21.60", "outcome": "safe_but_worse"},
+        {"candidate_id": "CTL-RM-005-REPAIR-006", "merchandise_eur": "163.20", "cash_eur": "178.20", "on_time_units": 48, "ending_stock_plus_commitments_eur": "108.00", "outcome": "reject_delivery_loss"},
+        {"candidate_id": "CTL-RM-005-REPAIR-007", "merchandise_eur": "168.00", "cash_eur": "183.00", "on_time_units": 48, "ending_stock_plus_commitments_eur": "112.80", "outcome": "reject_delivery_loss"},
+        {"candidate_id": "CTL-RED-006-REPAIR-005", "merchandise_eur": "169.20", "cash_eur": "184.20", "on_time_units": 42, "ending_stock_plus_commitments_eur": "78.00", "outcome": "reject_delivery_loss"},
+        {"candidate_id": "CTL-RED-006-REPAIR-007", "merchandise_eur": "164.40", "cash_eur": "179.40", "on_time_units": 42, "ending_stock_plus_commitments_eur": "73.20", "outcome": "reject_delivery_loss"},
+        {"candidate_id": "CTL-RED-007-REPAIR-005", "merchandise_eur": "177.60", "cash_eur": "192.60", "on_time_units": 42, "ending_stock_plus_commitments_eur": "69.60", "outcome": "reject_delivery_loss"},
+        {"candidate_id": "CTL-RED-007-REPAIR-006", "merchandise_eur": "159.60", "cash_eur": "174.60", "on_time_units": 42, "ending_stock_plus_commitments_eur": "51.60", "outcome": "reject_delivery_loss"}
+      ],
+      "candidate_counts": {
+        "unique_alternatives": 12,
+        "rejected_before_replay": 3,
+        "physically_replayed": 9,
+        "safe_but_worse": 3,
+        "delivery_regressions": 6,
+        "safe_lower_exposure_survivors": 0
+      }
+    }
+  ],
+  "authoritative_checks": {
+    "all_daily_ledgers_balance": true,
+    "unexplained_adjustments": 0,
+    "future_information_used": false,
+    "all_order_quantities_whole_cases": true,
+    "all_replayed_baskets_within_budget_and_capacity": true,
+    "positive_service_regression_units": 0,
+    "unsafe_exact_regression_units": 12,
+    "no_change_safe_lower_exposure_survivors": 0
+  },
+  "evidence_hashes_sha256": {
+    "docs/showcase/phase-1/BUSINESS_CASE_CONTRACT.md": "3be8772373e849877568c9426b6b3230853f0cd2f0882926e36f1955015e8e0b",
+    "docs/showcase/phase-1/OPERATIONAL_RULES.md": "1109e6795cb943ed1d7884f77effbb63aab4f84af1df0fc4131843936813110d",
+    "docs/showcase/phase-1/DATA_ISSUE_CONTRACT.md": "02d9be2c6c4ca32417666870a4d4575373eefccae4d65d35aaecacdc0c92f0b5",
+    "docs/showcase/phase-1/HAND_CALCULATION_REVIEW.md": "8874fe041598bc0a3e3b74be0268f691615783838aa6d5ff53c0ce4a4ce0b8ee"
+  }
+}

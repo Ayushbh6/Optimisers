@@ -1,0 +1,17 @@
+{
+  "decision_hashes": {
+    "no_change_control": "5c6c584011bf32e41292d4c08912e1a06b4382008aff88b08aa63b8c0de57d0c",
+    "positive_moq_composition": "beda8bd6db28a92cb0d371eacb4b2a9b148d44123740809e9874756ab65b28f7",
+    "unsafe_cheaper_delivery_loss": "29e14cae6e724bade2f32d4a0491bee4010286b326a869722b0213537c34175d"
+  },
+  "export_cash_totals_eur": {
+    "no_change_control": "166.20",
+    "positive_moq_composition": "524.00",
+    "unsafe_cheaper_delivery_loss": "213.00"
+  },
+  "formula_injection_tested": true,
+  "phase": 5,
+  "schema_version": "1.0",
+  "status": "PASS",
+  "synthetic_claim_boundary_present": true
+}

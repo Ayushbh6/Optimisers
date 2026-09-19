@@ -1,0 +1,11 @@
+---
+import Shell from '../layouts/Shell.astro';
+---
+<Shell title="Complex Problems — Thoughtful Software" section="Home" dark>
+  <link slot="head" rel="preload" as="image" href="/images/hero.webp" fetchpriority="high" />
+  <div slot="background" class="hero-backdrop" aria-hidden="true"><img src="/images/hero.webp" alt="" fetchpriority="high" /><div class="hero-shade"></div></div>
+  <section class="hero" aria-labelledby="hero-title">
+    <h1 id="hero-title"><span class="hero-phrase">Complex<br />Problems</span><span class="hero-phrase">Thoughtful<br />Software</span></h1>
+    <div class="hero-bottom"><a class="text-link hero-link" href="/work/">Explore our work <svg aria-hidden="true" width="60" height="16" viewBox="0 0 60 16" fill="none"><path d="M1 8h57M52 2l6 6-6 6" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" /></svg></a><p>Built with curiosity.<br />Grounded in the details.</p></div>
+  </section>
+</Shell>

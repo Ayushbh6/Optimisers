@@ -1,0 +1,2 @@
+action,product_id,product_name,current_cases,recommended_cases,arrival_date,line_value_eur,decision_hash,synthetic_example
+keep_order,PRD-FRUIT,Fruit Bars,4,4,2026-10-09,105.60,989114ef22ccd6225e2e1a5b8932b44c4b82343f75210d7a571019f01d253a85,true

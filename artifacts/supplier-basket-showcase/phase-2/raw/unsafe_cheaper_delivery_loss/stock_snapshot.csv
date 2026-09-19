@@ -1,0 +1,2 @@
+source_row_id,source_system,snapshot_at,product_ref,lot_ref,quantity,uom,expiry_date
+UNS-STK-004,warehouse_erp,2026-09-18T08:00:00+02:00,NGB-12,LOT-UNS-004,12,pack,2026-12-31

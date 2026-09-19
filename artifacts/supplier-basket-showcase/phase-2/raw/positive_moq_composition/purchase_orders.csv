@@ -1,0 +1,6 @@
+source_row_id,source_system,purchase_order_ref,line_ref,supplier_ref,product_ref,quantity,uom,ordered_at,expected_date,status
+POS-PO-ROW-001,buyer_workbook,PO-A-0918,POS-PO-001,ALDER,Tom Soup 12x400g,5,,2026-09-18T08:45:00+02:00,2026-09-22,draft
+POS-PO-ROW-002,buyer_workbook,PO-A-0918,POS-PO-002,ALDER,OAT-CRK,2,case,2026-09-18T08:45:00+02:00,2026-09-22,draft
+POS-PO-ROW-003,buyer_workbook,PO-A-0918,POS-PO-003,ALDER,HNY-DROP,1,case,2026-09-18T08:45:00+02:00,2026-09-22,draft
+POS-PO-OLD-101,purchasing_erp,PO-B-0910,POS-PO-OLD-101-L1,BEACON,TEA-BRKFST,2,case,2026-09-10T10:00:00+02:00,2026-09-17,partially_received
+POS-PO-OLD-101-ETA,supplier_portal_update,PO-B-0910,POS-PO-OLD-101-L1,BEACON,TEA-BRKFST,1,case,2026-09-10T10:00:00+02:00,2026-09-28,outstanding_eta_update

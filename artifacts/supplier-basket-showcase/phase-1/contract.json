@@ -1,0 +1,180 @@
+{
+  "schema_version": "1.0",
+  "contract_version": "supplier-basket-showcase-phase-1-v1",
+  "case_study_type": "synthetic_predeclared_showcase",
+  "business_name": "Northstar Pantry Distribution GmbH",
+  "decision_timestamp": "2026-09-18T09:00:00+02:00",
+  "window_start": "2026-09-18",
+  "window_end": "2026-10-15",
+  "window_days": 28,
+  "currency": "EUR",
+  "claim_boundary": "Demonstrates frozen software behaviour under stated synthetic conditions; does not establish realised savings, general performance or willingness to pay.",
+  "rules": {
+    "daily_events": [
+      "00:01 quarantine expired stock",
+      "08:00 receive due incoming lots",
+      "12:00 dispatch due booked lines FEFO",
+      "18:00 measure closing stock and open commitments"
+    ],
+    "minimum_remaining_shelf_life_days": 60,
+    "partial_dispatch_allowed": true,
+    "lateness_allowance_days": 0,
+    "warehouse_receipt_capacity_units_per_day": 250,
+    "weekly_cash_allowance_eur": "800.00",
+    "supplier_minimum_basis": "merchandise_before_delivery_charge",
+    "vat_treatment": "excluded_recoverable",
+    "candidate_max_changed_lines": 2,
+    "candidate_case_step": 1,
+    "minimum_repair": "smallest_whole_case_increase_of_one_other_already_needed_product",
+    "selection_order": [
+      "protect_all_booked_units_and_due_dates",
+      "minimise_average_stock_plus_incoming_plus_undelivered_commitments_at_purchase_cost",
+      "minimise_expiry_purchase_cost",
+      "minimise_delivery_charge",
+      "lexicographic_product_id_and_cases"
+    ]
+  },
+  "suppliers": [
+    {
+      "supplier_id": "SUP-A",
+      "name": "Alder Fine Foods",
+      "order_weekday": "FRIDAY",
+      "lead_time_workdays": 2,
+      "expected_arrival": "2026-09-22",
+      "minimum_merchandise_eur": "500.00",
+      "delivery_charge_eur": "20.00",
+      "terms_effective_from": "2026-09-01",
+      "terms_effective_to": "2026-12-31"
+    },
+    {
+      "supplier_id": "SUP-B",
+      "name": "Beacon Grocery Supply",
+      "order_weekday": "FRIDAY",
+      "lead_time_workdays": 3,
+      "expected_arrival": "2026-09-23",
+      "minimum_merchandise_eur": "150.00",
+      "delivery_charge_eur": "15.00",
+      "terms_effective_from": "2026-09-01",
+      "terms_effective_to": "2026-12-31"
+    }
+  ],
+  "products": [
+    {"product_id": "PRD-001", "name": "Tomato Soup", "supplier_id": "SUP-A", "base_uom": "tin", "case_size": 12, "product_min_cases": 1, "unit_cost_eur": "4.00", "incoming_expiry_date": "2027-01-31"},
+    {"product_id": "PRD-002", "name": "Oat Crackers", "supplier_id": "SUP-A", "base_uom": "pack", "case_size": 12, "product_min_cases": 1, "unit_cost_eur": "5.00", "incoming_expiry_date": "2027-01-31"},
+    {"product_id": "PRD-003", "name": "Honey Drops", "supplier_id": "SUP-A", "base_uom": "jar", "case_size": 24, "product_min_cases": 1, "unit_cost_eur": "10.00", "incoming_expiry_date": "2027-01-31"},
+    {"product_id": "PRD-004", "name": "Nougat Bars", "supplier_id": "SUP-B", "base_uom": "pack", "case_size": 12, "product_min_cases": 1, "unit_cost_eur": "5.00", "incoming_expiry_date": "2027-01-31"},
+    {"product_id": "PRD-005", "name": "Olive Oil", "supplier_id": "SUP-B", "base_uom": "bottle", "case_size": 6, "product_min_cases": 1, "unit_cost_eur": "8.00", "incoming_expiry_date": "2027-01-31"},
+    {"product_id": "PRD-006", "name": "Pasta", "supplier_id": "SUP-B", "base_uom": "pack", "case_size": 12, "product_min_cases": 1, "unit_cost_eur": "2.50", "incoming_expiry_date": "2027-01-31"},
+    {"product_id": "PRD-007", "name": "Chickpeas", "supplier_id": "SUP-B", "base_uom": "tin", "case_size": 12, "product_min_cases": 1, "unit_cost_eur": "1.80", "incoming_expiry_date": "2027-01-31"},
+    {"product_id": "PRD-008", "name": "Breakfast Tea", "supplier_id": "SUP-B", "base_uom": "box", "case_size": 24, "product_min_cases": 1, "unit_cost_eur": "2.40", "incoming_expiry_date": "2027-02-28"}
+  ],
+  "cases": [
+    {
+      "case_id": "positive_moq_composition",
+      "supplier_id": "SUP-A",
+      "expected_verdict": "accept_proposed",
+      "opening_lots": [
+        {"source_id": "POS-STK-001", "product_id": "PRD-001", "lot_id": "LOT-POS-001", "quantity_units": 12, "received_date": "2026-08-31", "expiry_date": "2026-12-31"},
+        {"source_id": "POS-STK-008", "product_id": "PRD-008", "lot_id": "LOT-POS-008-A", "quantity_units": 24, "received_date": "2026-09-15", "expiry_date": "2027-02-28"}
+      ],
+      "known_incoming": [
+        {"source_id": "POS-INC-008", "purchase_order_id": "POS-PO-OLD-101", "product_id": "PRD-008", "quantity_units": 24, "arrival_date": "2026-09-28", "expiry_date": "2027-02-28", "already_committed_before_decision": true}
+      ],
+      "booked_lines": [
+        {"line_id": "POS-CO-001", "customer_id": "CUS-001", "booked_at": "2026-09-14T10:00:00+02:00", "due_date": "2026-09-21", "product_id": "PRD-001", "quantity_units": 12},
+        {"line_id": "POS-CO-002", "customer_id": "CUS-002", "booked_at": "2026-09-15T09:30:00+02:00", "due_date": "2026-09-23", "product_id": "PRD-001", "quantity_units": 36},
+        {"line_id": "POS-CO-003", "customer_id": "CUS-002", "booked_at": "2026-09-15T09:30:00+02:00", "due_date": "2026-09-23", "product_id": "PRD-002", "quantity_units": 12},
+        {"line_id": "POS-CO-004", "customer_id": "CUS-003", "booked_at": "2026-09-16T14:00:00+02:00", "due_date": "2026-09-25", "product_id": "PRD-001", "quantity_units": 24},
+        {"line_id": "POS-CO-005", "customer_id": "CUS-003", "booked_at": "2026-09-16T14:00:00+02:00", "due_date": "2026-09-25", "product_id": "PRD-002", "quantity_units": 12}
+      ],
+      "buyer_basket": {
+        "basket_id": "POS-BUYER",
+        "arrival_date": "2026-09-22",
+        "lines": [
+          {"product_id": "PRD-001", "cases": 5},
+          {"product_id": "PRD-002", "cases": 2},
+          {"product_id": "PRD-003", "cases": 1}
+        ]
+      },
+      "challenged_basket": {
+        "basket_id": "POS-PROPOSED",
+        "arrival_date": "2026-09-22",
+        "lines": [
+          {"product_id": "PRD-001", "cases": 8},
+          {"product_id": "PRD-002", "cases": 2}
+        ],
+        "derivation": "remove PRD-003 and add the minimum three PRD-001 cases needed to restore the supplier minimum"
+      },
+      "minimum_repair_product_ids": ["PRD-001", "PRD-002"],
+      "required_issue_ids": ["ISS-001", "ISS-002", "ISS-004", "ISS-006", "ISS-007"]
+    },
+    {
+      "case_id": "unsafe_cheaper_delivery_loss",
+      "supplier_id": "SUP-B",
+      "expected_verdict": "reject_challenged_retain_buyer",
+      "opening_lots": [
+        {"source_id": "UNS-STK-004", "product_id": "PRD-004", "lot_id": "LOT-UNS-004", "quantity_units": 12, "received_date": "2026-09-01", "expiry_date": "2026-12-31"}
+      ],
+      "known_incoming": [],
+      "booked_lines": [
+        {"line_id": "UNS-CO-001", "customer_id": "CUS-004", "booked_at": "2026-09-14T11:00:00+02:00", "due_date": "2026-09-21", "product_id": "PRD-004", "quantity_units": 12},
+        {"line_id": "UNS-CO-002", "customer_id": "CUS-005", "booked_at": "2026-09-17T08:45:00+02:00", "due_date": "2026-09-24", "product_id": "PRD-004", "quantity_units": 24},
+        {"line_id": "UNS-CO-003", "customer_id": "CUS-005", "booked_at": "2026-09-16T13:15:00+02:00", "due_date": "2026-09-25", "product_id": "PRD-005", "quantity_units": 6},
+        {"line_id": "UNS-CO-004", "customer_id": "CUS-006", "booked_at": "2026-09-17T15:30:00+02:00", "due_date": "2026-09-26", "product_id": "PRD-006", "quantity_units": 12}
+      ],
+      "buyer_basket": {
+        "basket_id": "UNS-BUYER",
+        "arrival_date": "2026-09-23",
+        "lines": [
+          {"product_id": "PRD-004", "cases": 2},
+          {"product_id": "PRD-005", "cases": 1},
+          {"product_id": "PRD-006", "cases": 1}
+        ]
+      },
+      "challenged_basket": {
+        "basket_id": "UNS-CHEAPER",
+        "arrival_date": "2026-09-23",
+        "lines": [
+          {"product_id": "PRD-004", "cases": 1},
+          {"product_id": "PRD-005", "cases": 1},
+          {"product_id": "PRD-006", "cases": 2}
+        ],
+        "derivation": "reduce PRD-004 by one case and increase already-needed PRD-006 by one case"
+      },
+      "minimum_repair_product_ids": ["PRD-005", "PRD-006"],
+      "required_issue_ids": ["ISS-003"]
+    },
+    {
+      "case_id": "no_change_control",
+      "supplier_id": "SUP-B",
+      "expected_verdict": "retain_buyer",
+      "opening_lots": [],
+      "known_incoming": [],
+      "booked_lines": [
+        {"line_id": "CTL-CO-001", "customer_id": "CUS-001", "booked_at": "2026-09-15T08:30:00+02:00", "due_date": "2026-09-24", "product_id": "PRD-005", "quantity_units": 6},
+        {"line_id": "CTL-CO-002", "customer_id": "CUS-002", "booked_at": "2026-09-15T10:45:00+02:00", "due_date": "2026-09-25", "product_id": "PRD-006", "quantity_units": 12},
+        {"line_id": "CTL-CO-003", "customer_id": "CUS-003", "booked_at": "2026-09-16T09:15:00+02:00", "due_date": "2026-09-28", "product_id": "PRD-006", "quantity_units": 12},
+        {"line_id": "CTL-CO-004", "customer_id": "CUS-004", "booked_at": "2026-09-17T12:00:00+02:00", "due_date": "2026-09-29", "product_id": "PRD-007", "quantity_units": 24}
+      ],
+      "buyer_basket": {
+        "basket_id": "CTL-BUYER",
+        "arrival_date": "2026-09-23",
+        "lines": [
+          {"product_id": "PRD-005", "cases": 1},
+          {"product_id": "PRD-006", "cases": 2},
+          {"product_id": "PRD-007", "cases": 2}
+        ]
+      },
+      "challenged_basket": null,
+      "minimum_repair_product_ids": ["PRD-005", "PRD-006", "PRD-007"],
+      "required_issue_ids": ["ISS-005"]
+    }
+  ],
+  "evidence_hashes_sha256": {
+    "docs/showcase/phase-1/BUSINESS_CASE_CONTRACT.md": "3be8772373e849877568c9426b6b3230853f0cd2f0882926e36f1955015e8e0b",
+    "docs/showcase/phase-1/OPERATIONAL_RULES.md": "1109e6795cb943ed1d7884f77effbb63aab4f84af1df0fc4131843936813110d",
+    "docs/showcase/phase-1/DATA_ISSUE_CONTRACT.md": "02d9be2c6c4ca32417666870a4d4575373eefccae4d65d35aaecacdc0c92f0b5",
+    "docs/showcase/phase-1/HAND_CALCULATION_REVIEW.md": "8874fe041598bc0a3e3b74be0268f691615783838aa6d5ff53c0ce4a4ce0b8ee",
+    "artifacts/supplier-basket-showcase/phase-1/expected-results.json": "83d4e644b34ad18adb93300f60181a63b6f1c896d25fc79acc19124cacb1850d"
+  }
+}

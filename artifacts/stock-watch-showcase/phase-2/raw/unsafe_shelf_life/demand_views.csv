@@ -1,0 +1,3 @@
+row_id,case_id,view_id,event_id,product_ref,quantity_units,due_date,min_shelf_life_days,known_at
+UNS-DMD-001,unsafe_shelf_life,higher,HI-FRUIT-01,PRD-FRUIT,12,2026-10-22,5,2026-10-05T08:00:00+02:00
+UNS-DMD-002,unsafe_shelf_life,irregular,IRR-FRUIT-01,PRD-FRUIT,12,2026-10-22,5,2026-10-05T08:00:00+02:00

@@ -1,0 +1,121 @@
+{
+  "source_hashes": {
+    "cases/ample_stock-1101.json": "40a61b36551df7c08c9cc78323970b39fcb2a4da16c6dc8d44b2128fb76f3617",
+    "contract.json": "2f68a9e50433494bec7d8a14bbf8f0aa240a661d87697b3bd120f2b364c810e3",
+    "isolate_regression.py": "c0f1e75e14f88d31f14f2a8887bc5bd66b2a097abb4b183e7272b81591291ccd",
+    "trace_regression.py": "a3a083acc5f207005924b78242757830010dce2970ed0895af70efb91eae2c09"
+  },
+  "variants": {
+    "candidate": {
+      "line": {
+        "cancellations": [],
+        "cancelled": 0,
+        "deliveries": [
+          {
+            "day": "2025-08-01",
+            "line": "F-CO-000102-L01",
+            "lot": "R-LOT-21",
+            "units": 12
+          }
+        ],
+        "metadata": {
+          "created": "2025-07-28",
+          "customer": "CUS-015",
+          "due": "2025-07-31",
+          "id": "F-CO-000102-L01",
+          "product": "PRD-020",
+          "units": 12
+        },
+        "on_time": 0,
+        "shipped": 12
+      },
+      "restored_cash_cents": 0,
+      "restored_days": []
+    },
+    "restore_10_july": {
+      "line": {
+        "cancellations": [],
+        "cancelled": 0,
+        "deliveries": [
+          {
+            "day": "2025-07-31",
+            "line": "F-CO-000102-L01",
+            "lot": "R-LOT-10",
+            "units": 12
+          }
+        ],
+        "metadata": {
+          "created": "2025-07-28",
+          "customer": "CUS-015",
+          "due": "2025-07-31",
+          "id": "F-CO-000102-L01",
+          "product": "PRD-020",
+          "units": 12
+        },
+        "on_time": 12,
+        "shipped": 12
+      },
+      "restored_cash_cents": 6612,
+      "restored_days": [
+        "2025-07-10"
+      ]
+    },
+    "restore_17_july": {
+      "line": {
+        "cancellations": [],
+        "cancelled": 0,
+        "deliveries": [
+          {
+            "day": "2025-07-31",
+            "line": "F-CO-000102-L01",
+            "lot": "R-LOT-16",
+            "units": 12
+          }
+        ],
+        "metadata": {
+          "created": "2025-07-28",
+          "customer": "CUS-015",
+          "due": "2025-07-31",
+          "id": "F-CO-000102-L01",
+          "product": "PRD-020",
+          "units": 12
+        },
+        "on_time": 12,
+        "shipped": 12
+      },
+      "restored_cash_cents": 6612,
+      "restored_days": [
+        "2025-07-17"
+      ]
+    },
+    "restore_both": {
+      "line": {
+        "cancellations": [],
+        "cancelled": 0,
+        "deliveries": [
+          {
+            "day": "2025-07-31",
+            "line": "F-CO-000102-L01",
+            "lot": "R-LOT-11",
+            "units": 12
+          }
+        ],
+        "metadata": {
+          "created": "2025-07-28",
+          "customer": "CUS-015",
+          "due": "2025-07-31",
+          "id": "F-CO-000102-L01",
+          "product": "PRD-020",
+          "units": 12
+        },
+        "on_time": 12,
+        "shipped": 12
+      },
+      "restored_cash_cents": 13224,
+      "restored_days": [
+        "2025-07-10",
+        "2025-07-17"
+      ]
+    }
+  }
+}

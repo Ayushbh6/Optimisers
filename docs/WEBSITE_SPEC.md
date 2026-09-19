@@ -1,5 +1,7 @@
 # Studio Website Specification
 
+> **19 September 2026 — latest approved direction:** the first website uses four sections (Home, Work, About, Contact) in a fixed header/footer frame. Navigation changes the central section. Desktop sections should fit one screen; small screens and enlarged text may scroll the middle. This supersedes the earlier long scrolling homepage below. The restored hero source is `docs/references/main-hero.png`; `docs/references/Idea.png` is the composition reference. The provisional working studio name is **Axis**, subject to availability and legal checks. Hosting, fonts and tooling must cost €0 during the internal preview. Both existing demos follow the website's charcoal, ivory and muted amber palette. Founder copy is grounded in the supplied CVs; older degree descriptions below require verification.
+
 > Status: Primary website content and product specification
 >
 > This document defines what the studio website represents, what it should communicate, its current content structure, and the boundaries between what exists today and what is planned.

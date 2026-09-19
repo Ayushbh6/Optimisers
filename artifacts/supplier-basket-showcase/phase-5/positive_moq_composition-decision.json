@@ -1,0 +1,312 @@
+{
+  "assumptions": [
+    "Synthetic case study; not realised client savings",
+    "Only records available by the 18 September 2026 09:00 decision were used",
+    "Customer freshness requires at least 60 calendar days remaining",
+    "Unknown future demand, margins and shortage penalties are excluded"
+  ],
+  "buyer": {
+    "accounting_errors": [],
+    "average_daily_exposure_eur": "435.77",
+    "basket_id": "BUYER",
+    "booked_lines": 5,
+    "booked_units": 96,
+    "complete_lines": 5,
+    "delivery_charge_eur": "20.00",
+    "delivery_failures": [],
+    "ending_incoming_eur": "0.00",
+    "ending_stock_eur": "355.20",
+    "ending_stock_plus_commitments_eur": "355.20",
+    "ending_undelivered_commitments_eur": "0.00",
+    "expired_cost_eur": "0.00",
+    "expired_units": 0,
+    "immediate_cash_eur": "620.00",
+    "lines": [
+      {
+        "base_uom": "tin",
+        "case_size": 12,
+        "cases": 5,
+        "expected_arrival": "2026-09-22",
+        "line_value_eur": "240.00",
+        "product_id": "PRD-001",
+        "product_name": "Tomato Soup",
+        "quantity_units": 60,
+        "unit_cost_eur": "4.00"
+      },
+      {
+        "base_uom": "pack",
+        "case_size": 12,
+        "cases": 2,
+        "expected_arrival": "2026-09-22",
+        "line_value_eur": "120.00",
+        "product_id": "PRD-002",
+        "product_name": "Oat Crackers",
+        "quantity_units": 24,
+        "unit_cost_eur": "5.00"
+      },
+      {
+        "base_uom": "jar",
+        "case_size": 24,
+        "cases": 1,
+        "expected_arrival": "2026-09-22",
+        "line_value_eur": "240.00",
+        "product_id": "PRD-003",
+        "product_name": "Honey Drops",
+        "quantity_units": 24,
+        "unit_cost_eur": "10.00"
+      }
+    ],
+    "merchandise_eur": "600.00",
+    "on_time_units": 96,
+    "sum_28_daily_exposure_eur": "12201.60"
+  },
+  "buyer_action": "Send the revised supplier draft",
+  "case_id": "positive_moq_composition",
+  "claim_boundary": "Synthetic case-study result. This is not a realised client saving.",
+  "comparison": {
+    "average_exposure_change_eur": "-96.00",
+    "cash_change_eur": "-96.00",
+    "ending_stock_plus_commitments_change_eur": "-96.00",
+    "expired_units_change": 0,
+    "on_time_units_change": 0
+  },
+  "decision_hash": "beda8bd6db28a92cb0d371eacb4b2a9b148d44123740809e9874756ab65b28f7",
+  "delivery_risks": [
+    "POS-CO-004: 12 PRD-001 units late on 2026-09-25",
+    "POS-CO-005: 12 PRD-002 units late on 2026-09-25",
+    "POS-CO-002: 36 PRD-001 units late on 2026-09-23",
+    "POS-CO-004: 24 PRD-001 units late on 2026-09-25",
+    "POS-CO-003: 12 PRD-002 units late on 2026-09-23",
+    "POS-CO-005: 12 PRD-002 units late on 2026-09-25"
+  ],
+  "input_hash": "7441e5b6b59193683ed091d7a69322f3beaf35090f2ecab4c14bb721b7d88ab1",
+  "operational_consequences": {
+    "booked_units_protected": 96,
+    "booked_units_total": 96,
+    "ending_change_eur": "-96.00",
+    "ending_stock_plus_commitments_eur": "259.20",
+    "expected_arrival": "2026-09-22",
+    "expired_units": 0
+  },
+  "product_changes": [
+    {
+      "buyer_cases": 5,
+      "case_size": 12,
+      "change_cases": 3,
+      "product_id": "PRD-001",
+      "product_name": "Tomato Soup",
+      "reason": "Used an already-needed product to satisfy the supplier minimum",
+      "selected_cases": 8,
+      "unit": "tin"
+    },
+    {
+      "buyer_cases": 1,
+      "case_size": 24,
+      "change_cases": -1,
+      "product_id": "PRD-003",
+      "product_name": "Honey Drops",
+      "reason": "Removed unnecessary minimum-order top-up",
+      "selected_cases": 0,
+      "unit": "jar"
+    }
+  ],
+  "rejected_alternatives": [
+    {
+      "candidate_id": "POS-RED-001-1",
+      "cash_eur": "572.00",
+      "delivery_failures": [
+        {
+          "customer_id": "CUS-003",
+          "due_date": "2026-09-25",
+          "line_id": "POS-CO-004",
+          "on_time_units": 12,
+          "product_id": "PRD-001",
+          "requested_units": 24,
+          "undelivered_units": 12
+        }
+      ],
+      "generation_reason": "Reduce PRD-001 by one whole case",
+      "reasons": [
+        "Booked delivery regression: 12 fewer on-time units",
+        "Ending stock plus commitments is higher than the buyer basket"
+      ],
+      "status": "rejected_physical"
+    },
+    {
+      "candidate_id": "POS-RED-002-1",
+      "cash_eur": "560.00",
+      "delivery_failures": [
+        {
+          "customer_id": "CUS-003",
+          "due_date": "2026-09-25",
+          "line_id": "POS-CO-005",
+          "on_time_units": 0,
+          "product_id": "PRD-002",
+          "requested_units": 12,
+          "undelivered_units": 12
+        }
+      ],
+      "generation_reason": "Reduce PRD-002 by one whole case",
+      "reasons": [
+        "Booked delivery regression: 12 fewer on-time units",
+        "Ending stock plus commitments is higher than the buyer basket"
+      ],
+      "status": "rejected_physical"
+    },
+    {
+      "candidate_id": "POS-INC-001-1",
+      "cash_eur": "668.00",
+      "delivery_failures": [],
+      "generation_reason": "Increase PRD-001 by one whole case",
+      "reasons": [
+        "Ending stock plus commitments is higher than the buyer basket"
+      ],
+      "status": "rejected_physical"
+    },
+    {
+      "candidate_id": "POS-INC-002-1",
+      "cash_eur": "680.00",
+      "delivery_failures": [],
+      "generation_reason": "Increase PRD-002 by one whole case",
+      "reasons": [
+        "Ending stock plus commitments is higher than the buyer basket"
+      ],
+      "status": "rejected_physical"
+    },
+    {
+      "candidate_id": "POS-INC-003-1",
+      "cash_eur": null,
+      "delivery_failures": [],
+      "generation_reason": "Increase PRD-003 by one whole case",
+      "reasons": [
+        "Weekly purchasing allowance is \u20ac800.00"
+      ],
+      "status": "rejected_preflight"
+    },
+    {
+      "candidate_id": "POS-RM-001-REPAIR-002",
+      "cash_eur": "560.00",
+      "delivery_failures": [
+        {
+          "customer_id": "CUS-002",
+          "due_date": "2026-09-23",
+          "line_id": "POS-CO-002",
+          "on_time_units": 0,
+          "product_id": "PRD-001",
+          "requested_units": 36,
+          "undelivered_units": 36
+        },
+        {
+          "customer_id": "CUS-003",
+          "due_date": "2026-09-25",
+          "line_id": "POS-CO-004",
+          "on_time_units": 0,
+          "product_id": "PRD-001",
+          "requested_units": 24,
+          "undelivered_units": 24
+        }
+      ],
+      "generation_reason": "Remove PRD-001; restore the supplier minimum with PRD-002",
+      "reasons": [
+        "Booked delivery regression: 60 fewer on-time units",
+        "Ending stock plus commitments is higher than the buyer basket"
+      ],
+      "status": "rejected_physical"
+    },
+    {
+      "candidate_id": "POS-RM-002-REPAIR-001",
+      "cash_eur": "548.00",
+      "delivery_failures": [
+        {
+          "customer_id": "CUS-002",
+          "due_date": "2026-09-23",
+          "line_id": "POS-CO-003",
+          "on_time_units": 0,
+          "product_id": "PRD-002",
+          "requested_units": 12,
+          "undelivered_units": 12
+        },
+        {
+          "customer_id": "CUS-003",
+          "due_date": "2026-09-25",
+          "line_id": "POS-CO-005",
+          "on_time_units": 0,
+          "product_id": "PRD-002",
+          "requested_units": 12,
+          "undelivered_units": 12
+        }
+      ],
+      "generation_reason": "Remove PRD-002; restore the supplier minimum with PRD-001",
+      "reasons": [
+        "Booked delivery regression: 24 fewer on-time units",
+        "Ending stock plus commitments is higher than the buyer basket"
+      ],
+      "status": "rejected_physical"
+    }
+  ],
+  "schema_version": "1.0",
+  "search_report": {
+    "buyer_basket_always_included": true,
+    "case_step": 1,
+    "elapsed_ms": 2.765,
+    "generated_alternatives": 9,
+    "max_alternatives": 12,
+    "max_changed_lines": 2,
+    "physically_replayed": 8,
+    "rejected_preflight": 1,
+    "safe_alternative_survivors": 2
+  },
+  "selected": {
+    "accounting_errors": [],
+    "average_daily_exposure_eur": "339.77",
+    "basket_id": "POS-RM-003-REPAIR-001",
+    "booked_lines": 5,
+    "booked_units": 96,
+    "complete_lines": 5,
+    "delivery_charge_eur": "20.00",
+    "delivery_failures": [],
+    "ending_incoming_eur": "0.00",
+    "ending_stock_eur": "259.20",
+    "ending_stock_plus_commitments_eur": "259.20",
+    "ending_undelivered_commitments_eur": "0.00",
+    "expired_cost_eur": "0.00",
+    "expired_units": 0,
+    "immediate_cash_eur": "524.00",
+    "lines": [
+      {
+        "base_uom": "tin",
+        "case_size": 12,
+        "cases": 8,
+        "expected_arrival": "2026-09-22",
+        "line_value_eur": "384.00",
+        "product_id": "PRD-001",
+        "product_name": "Tomato Soup",
+        "quantity_units": 96,
+        "unit_cost_eur": "4.00"
+      },
+      {
+        "base_uom": "pack",
+        "case_size": 12,
+        "cases": 2,
+        "expected_arrival": "2026-09-22",
+        "line_value_eur": "120.00",
+        "product_id": "PRD-002",
+        "product_name": "Oat Crackers",
+        "quantity_units": 24,
+        "unit_cost_eur": "5.00"
+      }
+    ],
+    "merchandise_eur": "504.00",
+    "on_time_units": 96,
+    "sum_28_daily_exposure_eur": "9513.60"
+  },
+  "summary": "Use the revised basket. It needs \u20ac96.00 less immediate cash and protects all 96 booked units.",
+  "supplier": {
+    "delivery_charge_eur": "20.00",
+    "name": "Alder Fine Foods",
+    "order_day": "Friday",
+    "supplier_id": "SUP-A"
+  },
+  "synthetic_case_study": true,
+  "verdict": "accept_proposed"
+}

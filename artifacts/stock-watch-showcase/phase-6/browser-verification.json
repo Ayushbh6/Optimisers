@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "url": "http://127.0.0.1:8767/",
+  "journeys": {
+    "balanced_action": "PASS — confirmation, two buyer actions, three charts and both downloads",
+    "unsafe_shelf_life": "PASS — keep-order instruction and 48-unit residual risk",
+    "healthy_control": "PASS — no-change result and zero projected expiry"
+  },
+  "downloads": ["stock-watch-order.csv", "stock-watch-risk-list.csv"],
+  "responsive_check": {
+    "viewport": "390x844",
+    "fixed_header": true,
+    "fixed_footer": true,
+    "body_scroll": 0,
+    "horizontal_overflow": false
+  },
+  "console_errors": 0,
+  "console_warnings": 0,
+  "screenshots": {
+    "balanced-desktop.png": "cfb259cf91851f9b203f9c4f44374b24700c3b848f3022b45c03b84179a30b25",
+    "unsafe-desktop.png": "225440969ee9239135edc679ec37a001d59e5a40ade8e65029d62ea3b559d637",
+    "control-mobile.png": "2a6b21a4564001de21cf5dfae1e7648a96766d23cccf02159de70cdf7a9186cf"
+  }
+}

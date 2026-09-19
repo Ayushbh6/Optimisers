@@ -45,3 +45,5 @@ npx --yes vercel@latest dev -L --listen 127.0.0.1:4322
 ## Live verification
 
 The production smoke on 19 September 2026 verified Home, Work, About, Contact, both embedded demos, both API health/example routes, both complete recommendation journeys, all three CSV exports, the branded 404 and the security headers. The project is not connected for automatic Git deployments; releases remain explicit through the minimal staging directory.
+
+The later iPhone contact-arrow patch replaced the Unicode northeast arrow with a shared SVG so Safari cannot substitute emoji artwork. After the manual production redeployment, 390×844 checks passed on About and Contact with no horizontal overflow; the static routes, both demo entries, both API health routes, branded 404, `nosniff` header and blocking `robots.txt` were rechecked live.

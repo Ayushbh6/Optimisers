@@ -3,9 +3,10 @@
 - `npm run check`: 0 errors, warnings or hints.
 - `npm run build`: 5 static routes built, including the branded 404 page.
 - `npm audit`: 0 reported vulnerabilities.
-- Full Python suite: 208 tests and 9 subtests passed, including both showcase engines and the stateless preview adapters.
+- Full Python suite: 209 tests and 9 subtests passed, including both showcase engines, the stateless preview adapters and the iOS-safe contact-arrow contract.
 - iPhone QA: 375×667, 390×844 and 430×932 across Home, Work, About, Contact, Supplier Basket Review and Stock Watch. No horizontal overflow on any checked route.
 - Phone interaction: fixed header and footer remain pinned; only the middle workspace scrolls. Primary mobile navigation and demo controls provide 44px touch height/minimum targets.
+- iPhone contact links: About email/GitHub links and Contact email rows use shared inline SVG arrows rather than a Unicode symbol that iOS Safari could render as emoji artwork. Live 390×844 verification showed the intended line icons with no horizontal overflow.
 - Complete Supplier Basket flow: example loaded, source issue confirmed, recommendation calculated, supplier CSV returned, and `Axis / Work` returned to the portfolio.
 - Complete Stock Watch flow: example loaded, source issue confirmed, recommendation calculated, both CSVs returned, and fixed-screen behaviour retained.
 - Backend preflight: both Vercel Python handlers answered example and review requests from fresh processes. Calculations do not rely on a previous function instance retaining memory.

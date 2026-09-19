@@ -37,3 +37,7 @@
   .founder-links .text-link{margin-top:8px}
   .not-found{padding-top:28px;justify-content:center}.not-found h1{font-size:62px}
 }
+
+/* Draw external-link arrows as SVG so iOS cannot substitute emoji artwork. */
+.external-arrow{display:block;flex:none;color:currentColor;transition:transform .2s ease}
+.text-link:hover .external-arrow{transform:translate(3px,-3px)}

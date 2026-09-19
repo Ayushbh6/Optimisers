@@ -45,6 +45,18 @@ def test_vercel_preview_contract_keeps_demos_same_origin() -> None:
     assert project["tool"]["vercel"]["entrypoint"] == "api.app:app"
 
 
+def test_contact_arrows_cannot_fall_back_to_ios_emoji() -> None:
+    pages = [
+        (ROOT / "website" / "src" / "pages" / "about.astro").read_text(),
+        (ROOT / "website" / "src" / "pages" / "contact.astro").read_text(),
+    ]
+    arrow = (ROOT / "website" / "src" / "components" / "ExternalArrow.astro").read_text()
+
+    assert all("<ExternalArrow />" in page for page in pages)
+    assert all("↗" not in page for page in pages)
+    assert 'class="external-arrow"' in arrow
+
+
 def test_wsgi_entrypoint_exposes_the_same_origin_api() -> None:
     captured: dict = {}
 

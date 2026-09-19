@@ -1,11 +1,12 @@
 ---
 import Shell from '../layouts/Shell.astro';
+import ExternalArrow from '../components/ExternalArrow.astro';
 import {founders} from '../content/studio';
 ---
 <Shell title="Get in touch" section="Contact" dark>
   <section class="page contact-page" aria-labelledby="contact-title">
     <p class="eyebrow">03 / Start a conversation</p>
     <h1 id="contact-title">An interesting<br />problem?<br /><span>We’re listening.</span></h1>
-    <div class="contact-bottom"><p>You know your business.<br />We’d like to understand what could work better.</p><div class="contact-links">{founders.map(founder => <a href={`mailto:${founder.email}`}><span>{founder.short}</span><span>{founder.email}</span><span aria-hidden="true">↗</span></a>)}</div></div>
+    <div class="contact-bottom"><p>You know your business.<br />We’d like to understand what could work better.</p><div class="contact-links">{founders.map(founder => <a href={`mailto:${founder.email}`}><span>{founder.short}</span><span>{founder.email}</span><ExternalArrow /></a>)}</div></div>
   </section>
 </Shell>
